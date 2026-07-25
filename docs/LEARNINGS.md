@@ -167,6 +167,17 @@ Environment: Python 3.12 venv, videodb 0.5.1. Scripts in `scripts/m0_0*.py`. Tes
 - ~20 clips per technique have no source link (film scenes mostly) — grid GIF still viewable on their site for manual reference, we skip them.
 - `library/` is git-tracked (JSON metadata only, no media). `data/` stays ignored.
 
+### First real-music-video run (ASD - Legendär/Populär, 4:51, 170 shots)
+- Full-video classify (~168 VLM describes) ran ~13 min serial → **M2 must parallelize describe calls** (threads; API has no explicit rate limit observed).
+- Results: 152 hard_cut, 8 whip_pan accepted, 7 zoom_punch, 2 luma_fade accepted.
+- Spot-check: whip @204.36s genuine (full-frame streaking); **whip @121.44s (conf 0.97) looks like a false positive** (mostly-sharp STOP sign frame — possibly a fast move that settled before the sampled frame, but the frame itself doesn't show whip blur). Real precision measurement needs hand labels (M1 exit criterion) — tutorial content was easy mode, music videos are the real distribution.
+
+### Match-cut & speed-ramp detectors (built + smoke-tested)
+- **Constraint: `Scene.describe()` requires a server-side scene id** — synthetic cross-boundary Scene objects can't be described. Fallback implemented in `src/detect/boundary.py`: `Frame.describe()` (frames have server ids) on A-last + B-first-sharp frames with a composition prompt, then `collection.generate_text(response_type="json")` judges match_cut from the two descriptions. 2 vision + 1 text call per cut — needs a cheap local pre-filter before library scale (perceptual-hash mid-similarity on frame URLs is the plan).
+- `generate_text(response_type="json")` wraps the payload in an `"output"` key.
+- Speed ramp: within-shot `Scene.describe()` with frame-spacing prompt works normally.
+- Smoke test on whip-pan clip: correct — no false match cuts (whip pans in same location correctly = plain_cut; one 0.78 candidate rejected by 0.85 threshold), no false speed ramps.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
