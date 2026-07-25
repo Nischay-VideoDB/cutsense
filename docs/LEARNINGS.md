@@ -144,5 +144,24 @@ Environment: Python 3.12 venv, videodb 0.5.1. Scripts in `scripts/m0_0*.py`. Tes
 - Detection risk (the 40%) is materially reduced: boundary-window classification works on first try with default VLM, no sandbox needed so far.
 - Still open for M1: precision on *diverse* footage (tutorial talking-heads are easy); zoom punch / match cut prompts; beat detection approach; `query()`/`aggregate()` V2 on custom metadata (test whether our "techniques" index is V2-queryable or legacy-only).
 
+## 2026-07-26 — M1 first run + eyecannndy.com research
+
+### M1 detection pipeline, first real run (whip-pan tutorial, 2:07, 55 shots)
+- Pipeline (`src/detect/`): shot extraction → classify shot-start windows via `scene.describe()` → validators (min 0.15s shot, conf thresholds) → SQLite (`data/cutsense.sqlite`).
+- Result: 16 whip_pan detections (conf 0.94–0.99), 38 hard_cuts, 0 unclear. Detections cluster where the tutorial demos the move repeatedly (46–50s, 91–98s) — plausible structure.
+- **Visual spot-check of 3 detections: 3/3 genuine full-frame directional blurs.** (Two frames include player UI icons — the tutorial screen-records an editor preview; blur is still real. Long-term: such UI chrome could confuse content descriptions, note for library curation.)
+- Conservative prompt rules ("blurry subject on sharp background is NOT whip_pan", "prefer hard_cut") seem to hold precision; recall untested (need hand labels).
+
+### eyecannndy.com — mapped (research pass 4)
+- **135-technique taxonomy** at `/technique/<slug>`, community-curated, credits per clip. Clip counts: transition 318, zoom-in 264, split-screen 118, flash-cut 101, shaky-cam 92, quick-cuts 88, match-cut 83, glitch 62, speed-ramping 53, **whip-pan 52**, jump-cut 39. Sub-techniques as page anchors (`zoom-in#crash-zoom`, `whip-pan#yo-yo-whip`).
+- Mapping to our vocab: whip_pan→`whip-pan` · zoom_punch→`zoom-in#crash-zoom` · match_cut→`match-cut` · speed_ramp→`speed-ramping` · shake→`shaky-cam` · glitch→`glitch` · split_screen→`split-screen`. **No luma-fade, no J/L-cut, no cut-on-beat categories** (site is silent GIFs — audio techniques can't exist there).
+- **Clips are GIF/WebP loops, not MP4s** (grid GIF → full WebP → original GIF via `/downloads/` proxy on `asset.eyecannndy.com`; assets fetch without Cloudflare challenge, HTML pages need a real browser).
+- **Each clip links its Original Source (YouTube)** + full credits (director/DOP/editor/colorist). HTMX fragment endpoint `GET /clip_info_g/<clip_id>/?type=technique&t_id=<id>` (header `HX-Request: true`) returns metadata incl. the YouTube link. No JSON API/sitemap.
+- Licensing: fair-use educational library; they own nothing, no redistribution rights. **Strategy: don't touch their GIFs — harvest the Original Source YouTube links per technique and ingest the ORIGINAL ads/MVs into VideoDB.** That gives us (a) a real reference library with exactly the right content, (b) weak ground-truth labels ("this video contains ≥1 whip pan") for calibration/recall measurement, (c) their taxonomy names as vocabulary alignment.
+- Clip sources are mostly music videos + brand ads — exactly CutSense's target content.
+
+### Recipe format extension: Remotion
+- Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
+
 ### Decision input: classic vs v2 API
 - Classic (`index_scenes` + `legacy_search`) is battle-tested in cookbook; v2 (`understand`/`index`/`query`/`aggregate`) gives structured records + filters + aggregation, which style profiles want. Plan: use scene extraction + custom describe (classic) for detection, index with metadata, and use `query`/`aggregate` where supported — verify hands-on in M1.

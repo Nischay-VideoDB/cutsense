@@ -96,6 +96,17 @@ Generated once per detection at index time (LLM: technique definition + scene de
 
 Per-technique base recipes are hand-curated (8 techniques = tractable); the LLM specializes them with the actual clip's parameters (shot lengths, motion direction, subject). Structured JSON output = consumable by other tools/agents (stated product goal).
 
+**Remotion recipes**: each recipe also ships a `remotion` block — a paste-ready React/Remotion snippet + an AI-assistant prompt to recreate the technique programmatically (see [recipes/whip-pan.md](recipes/whip-pan.md) for the template). Differentiator for creator-dev audiences.
+
+## 5b. Library source: eyecannndy.com
+
+eyecannndy.com is a curated 135-technique library (whip-pan: 52 clips, match-cut: 83, speed-ramping: 53, split-screen: 118…) where **every clip links its Original Source on YouTube** plus full credits. Their clips are GIF loops (silent, copyrighted, fair-use-only) — we don't touch those. Instead:
+
+1. Scrape technique → clip → **YouTube source link** mappings (real browser needed for pages; `clip_info_g` HTMX endpoint has the metadata).
+2. Ingest the original ads/music videos into VideoDB — this *is* the reference library (right content type: ads + MVs).
+3. Each video arrives with a weak label ("contains ≥1 <technique>") → calibration + recall measurement for M1, and demo-ready compound queries ("match cuts in ads").
+4. Their taxonomy aligns our vocabulary (zoom punch = their crash-zoom; luma fade / J-L cuts / cut-on-beat have no visual-GIF category — ours to own).
+
 ## 6. Study reels
 
 - v1: `SearchResult.compile()` or `video.generate_stream(timeline=[...])`-style stitch via legacy Timeline `add_inline` across videos → instant HLS reel.
