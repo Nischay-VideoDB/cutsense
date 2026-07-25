@@ -160,6 +160,13 @@ Environment: Python 3.12 venv, videodb 0.5.1. Scripts in `scripts/m0_0*.py`. Tes
 - Licensing: fair-use educational library; they own nothing, no redistribution rights. **Strategy: don't touch their GIFs — harvest the Original Source YouTube links per technique and ingest the ORIGINAL ads/MVs into VideoDB.** That gives us (a) a real reference library with exactly the right content, (b) weak ground-truth labels ("this video contains ≥1 whip pan") for calibration/recall measurement, (c) their taxonomy names as vocabulary alignment.
 - Clip sources are mostly music videos + brand ads — exactly CutSense's target content.
 
+### eyecannndy harvest executed (in-app browser, Cloudflare passed)
+- Scraper mechanics that work: load `/technique/<slug>` in a real browser, collect `hx-get` attrs from `.grid-item`s, fetch `clip_info_g` fragments same-origin with header `HX-Request: true`, parse first youtube/vimeo/instagram link = Original Source. ~10 fetches in parallel per chunk, no rate-limit issues.
+- Harvested whip-pan (52 clips), match-cut (83), speed-ramping (53) → **`library/eyecannndy/manifest.json`: 84 unique source videos, 51 YouTube, 23 multi-technique.** Vimeo is the next-biggest source (~30) — test whether VideoDB `upload(url=)` accepts Vimeo.
+- Best calibration videos (multi-technique, dense): Watchtower of Turkey (11 clips, 3 techniques), ASD - Legendär/Populär (7, 3), Pa Salieu - My Family (6, 3), Sports Direct Women's Euro (5, 2), Travis Scott FE!N (5, 2), Nike SB Don't Make Plans (5, 2).
+- ~20 clips per technique have no source link (film scenes mostly) — grid GIF still viewable on their site for manual reference, we skip them.
+- `library/` is git-tracked (JSON metadata only, no media). `data/` stays ignored.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
