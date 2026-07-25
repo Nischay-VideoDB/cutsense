@@ -123,5 +123,26 @@ video.index_scenes(
 - shot_based `threshold`: HIGHER = fewer splits (agent confirmed direction).
 - Cached SDK sources + trees in scratchpad `vdb/` dir for further digging.
 
+## 2026-07-26 — M0 hands-on validation (ALL PASSED)
+
+Environment: Python 3.12 venv, videodb 0.5.1. Scripts in `scripts/m0_0*.py`. Test collection `cutsense-m0`. Account: shubham jaiswal's (credits account) — key works.
+
+### Observed platform behavior
+- **YouTube-URL upload works** and is fast; `video.length` in seconds (float).
+- `conn.youtube_search()` works (SerpAPI-shaped results; noisy — extract `link`+`duration`; "short" duration filter still returns some mid-length).
+- **Shot extraction**: 6s whip-pan clip → 5 shots, boundaries frame-accurate. 2-min mixed tutorial → 12–16 shots across thresholds 25/20/15 (talking-head sections = one long 43–57s shot, as expected). Threshold direction confirmed: higher = fewer shots. `frame_count=3` gives 3 frames/shot incl. first frame.
+- **Scene-collection IDs are deterministic**: `st{threshold}m15f3` — re-extract with same params reuses.
+- **KEY FINDING — whip-pan blur lands at the START of the following shot.** Cut detection splits at the whip: the blurred frames become the first frames of shot N+1. So detector = classify shot-start frames. Confirmed visually on both whip pans in test clip.
+- **VLM classification via `scene.describe()`: 5/5 correct** with a structured JSON prompt (labels whip_pan/zoom_punch/luma_fade/hard_cut/unclear): both real whip pans caught at 0.96/0.98 confidence, hard cuts correctly rejected, and a 0.04s end-of-video black stub labeled luma_fade (right answer, filtered by a min-duration validator). Returns clean JSON when asked.
+- **Custom Scene objects + metadata index**: `index_scenes(scenes=[Scene(..., metadata={...})], name="techniques")` works; `get_scene_index` returns records with `scene_metadata` — **but metadata values come back stringified** ("0.96" not 0.96) — keep types in SQLite, treat VideoDB metadata as tags.
+- **Search back works**: video-level semantic search on scene index → exact shots (scores 0.68–0.77); collection-level too (scores a bit lower, 0.52–0.65 — score_threshold 0.2 default fine). `compile()` on results → stitched stream URL instantly.
+- **SDK warns legacy search is deprecated** → Search V2 (`search()`, `semantic_search()`, `query()`, `aggregate()`, `ask()`) is the go-forward path. **API decision: use Search V2 for retrieval; scene extraction + describe + index_scenes for detection.**
+- **Streams/export all instant**: `generate_stream(timeline=[(s,e)])` → m3u8 in ~1s; cross-video legacy Timeline reel works (deprecation warning → use `videodb.editor`); `conn.download(stream_url, name)` returned **status "done" synchronously** with a signed GCS URL; MP4 verified locally: 8.04s for a 2+2+4s reel ✓ (saved `data/m0/cutsense_m0_reel.mp4`).
+
+### M0 exit criteria vs plan
+- ✅ Key + credits verified · ✅ 3 videos uploaded · ✅ threshold sweep + frames eyeballed · ✅ whip-pan VLM test (better than hoped) · ✅ compile + MP4 download verified · ✅ API decision made (V2 retrieval, classic scene pipeline for detection).
+- Detection risk (the 40%) is materially reduced: boundary-window classification works on first try with default VLM, no sandbox needed so far.
+- Still open for M1: precision on *diverse* footage (tutorial talking-heads are easy); zoom punch / match cut prompts; beat detection approach; `query()`/`aggregate()` V2 on custom metadata (test whether our "techniques" index is V2-queryable or legacy-only).
+
 ### Decision input: classic vs v2 API
 - Classic (`index_scenes` + `legacy_search`) is battle-tested in cookbook; v2 (`understand`/`index`/`query`/`aggregate`) gives structured records + filters + aggregation, which style profiles want. Plan: use scene extraction + custom describe (classic) for detection, index with metadata, and use `query`/`aggregate` where supported — verify hands-on in M1.

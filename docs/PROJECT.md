@@ -60,4 +60,5 @@ cutsense/
 
 ## Status log
 
-- **2026-07-25** — Project kicked off. Repo scaffolded, git initialized (local only). Three deep-research passes over VideoDB docs + GitHub org launched; findings landing in LEARNINGS.md. Next: architecture + implementation plan.
+- **2026-07-25** — Project kicked off. Repo scaffolded, git initialized (local only). Three deep-research passes over VideoDB docs + GitHub org; findings in LEARNINGS.md. Architecture plan written (ARCHITECTURE.md).
+- **2026-07-26** — **M0 hands-on validation passed in full.** 3 test videos ingested; shot extraction calibrated; VLM whip-pan classification 5/5 correct at first attempt (0.96–0.98 conf); technique index + metadata + semantic search + compile() + MP4 export all verified end-to-end. API decision: Search V2 for retrieval, scene-extraction pipeline for detection. Detection risk sharply reduced. Next: M1 (calibration set + 3-technique detection core).
