@@ -54,6 +54,43 @@ video.index_scenes(
 - [ ] Newer `understand()` analyzers (activity_recognition, object_detection) — useful for techniques?
 - [ ] Whether search over our controlled technique vocabulary is better served by `query()` with metadata filters than by semantic search.
 
+## 2026-07-25 — VideoDB assembly, export, platform (research pass 2)
+
+### Timeline API — two generations, prefer `videodb.editor`
+- **Legacy** `videodb.timeline.Timeline` (prints deprecation warning): `add_inline(VideoAsset(asset_id, start, end))` sequential concat + `add_overlay(start, Audio/Image/TextAsset)`; `generate_stream()`; `get_embed_code()`. Legacy `AudioAsset` has fade_in/out (max 5s), `TextAsset` uses ffmpeg-drawtext-like `TextStyle`.
+- **New** `videodb.editor`: Track/Clip model — `Timeline(conn)` (settable `.background`, `.resolution`), `Track(z_index)`, `track.add_clip(start, Clip(asset, duration, transition=Transition(in_, out, duration=0.5), effect, filter, scale, opacity, fit, position, offset))`. Assets: `VideoAsset(id, start=trim_point, volume, crop)`, Audio/Image/TextAsset (fonts, borders, shadows). `Filter: blur|greyscale|contrast|...`; `Fit: crop|cover|contain|none`.
+- **Trimming vs timing**: asset `start` = trim within source; `add_clip(start, …)` = placement on timeline.
+- **Caption Asset**: text synced to audio timestamps (auto-subtitles in compositions).
+
+### Export — MP4 exists (not HLS-only!)
+- Streams are HLS (`stream.videodb.io/.../*.m3u8`), URLs valid ~24h (regenerate by re-calling).
+- **MP4**: async download jobs — `conn.download(stream_link, name)`, `video.download()`, `editor.Timeline.download_stream(stream_url)`; poll status; final link expires 24h. Billed $0.03/min (720p).
+
+### Subtitles / thumbnails / transcode / reframe
+- `video.add_subtitle(SubtitleStyle(...))` — burned-in, needs spoken-word index first. Rich styling (font, colors, outline, alignment, margins).
+- `video.generate_thumbnail(time=...)` → Image at timestamp; `get_thumbnails()`. (Grid thumbnails for the search UI = free.)
+- `conn.transcode(source, mode=economy|lightning, VideoConfig(resolution, quality, framerate, aspect_ratio, resize_mode))` — async.
+- `video.reframe(target="vertical", mode=ReframeMode.smart)` — smart 9:16 reframe (social clips of techniques!).
+
+### Cross-video stitching (study reels) — 3 native paths
+1. Timeline (either gen) with assets from different video ids → one compiled stream → `conn.download()` for MP4.
+2. `SearchResult.compile()` → single stream stitched from matching segments across the collection.
+3. Per-video `generate_stream([(s,e),...])` supercuts.
+- Music/VO overlay supported. **No local ffmpeg needed anywhere.**
+
+### Pricing (we have credits; for reference)
+- Scene processing $0.003/scene · transcription $0.01/min · search $1.50/1k queries · upload $0.09/GB · storage $0.03/GB/mo · streaming $0.07/GB · download $0.03/min · inline edit $0.004/min · LLM tokens $0.0016–0.00875/1K.
+- Rough CutSense math: 100 videos × ~200 shots = ~20k scenes ≈ $60 of scene processing per full-library describe pass — fine on credits, but don't re-index carelessly.
+
+### Async / jobs
+- Nearly every heavy op takes `callback_url`; generation methods support `wait=True, poll_interval, timeout` or return `GenerationJob`. SDK poll max 500s.
+
+### Director agent framework & extras
+- **Director** (github.com/video-db/Director, hosted chat.videodb.io): reasoning engine + built-in agents (upload, search, editing, clip gen); custom-agent guide exists. Companion: videodb-chat (UI), videodb-player. Could power the "ask in plain language" chat surface or at least the player.
+- "Agent Skills" offering: video perception skills for external agents.
+- Gen AI extras: `generate_voice/music/sound_effect/image/video/text`, `dub_video`, voice clone. `conn.youtube_search()` exists (library bootstrap!).
+- RTStream (live RTSP/RTMP + real-time indexing) — not needed for CutSense v1.
+- docs.videodb.io/llms.txt = full docs page index, very useful.
+
 ## Pending research (in flight)
-- Timeline/assets API, MP4 export, thumbnails, Director agent framework, limits/pricing — research pass 2.
 - Full github.com/video-db org inventory (SDKs, cookbook examples, MCP server) — research pass 3.
