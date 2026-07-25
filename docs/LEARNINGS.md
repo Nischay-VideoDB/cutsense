@@ -92,5 +92,36 @@ video.index_scenes(
 - RTStream (live RTSP/RTMP + real-time indexing) — not needed for CutSense v1.
 - docs.videodb.io/llms.txt = full docs page index, very useful.
 
-## Pending research (in flight)
-- Full github.com/video-db org inventory (SDKs, cookbook examples, MCP server) — research pass 3.
+## 2026-07-25 — github.com/video-db org inventory (research pass 3)
+
+### Repos that matter for CutSense (of 43 public)
+- **videodb-python** (pushed today) — core SDK. Modules: client, collection, video, scene, shot, search, timeline (legacy), editor (new, 1209-line multi-track NLE), index, understanding, rtstream, sandbox, capture, job.
+- **videodb-cookbook** — 64 notebooks. Key ones for us:
+  - `guides/scene-index/playground_scene_extraction.ipynb` — tune shot/time extraction params
+  - `guides/scene-index/advanced_visual_search.ipynb` — custom scene boundaries + `scene.describe()` + index
+  - `guides/scene-index/custom_annotations.ipynb` — bring-your-own Scene objects/metadata
+  - `guides/multimodal/Prompt_Experiments_and_Benchmarking.ipynb` — iterate vision prompts, benchmark models
+  - `quickstart/scene_level_metadata_indexing.ipynb` — metadata on scenes (technique tags!)
+  - `editor/creative/chess_montage.ipynb` — montage build (study-reel pattern)
+  - `editor/feature/*` (10 notebooks) — full new-Editor coverage incl. caption animations
+  - `examples/Keyword_Search_Counter.ipynb` — counting pattern for analytics
+- **Director** (1.4k★, but last push 2026-01) — agent framework. `prompt_clip.py` agent = reference impl for technique-search→reel (chunk docs → parallel LLM selection → clip timeline). Custom agents: subclass BaseAgent. Newer energy is in **skills** repo.
+- **skills** (pushed today) — VideoDB Agent Skills for Claude Code/Cursor (`npx skills add video-db/skills`), needs SDK ≥0.5.0. Recommended agent-integration path now.
+- **agent-toolkit** — MCP server (`uvx videodb-director-mcp --api-key=KEY`) + `videodb.io/llms.txt` / `llms-full.txt` for LLM context.
+- **videodb-node** — TS SDK, near parity incl. new editor (README 404s; read src). Means our web backend could be Node if we want; Python still primary.
+- **videodb-player** (Vue HLS player) + **videodb-chat** (Vue chat frontend) — reusable UI pieces.
+- **PromptClip** (stale) — precursor to `video.clip()`.
+
+### SDK gems discovered (beyond passes 1–2)
+- **`video.clip(prompt, content_type="spoken"|"visual"|"multimodal", model_name="basic"|"pro"|"ultra") -> SearchResult`** — one-call prompt-to-clip. Could be a fast baseline for technique search before our custom index is built.
+- `index_visuals(prompt, batch_config, name)` / `index_audio(prompt, ...)` — indexing v2.
+- `collection.aggregate(index_name, filter, group_by, metric="count")` — server-side technique frequency counts (style profiles!). Plus `query()` with filters, `ask()`, `legacy_search(..., stitch, rerank)`.
+- Scene-level `metadata` dict on scenes/indexes → filterable technique tags (better than free-text-only).
+- **CaptionAsset animations**: box_highlight, color_highlight, reveal, karaoke, impact, supersize.
+- `create_sandbox(...)` — managed GPU sandboxes to run open-weight VLMs (Qwen, RT-DETR...) via `model_name/model_config/sandbox_id` on `index_scenes`/`describe`. Escape hatch if hosted VLM can't detect motion techniques.
+- `insert_video(video, timestamp)`, `smart_vertical_reframe()`, `translate_transcript()`.
+- shot_based `threshold`: HIGHER = fewer splits (agent confirmed direction).
+- Cached SDK sources + trees in scratchpad `vdb/` dir for further digging.
+
+### Decision input: classic vs v2 API
+- Classic (`index_scenes` + `legacy_search`) is battle-tested in cookbook; v2 (`understand`/`index`/`query`/`aggregate`) gives structured records + filters + aggregation, which style profiles want. Plan: use scene extraction + custom describe (classic) for detection, index with metadata, and use `query`/`aggregate` where supported — verify hands-on in M1.
