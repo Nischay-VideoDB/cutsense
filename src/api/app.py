@@ -14,11 +14,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from src.api import analyze as analyze_service
 from src.api import clips as clip_service
+from src.api import query as query_service
+from src.api import report as report_service
 from src.catalog.db import get_db
 from src.catalog.snapshot import seed_if_empty
 from src.detect.prompts import SHIPPING_TECHNIQUES, TECHNIQUE_LABELS
-from src.videodb_client import NotConfigured
+from src.profiles import build as profile_build
+from src.profiles import pacing as pacing_module
+from src.reels import builder as reel_builder
+from src.videodb_client import NotConfigured, get_collection
 
 ROOT = Path(__file__).resolve().parents[2]
 WEB_DIR = ROOT / "web"
@@ -201,6 +207,193 @@ def recipe(technique: str):
         raise HTTPException(404, f"no recipe for {technique}")
     return {"technique": technique, "label": TECHNIQUE_LABELS.get(technique, technique),
             "markdown": body}
+
+
+@app.post("/api/analyze")
+def start_analysis(url: str = Query(..., description="a video URL to analyse")):
+    """Primary flow: paste your edit, get told what was done and how to redo it."""
+    return analyze_service.start(db, url.strip())
+
+
+@app.get("/api/analyze/{analysis_id}")
+def analysis_status(analysis_id: int):
+    record = analyze_service.get(db, analysis_id)
+    if not record:
+        raise HTTPException(404, "analysis not found")
+    return record
+
+
+@app.get("/api/report/{videodb_id}")
+def video_report(videodb_id: str):
+    payload = report_service.build_report(db, videodb_id, read_recipe)
+    if not payload:
+        raise HTTPException(404, "video not found")
+    return payload
+
+
+@app.get("/api/ask")
+def ask(q: str = Query(..., description="plain-language question about the archive"),
+        limit: int = Query(24, le=120)):
+    """Plain-language search: parses the question, then routes by intent."""
+    coll = None
+    try:
+        coll = get_collection()
+    except NotConfigured:
+        pass
+    plan = query_service.parse(q, coll)
+    payload = {"query": q, "plan": plan, "interpretation": query_service.describe(plan)}
+
+    if plan["intent"] == "pacing":
+        payload["videos"] = pacing_ranking(fastest_first=True)
+        return payload
+    if plan["intent"] == "profile":
+        payload["profile"] = profile_payload("creator", plan["creator"]) if plan["creator"] else None
+        payload["creators"] = profile_build.creators(db)
+        return payload
+
+    clips = plan_clips(plan, limit)
+    # a content filter that matches nothing should widen rather than return an empty
+    # grid: say what was dropped and show the technique anyway
+    if not clips and (plan["content_terms"] or plan["creator"]):
+        relaxed = {**plan, "content_terms": [], "creator": ""}
+        clips = plan_clips(relaxed, limit)
+        if clips:
+            dropped = ", ".join(filter(None, [*plan["content_terms"], plan["creator"]]))
+            payload["note"] = (f"nothing in the library matches “{dropped}” — "
+                               f"showing every {query_service.describe(relaxed)} instead")
+    payload["count"] = len(clips)
+    payload["clips"] = clips
+    if plan["intent"] == "reel":
+        payload["reel_ready"] = bool(clips)
+    return payload
+
+
+def plan_clips(plan, limit):
+    where = [technique_filter_sql(), NOT_DUPLICATE_SQL]
+    params = list(SHIPPING_TECHNIQUES)
+    if plan["techniques"]:
+        where.append(f"d.technique IN ({','.join('?' * len(plan['techniques']))})")
+        params += plan["techniques"]
+    for term in plan["content_terms"]:
+        where.append("(v.title LIKE ? OR d.evidence LIKE ? OR v.creator LIKE ?)")
+        params += [f"%{term}%"] * 3
+    if plan["creator"]:
+        where.append("(v.creator LIKE ? OR v.title LIKE ?)")
+        params += [f"%{plan['creator']}%"] * 2
+
+    rank = " ".join(f"WHEN ? THEN {i}" for i in range(len(SHIPPING_TECHNIQUES)))
+    rows = db.execute(
+        "SELECT d.*, v.title, v.source_url, v.creator, v.account FROM detections d"
+        " JOIN videos v ON v.videodb_id = d.videodb_id"
+        f" WHERE {' AND '.join(where)}"
+        f" ORDER BY CASE d.technique {rank} ELSE 99 END, d.confidence DESC, d.id LIMIT ?",
+        [*params, *SHIPPING_TECHNIQUES, limit]).fetchall()
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        return list(pool.map(lambda r: detection_row(r, with_assets=True, want_stream=False), rows))
+
+
+def pacing_ranking(fastest_first=True, limit=20):
+    rows = db.execute(
+        f"SELECT v.videodb_id, v.title, v.creator FROM videos v WHERE {NOT_DUPLICATE_SQL}").fetchall()
+    out = []
+    for r in rows:
+        shots = [dict(s) for s in db.execute(
+            "SELECT start_s, end_s FROM shots WHERE videodb_id=? ORDER BY start_s",
+            [r["videodb_id"]])]
+        summary = pacing_module.summarise(shots)
+        if not summary:
+            continue
+        out.append({"video_id": r["videodb_id"], "title": r["title"], "creator": r["creator"],
+                    **{k: summary[k] for k in
+                       ("cuts", "cuts_per_minute", "avg_cut_length_s", "fast_cut_share")},
+                    "rhythmic": summary["rhythm"]["rhythmic"],
+                    "dominant_interval_s": summary["rhythm"]["dominant_interval_s"]})
+    out.sort(key=lambda v: v["cuts_per_minute"] or 0, reverse=fastest_first)
+    return out[:limit]
+
+
+@app.get("/api/pacing")
+def pacing_endpoint(limit: int = Query(20, le=100)):
+    return {"videos": pacing_ranking(limit=limit)}
+
+
+def profile_payload(scope, key):
+    coll = None
+    try:
+        coll = get_collection()
+    except NotConfigured:
+        pass
+    return profile_build.build_profile(db, scope, key, coll)
+
+
+@app.get("/api/creators")
+def creators():
+    return {"creators": profile_build.creators(db)}
+
+
+@app.get("/api/profile/{scope}/{key:path}")
+def profile(scope: str, key: str):
+    if scope not in ("video", "creator"):
+        raise HTTPException(400, "scope must be 'video' or 'creator'")
+    payload = profile_payload(scope, key)
+    if not payload:
+        raise HTTPException(404, f"no {scope} named {key}")
+    return payload
+
+
+@app.post("/api/reels")
+def make_reel(q: str | None = None, technique: str | None = None,
+              limit: int = Query(12, le=24), name: str | None = None):
+    """Stitch matching moments into one study reel."""
+    if technique:
+        plan = {"intent": "reel", "techniques": [technique], "content_terms": [],
+                "creator": "", "wants_fastest": False}
+        label = TECHNIQUE_LABELS.get(technique, technique)
+    else:
+        coll = None
+        try:
+            coll = get_collection()
+        except NotConfigured:
+            pass
+        plan = query_service.parse(q or "", coll)
+        label = query_service.describe(plan)
+
+    rows = db.execute(
+        "SELECT d.*, v.title, v.account FROM detections d"
+        " JOIN videos v ON v.videodb_id = d.videodb_id"
+        f" WHERE {technique_filter_sql()} AND {NOT_DUPLICATE_SQL}"
+        + (f" AND d.technique IN ({','.join('?' * len(plan['techniques']))})"
+           if plan["techniques"] else "")
+        + " ORDER BY d.confidence DESC LIMIT ?",
+        [*SHIPPING_TECHNIQUES, *plan["techniques"], limit]).fetchall()
+    if not rows:
+        raise HTTPException(404, "nothing to stitch for that query")
+
+    try:
+        reel = reel_builder.build_reel(db, rows, name or f"Study reel — {label}", query=q)
+    except NotConfigured as e:
+        raise HTTPException(503, f"reel build unavailable: {e}")
+    if not reel:
+        raise HTTPException(404, "nothing to stitch")
+    return reel
+
+
+@app.get("/api/reels")
+def list_reels():
+    rows = db.execute("SELECT id, name, query, stream_url, mp4_url, created_at FROM reels"
+                      " ORDER BY id DESC LIMIT 25").fetchall()
+    return {"reels": [dict(r) for r in rows]}
+
+
+@app.post("/api/reels/{reel_id}/mp4")
+def reel_mp4(reel_id: int):
+    try:
+        result = reel_builder.export_mp4(db, reel_id)
+    except NotConfigured as e:
+        raise HTTPException(503, f"export unavailable: {e}")
+    if not result:
+        raise HTTPException(404, "reel not found")
+    return result
 
 
 @app.get("/api/videos")

@@ -35,6 +35,13 @@ CREATE TABLE IF NOT EXISTS detections (
   evidence TEXT, prompt_version TEXT, raw_json TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
+CREATE TABLE IF NOT EXISTS analyses (  -- "paste your video" jobs
+  id INTEGER PRIMARY KEY,
+  source_url TEXT, videodb_id TEXT, title TEXT,
+  state TEXT DEFAULT 'queued',   -- queued|uploading|extracting|detecting|ready|failed
+  stage_detail TEXT, shots INTEGER, detections INTEGER, error TEXT,
+  created_at TEXT DEFAULT (datetime('now')), updated_at TEXT DEFAULT (datetime('now'))
+);
 CREATE TABLE IF NOT EXISTS clip_assets (  -- playable assets per detection; HLS urls expire
   detection_id INTEGER PRIMARY KEY,
   stream_url TEXT, thumbnail_url TEXT, refreshed_at TEXT

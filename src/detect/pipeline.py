@@ -17,6 +17,33 @@ from src.detect.prompts import PROMPT_VERSION, SHOT_START_PROMPT
 
 MIN_SHOT_DUR = 0.15
 WORKERS = 8  # serial describe was ~4.6s/shot; 170-shot video took ~13 min
+
+# Model tiers are budgeted separately, and a spent tier fails every call with
+# "You have reached the Hackathon budget for this model tier". That once turned
+# into 87 shots of silent "unclear", so the tier is resolved once against a live
+# call and remembered, falling forward through the chain when one is exhausted.
+MODEL_CHAIN = ("basic", "pro", "ultra")
+BUDGET_MARKERS = ("budget", "not supported")
+_resolved_model = {}
+
+
+def resolve_model(scene, chain=MODEL_CHAIN, account="primary"):
+    """Return the first tier that answers, or None if the default works."""
+    if account in _resolved_model:
+        return _resolved_model[account]
+    for model in chain:
+        try:
+            scene.describe(prompt="Reply with only the word OK.", model_name=model)
+            _resolved_model[account] = model
+            return model
+        except Exception as e:
+            if not any(m in str(e).lower() for m in BUDGET_MARKERS):
+                raise
+    raise RuntimeError("no LLM tier available: every tier in the chain is exhausted")
+
+
+def model_for(account="primary"):
+    return _resolved_model.get(account)
 CONF_THRESHOLD = {"whip_pan": 0.85, "zoom_punch": 0.85, "luma_fade": 0.9}
 CONTEXT_S = 1.5  # clip window padding around the cut
 
@@ -69,18 +96,22 @@ def classify_shots(scene_collection, skip_first=True):
         yield i, scene, result
 
 
-def classify_shots_parallel(scene_collection, skip_first=True, workers=WORKERS):
+def classify_shots_parallel(scene_collection, skip_first=True, workers=WORKERS,
+                            account="primary"):
     """Same as classify_shots but concurrent. Returns a list ordered by shot index."""
     scenes = scene_collection.scenes
     targets = [
         (i, s) for i, s in enumerate(scenes)
         if not (skip_first and i == 0) and (s.end - s.start) >= MIN_SHOT_DUR
     ]
+    if not targets:
+        return []
+    model = resolve_model(targets[0][1], account=account)
 
     def work(item):
         i, scene = item
         try:
-            raw = scene.describe(prompt=SHOT_START_PROMPT)
+            raw = scene.describe(prompt=SHOT_START_PROMPT, model_name=model)
         except Exception as e:
             return i, scene, {"label": "unclear", "confidence": 0.0, "evidence": f"error: {e}"}
         return i, scene, parse_json_reply(raw or "")

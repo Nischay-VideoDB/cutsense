@@ -3,36 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CutSense — searchable technique archive</title>
+<title>CutSense — how was this cut?</title>
 <link rel="stylesheet" href="/static/styles.css?v=__ASSET_V__">
 </head>
 <body>
 <header class="topbar">
-  <a class="wordmark" href="/">CUT<span>SENSE</span></a>
-  <div class="searchwrap">
-    <input id="search" type="search" placeholder="whip pan into product shot, match cuts in ads…" autocomplete="off">
-    <button id="searchbtn" title="Search">→</button>
-  </div>
+  <a class="wordmark" href="#" id="homelink">CUT<span>SENSE</span></a>
+  <nav class="tabs">
+    <button class="tab on" data-view="analyse">Analyse a video</button>
+    <button class="tab" data-view="library">Reference library</button>
+  </nav>
   <div class="stats" id="stats"></div>
 </header>
 
-<div class="shell">
-  <nav class="rail">
-    <div class="rail-title">Techniques</div>
-    <ul id="techlist"></ul>
-    <div class="rail-title">Library</div>
-    <ul id="videolist" class="videolist"></ul>
-  </nav>
-
-  <main>
-    <div class="crumb" id="crumb">Every technique</div>
-    <div class="grid" id="grid"></div>
-    <div class="empty" id="empty" hidden>
-      No clips yet. Ingest videos and run detection, then reload.
+<!-- ============ ANALYSE: the primary flow ============ -->
+<section class="view show" id="view-analyse">
+  <div class="hero">
+    <h1>Paste a video. Find out how it was cut.</h1>
+    <p class="lede">CutSense reads the edit itself — every transition, the cut rhythm — then
+      tells you how to rebuild each move in Premiere, Resolve, CapCut or Remotion, with
+      the same technique from other people's work to compare against.</p>
+    <form class="paste" id="analyse-form">
+      <input id="analyse-url" type="url" required
+             placeholder="https://www.youtube.com/watch?v=…  (or any public video URL)">
+      <button type="submit" id="analyse-btn">Analyse</button>
+    </form>
+    <div class="examples">
+      Try one: <button class="ex" data-url="https://www.youtube.com/watch?v=GXfse6OyYwY">a 6s whip-pan clip</button>
+      <button class="ex" data-url="https://www.youtube.com/watch?v=T_51CzomE2I">an IKEA ad</button>
     </div>
-  </main>
-</div>
+    <div class="progress" id="progress" hidden>
+      <div class="bar"><div class="fill" id="progress-fill"></div></div>
+      <div class="mono" id="progress-text"></div>
+    </div>
+    <div class="failed" id="analyse-error" hidden></div>
+  </div>
 
+  <div id="report" hidden></div>
+</section>
+
+<!-- ============ LIBRARY: reference + inspiration ============ -->
+<section class="view" id="view-library">
+  <div class="searchwrap">
+    <input id="search" type="search" autocomplete="off"
+           placeholder="ask anything: match cuts in ads · which videos cut on the beat · a study reel of every whip pan">
+    <button id="searchbtn" title="Ask">→</button>
+  </div>
+  <div class="interpretation" id="interpretation" hidden></div>
+
+  <div class="shell">
+    <nav class="rail">
+      <div class="rail-title">Techniques</div>
+      <ul id="techlist"></ul>
+      <div class="rail-title">Creators</div>
+      <ul id="creatorlist" class="videolist"></ul>
+    </nav>
+    <main>
+      <div class="crumb-row">
+        <div class="crumb" id="crumb">Every technique</div>
+        <button class="ghost" id="reelbtn" hidden>Make a study reel of these</button>
+      </div>
+      <div id="reel-out" hidden></div>
+      <div id="profile-out" hidden></div>
+      <div id="pacing-out" hidden></div>
+      <div class="grid" id="grid"></div>
+      <div class="empty" id="empty" hidden>No clips yet.</div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ clip detail ============ -->
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-inner">
     <button class="close" id="close">✕</button>
