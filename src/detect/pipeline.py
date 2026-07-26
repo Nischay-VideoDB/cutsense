@@ -76,6 +76,30 @@ def is_accepted(result) -> bool:
     return label in CONF_THRESHOLD and conf >= CONF_THRESHOLD[label]
 
 
+def validate_detection(scene, result):
+    """Second gate: deterministic pixel stats must corroborate the VLM.
+
+    Only runs on VLM-positive candidates (3 small image downloads each). Returns
+    (accepted, reason) so rejections stay visible instead of silently vanishing.
+    """
+    from src.detect import filters
+
+    label = result.get("label")
+    if not is_accepted(result):
+        return False, "below_confidence"
+    try:
+        if label == "whip_pan":
+            first, settled = filters.shot_whip_stats(scene)
+            if not filters.whip_plausible(first, settled):
+                return False, f"pixel_veto sharpness={first['sharpness']:.0f}"
+        elif label == "luma_fade":
+            if not filters.fade_plausible(filters.stats_for(scene.frames[0].url)):
+                return False, "pixel_veto luma"
+    except Exception as e:
+        return True, f"filter_error_passed:{e}"   # never lose a detection to a fetch failure
+    return True, "ok"
+
+
 def detection_window(scene, video_length):
     cut = scene.start
     return max(0.0, cut - CONTEXT_S), min(float(video_length), cut + CONTEXT_S)
@@ -83,6 +107,6 @@ def detection_window(scene, video_length):
 
 __all__ = [
     "extract_shots", "classify_shots", "classify_shots_parallel", "is_accepted",
-    "detection_window", "parse_json_reply",
+    "validate_detection", "detection_window", "parse_json_reply",
     "PROMPT_VERSION", "MIN_SHOT_DUR", "CONF_THRESHOLD", "WORKERS",
 ]

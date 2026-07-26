@@ -37,16 +37,25 @@ def run(video, db, threshold=20, parallel=True):
     db.commit()
 
     results = (pl.classify_shots_parallel(sc) if parallel else list(pl.classify_shots(sc)))
-    accepted = []
+    accepted, vetoed = [], []
     for i, scene, result in results:
         window = pl.detection_window(scene, getattr(video, "length", scene.end))
-        add_detection(db, video.id, i, result, window, scene.start, pl.PROMPT_VERSION)
-        if pl.is_accepted(result):
+        ok, reason = pl.validate_detection(scene, result)
+        if ok:
+            add_detection(db, video.id, i, result, window, scene.start, pl.PROMPT_VERSION)
             accepted.append((scene.start, result["label"], result["confidence"]))
+        else:
+            if reason != "below_confidence":
+                vetoed.append((scene.start, result["label"], result["confidence"], reason))
+            add_detection(db, video.id, i, {**result, "label": f"rejected:{result.get('label')}",
+                                            "evidence": reason},
+                          window, scene.start, pl.PROMPT_VERSION)
 
     print(f"accepted {len(accepted)} of {len(results)} shots in {time.time() - started:.0f}s")
     for start, label, conf in accepted:
         print(f"  @{start:7.2f}s  {label:10s} conf={conf}")
+    for start, label, conf, reason in vetoed:
+        print(f"  @{start:7.2f}s  VETOED {label} conf={conf} ({reason})")
 
 
 if __name__ == "__main__":
