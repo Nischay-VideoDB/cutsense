@@ -303,3 +303,29 @@ main { padding: 18px 20px 60px; min-width: 0; }
 
 /* a thumbnail that will not load should read as empty, not as a broken file */
 .moment img.broken, .card img.broken { visibility: hidden; }
+
+/* ---------- public gallery ---------- */
+.gallery-wrap { max-width: 1080px; margin: 0 auto; padding: 34px 20px 70px; border-top: 1px solid var(--line); }
+.gallery-head h2 { margin: 0 0 4px; font-size: 16px; }
+.gallery-head p { margin: 0 0 18px; color: var(--dim); font-size: 13px; }
+.gallery { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); }
+.gcard {
+  padding: 0; cursor: pointer; text-align: left; overflow: hidden;
+  background: var(--panel); color: var(--ink); border: 1px solid var(--line);
+}
+.gcard:hover { border-color: var(--accent); }
+.gcard img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #000; }
+.gcard .placeholder {
+  width: 100%; aspect-ratio: 16 / 9; display: grid; place-items: center;
+  color: #3a3a42; font-family: ui-monospace, Menlo, monospace;
+}
+.gmeta { padding: 9px 10px 11px; display: grid; gap: 4px; }
+.gmeta b {
+  font-size: 12.5px; font-weight: 600; line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.gchips { display: flex; flex-wrap: wrap; gap: 4px; }
+.gchips i {
+  font-style: normal; font-size: 10px; padding: 2px 5px; color: var(--dim);
+  background: #1b1b1f; border: 1px solid var(--line);
+}

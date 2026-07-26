@@ -91,6 +91,44 @@ async function finishAnalysis(rec) {
   const report = await api(`/api/report/${rec.videodb_id}`);
   $("#progress").hidden = true;
   renderReport(report);
+  loadGallery();   // the new analysis belongs in the public list
+}
+
+/* ---------- public gallery ---------- */
+async function loadGallery() {
+  let data;
+  try { data = await api("/api/gallery?limit=48"); } catch { return; }
+  const el = $("#gallery");
+  el.innerHTML = data.videos.map(v => `
+    <button class="gcard" data-video="${v.video_id}">
+      ${v.poster_clip_id
+        ? `<img decoding="async" src="/api/thumb/${v.poster_clip_id}" alt=""
+                onerror="this.classList.add('broken')">`
+        : `<div class="placeholder">${v.techniques}</div>`}
+      <div class="gmeta">
+        <b>${v.title || "untitled"}</b>
+        <span class="mono">${v.techniques} techniques · ${v.cuts_per_minute ?? "—"} cuts/min</span>
+        <span class="gchips">${Object.entries(v.breakdown).slice(0, 3)
+          .map(([k, n]) => `<i>${k} ${n}</i>`).join("")}</span>
+      </div>
+    </button>`).join("");
+  el.querySelectorAll("[data-video]").forEach(node =>
+    node.addEventListener("click", () => openReport(node.dataset.video)));
+}
+
+async function openReport(videoId) {
+  $("#report").hidden = true;
+  $("#progress").hidden = false;
+  setProgress("detecting", "loading the report");
+  try {
+    renderReport(await api(`/api/report/${videoId}`));
+    $("#progress").hidden = true;
+    window.scrollTo({ top: $("#report").offsetTop - 70, behavior: "smooth" });
+  } catch (e) {
+    $("#progress").hidden = true;
+    $("#analyse-error").textContent = e.message;
+    $("#analyse-error").hidden = false;
+  }
 }
 
 function renderReport(report) {
@@ -461,3 +499,4 @@ $("#sheet").addEventListener("click", e => { if (e.target === $("#sheet")) close
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#sheet").hidden) closeSheet(); });
 
 loadRails();
+loadGallery();

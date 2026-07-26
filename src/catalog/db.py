@@ -1,11 +1,15 @@
 """SQLite catalog — source of truth for videos, shots, detections, labels."""
 
 import json
+import os
 import sqlite3
 import threading
 from pathlib import Path
 
-DB_PATH = Path(__file__).resolve().parents[2] / "data" / "cutsense.sqlite"
+# CUTSENSE_DB lets a deploy point the catalog at a mounted volume, so analyses
+# submitted by visitors survive a redeploy (a container's own disk does not).
+DB_PATH = Path(os.environ.get("CUTSENSE_DB")
+               or Path(__file__).resolve().parents[2] / "data" / "cutsense.sqlite")
 
 # Detection runs classify shots across a thread pool, so the connection is shared
 # across threads and every statement goes through this lock.

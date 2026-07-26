@@ -7361,6 +7361,90 @@
    "evidence": "The first frame shows strong diagonal motion blur across the whole image, then subsequent frames resolve into a sharp view.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"whip_pan\", \"confidence\": 0.88, \"evidence\": \"The first frame shows strong diagonal motion blur across the whole image, then subsequent frames resolve into a sharp view.\"}"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-8841-76f2-a15d-69994a9fb58b",
+   "shot_idx": -1,
+   "technique": "speed_ramp",
+   "confidence": 0.9,
+   "window_start_s": 12.0,
+   "window_end_s": 13.0,
+   "cut_time_s": 12.0,
+   "evidence": "Frames 1-3 show minimal movement, while frames 4-6 show a sudden and drastic increase in the subject's motion and blur, indicating a rapid acceleration in playback speed. [ratio 7.51]",
+   "prompt_version": "v2",
+   "raw_json": "{\"label\": \"speed_ramp\", \"confidence\": 0.9, \"evidence\": \"Frames 1-3 show minimal movement, while frames 4-6 show a sudden and drastic increase in the subject's motion and blur, indicating a rapid acceleration in playback speed. [ratio 7.51]\"}"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-8841-76f2-a15d-69994a9fb58b",
+   "shot_idx": -1,
+   "technique": "speed_ramp",
+   "confidence": 0.86,
+   "window_start_s": 27.0,
+   "window_end_s": 28.0,
+   "cut_time_s": 27.0,
+   "evidence": "Early frames show large positional jumps of the flying dish while later consecutive frames are nearly identical with reduced blur, indicating a speed change (ramp). [ratio 7.27]",
+   "prompt_version": "v2",
+   "raw_json": "{\"label\": \"speed_ramp\", \"confidence\": 0.86, \"evidence\": \"Early frames show large positional jumps of the flying dish while later consecutive frames are nearly identical with reduced blur, indicating a speed change (ramp). [ratio 7.27]\"}"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "shot_idx": -1,
+   "technique": "speed_ramp",
+   "confidence": 0.85,
+   "window_start_s": 0.0,
+   "window_end_s": 1.0,
+   "cut_time_s": 0.0,
+   "evidence": "Early frames are nearly identical then later frames show much larger motion as objects rapidly approach, suggesting a mid-shot speed change. [ratio 4.94]",
+   "prompt_version": "v2",
+   "raw_json": "{\"label\": \"speed_ramp\", \"confidence\": 0.85, \"evidence\": \"Early frames are nearly identical then later frames show much larger motion as objects rapidly approach, suggesting a mid-shot speed change. [ratio 4.94]\"}"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "shot_idx": -1,
+   "technique": "speed_ramp",
+   "confidence": 0.93,
+   "window_start_s": 42.0,
+   "window_end_s": 43.0,
+   "cut_time_s": 42.0,
+   "evidence": "Several consecutive frames are nearly identical while an intermediate frame shows strong motion blur and a large positional jump, indicating a change in playback speed. [ratio 37.05]",
+   "prompt_version": "v2",
+   "raw_json": "{\"label\": \"speed_ramp\", \"confidence\": 0.93, \"evidence\": \"Several consecutive frames are nearly identical while an intermediate frame shows strong motion blur and a large positional jump, indicating a change in playback speed. [ratio 37.05]\"}"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "shot_idx": -1,
+   "technique": "speed_ramp",
+   "confidence": 0.88,
+   "window_start_s": 62.0,
+   "window_end_s": 63.0,
+   "cut_time_s": 62.0,
+   "evidence": "Some consecutive frames are nearly identical while others show large jumps and abrupt changes in motion blur, indicating a speed change. [ratio 19.16]",
+   "prompt_version": "v2",
+   "raw_json": "{\"label\": \"speed_ramp\", \"confidence\": 0.88, \"evidence\": \"Some consecutive frames are nearly identical while others show large jumps and abrupt changes in motion blur, indicating a speed change. [ratio 19.16]\"}"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "shot_idx": -1,
+   "technique": "speed_ramp",
+   "confidence": 0.86,
+   "window_start_s": 79.0,
+   "window_end_s": 80.0,
+   "cut_time_s": 79.0,
+   "evidence": "The first two frames are nearly identical while later frames show a large jump as the hand appears and moves, indicating a mid-shot speed change. [ratio 11.24]",
+   "prompt_version": "v2",
+   "raw_json": "{\"label\": \"speed_ramp\", \"confidence\": 0.86, \"evidence\": \"The first two frames are nearly identical while later frames show a large jump as the hand appears and moves, indicating a mid-shot speed change. [ratio 11.24]\"}"
+  },
+  {
+   "videodb_id": "m-z-019f9f72-3f0c-7681-a4aa-b8c3317b1470",
+   "shot_idx": -1,
+   "technique": "speed_ramp",
+   "confidence": 0.8,
+   "window_start_s": 73.0,
+   "window_end_s": 74.0,
+   "cut_time_s": 73.0,
+   "evidence": "The first two frames are nearly identical while later frames show much larger displacements, indicating a mid-shot speed change. [ratio 3.53]",
+   "prompt_version": "v2",
+   "raw_json": "{\"label\": \"speed_ramp\", \"confidence\": 0.8, \"evidence\": \"The first two frames are nearly identical while later frames show much larger displacements, indicating a mid-shot speed change. [ratio 3.53]\"}"
   }
  ],
  "thumbnails": [

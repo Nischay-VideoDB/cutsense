@@ -396,6 +396,47 @@ def reel_mp4(reel_id: int):
     return result
 
 
+@app.get("/api/gallery")
+def gallery(limit: int = Query(60, le=200)):
+    """Every analysed video as a card: poster, technique tally, pacing headline.
+
+    Public by design — anyone can browse what has been analysed and open the full
+    report, or paste their own link.
+    """
+    rank = " ".join(f"WHEN ? THEN {i}" for i in range(len(SHIPPING_TECHNIQUES)))
+    rows = db.execute(
+        f"SELECT v.videodb_id, v.title, v.source_url, v.creator, v.duration_s,"
+        f" COUNT(d.id) FILTER (WHERE {technique_filter_sql()}) AS techniques,"
+        "  (SELECT d2.id FROM detections d2 WHERE d2.videodb_id = v.videodb_id"
+        f"     AND {technique_filter_sql('d2')}"
+        "     ORDER BY d2.confidence DESC LIMIT 1) AS poster_clip_id"
+        " FROM videos v LEFT JOIN detections d ON d.videodb_id = v.videodb_id"
+        f" WHERE {NOT_DUPLICATE_SQL}"
+        " GROUP BY v.videodb_id HAVING techniques > 0"
+        " ORDER BY techniques DESC LIMIT ?",
+        [*SHIPPING_TECHNIQUES, *SHIPPING_TECHNIQUES, limit]).fetchall()
+
+    out = []
+    for r in rows:
+        breakdown = {row["technique"]: row["n"] for row in db.execute(
+            f"SELECT technique, COUNT(*) n FROM detections WHERE videodb_id=?"
+            f" AND technique IN ({','.join('?' * len(SHIPPING_TECHNIQUES))})"
+            " GROUP BY technique", [r["videodb_id"], *SHIPPING_TECHNIQUES])}
+        shots = [dict(s) for s in db.execute(
+            "SELECT start_s, end_s FROM shots WHERE videodb_id=?", [r["videodb_id"]])]
+        summary = pacing_module.summarise(shots) if shots else None
+        out.append({
+            "video_id": r["videodb_id"], "title": r["title"], "creator": r["creator"],
+            "source_url": r["source_url"], "duration_s": r["duration_s"],
+            "techniques": r["techniques"], "poster_clip_id": r["poster_clip_id"],
+            "breakdown": {TECHNIQUE_LABELS.get(k, k): v for k, v in
+                          sorted(breakdown.items(), key=lambda kv: -kv[1])},
+            "cuts_per_minute": summary["cuts_per_minute"] if summary else None,
+            "avg_cut_length_s": summary["avg_cut_length_s"] if summary else None,
+        })
+    return {"count": len(out), "videos": out}
+
+
 @app.get("/api/videos")
 def videos():
     rows = db.execute(

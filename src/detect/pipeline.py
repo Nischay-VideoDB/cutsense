@@ -53,6 +53,17 @@ def scene_collection_id(threshold, frame_count=3, model_tag="m15"):
     return f"st{threshold}{model_tag}f{frame_count}"
 
 
+def existing_collection_id(error, fallback=None):
+    """Pull the scene-collection id out of the "already exists" error message.
+
+    Two traps: the message ends with the id followed by a period and trailing
+    whitespace (so anchoring on end-of-string finds nothing), and an unanchored
+    "id" also matches inside "Inval*id* request", which yields "request:".
+    """
+    match = re.search(r"\bid\s+(\S+)", str(error))
+    return match.group(1).rstrip(". ") if match else fallback
+
+
 def extract_shots(video, threshold=20, frame_count=3):
     """Extract shots, reusing an existing collection for the same config.
 
@@ -68,8 +79,7 @@ def extract_shots(video, threshold=20, frame_count=3):
     except InvalidRequestError as e:
         if "already exists" not in str(e):
             raise
-        existing = re.search(r"id (\S+?)\.?$", str(e))
-        sc_id = existing.group(1) if existing else scene_collection_id(threshold, frame_count)
+        sc_id = existing_collection_id(e, scene_collection_id(threshold, frame_count))
         return video.get_scene_collection(sc_id)
 
 
