@@ -222,6 +222,18 @@ Environment: Python 3.12 venv, videodb 0.5.1. Scripts in `scripts/m0_0*.py`. Tes
 - Bonus: the content descriptions spontaneously mention transitions ("a quick, complex split-screen transition"), so the content index is *weakly* technique-searchable on its own — a useful fallback/second opinion for techniques our detectors miss.
 - **`video.clip(prompt, content_type="visual")` requires an existing scene INDEX** (extracted scene collections are not enough — errors with "Scene index not found"). Even with the index it is slow: >10 min on a 2.5-min video (it LLM-processes the whole document set), so it is not a viable interactive path — fine as an offline second opinion only.
 
+### Match-cut recall resolved: the detector was right, the test video was wrong
+Three experiments, in order:
+1. **`video.clip()` is a dead end.** Requires a scene index (not just extracted scenes), and even with one it **exceeds the SDK's hard 500s polling limit** (`RequestTimeoutError: Polling timed out after 500s`) on a 2.5-min video. Not viable interactively or offline. Ruled out.
+2. **Paired vision** (`scripts/m1_exp_paired_vision.py`) — trick that works mechanically: extract a *second, time-based* scene collection (`time=2, frame_count=4`); windows that straddle a cut contain frames from both shots AND have real scene ids, so `describe()` lets the VLM see both sides as images. Verdict: **did not improve match-cut detection.** It agreed with the text judge on `same_context` but was much looser on `composition_match` (21 of 25 vs 9 of 69), rating ordinary continuity ("the man continues his movement") as a composition match. Keep the technique in the toolbox — it's the only way to get true cross-cut *vision* — but it needs a stricter prompt to be useful.
+3. **Ground truth via a video with a famous match cut**: ingested the 2001: A Space Odyssey source. The v3 text judge found **4 of 57 cuts (7%, a plausible rate)**, including the Stargate eye matches, radiating light bursts, and a receding-figure match. **Visually verified the 162.2s detection: it is the iconic eye match** (identical iris composition, completely different color grade).
+
+**Conclusion: the v3 judge is sound.** The Cowboy Bebop 0-detection result was a property of that footage, not a detector bug — two independent methods agree its cuts are same-scene. Lesson for eval: a weak label ("this video is in eyecannndy's match-cut category") is not a usable recall target; measure recall only against moments verifiable by eye.
+
+### Taxonomy insight worth a product decision: `graphic_match`
+Many curated "match cut" examples (and 9 of 69 Cowboy Bebop cuts our judge flagged as `same_context=true, composition_match=true`) are **graphic matches within one scene** — deliberately matched composition across a cut that stays in the same location. Our strict definition rejects these, which is why eyecannndy labels a video we score as 0.
+Recommendation: ship **two labels** — `match_cut` (different context + matched composition; the classic) and `graphic_match` (same context + matched composition). Editors searching "match cut" get both, precisely labeled. Cost: near zero — the judge already commits to both booleans and every rejected row stores them in `raw_json`, so no re-running is needed. Use the text judge's stricter signal for `graphic_match`, not paired vision's.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
