@@ -340,3 +340,15 @@ main { padding: 18px 20px 60px; min-width: 0; }
 .pagehead .progress { flex: 1; margin-top: 0; }
 #view-creator #creator-out { max-width: 1080px; margin: 0 auto; padding: 10px 20px 70px; }
 a.tab { display: inline-block; text-decoration: none; }
+
+/* ---------- library insights strip (VideoDB aggregate) ---------- */
+.insights { max-width: 1080px; margin: 6px auto 0; padding: 12px 20px 4px; }
+.ins-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.ins-head b { font-size: 13px; font-weight: 600; }
+.ins-bars { display: grid; gap: 5px; }
+.ins-row { display: grid; grid-template-columns: 108px 1fr 34px 108px; align-items: center; gap: 10px; }
+.ins-label { font-size: 12px; color: var(--dim); }
+.ins-bar { height: 6px; background: #1b1b1f; border: 1px solid var(--line); }
+.ins-bar i { display: block; height: 100%; background: var(--accent); }
+.ins-n { font-family: ui-monospace, Menlo, monospace; font-size: 11px; text-align: right; }
+.ins-conf { font-family: ui-monospace, Menlo, monospace; font-size: 10px; color: #5c5c64; }

@@ -20,6 +20,7 @@ from src.api import clips as clip_service
 from src.api import query as query_service
 from src.api import report as report_service
 from src.catalog.db import get_db
+from src.catalog import videodb_index
 from src.catalog.snapshot import seed_if_empty
 from src.detect.prompts import SHIPPING_TECHNIQUES, TECHNIQUE_LABELS
 from src.profiles import build as profile_build
@@ -347,6 +348,38 @@ def pacing_ranking(fastest_first=True, limit=20):
                     "dominant_interval_s": summary["rhythm"]["dominant_interval_s"]})
     out.sort(key=lambda v: v["cuts_per_minute"] or 0, reverse=fastest_first)
     return out[:limit]
+
+
+@app.get("/api/insights")
+def insights():
+    """Library-wide technique stats computed by VideoDB, not by us.
+
+    Our detections are published to VideoDB as a Search V2 index, so the counts and
+    mean confidences here come back from `aggregate()` over the whole collection.
+    Falls back to the local catalog if the index or the key is unavailable, because a
+    dashboard that errors is worse than one that is a moment out of date.
+    """
+    try:
+        coll = get_collection()
+        counts = videodb_index.aggregate_by_technique(coll, "count")
+        confidence = videodb_index.aggregate_by_technique(coll, "avg(confidence)")
+        if counts:
+            return {"source": "videodb_aggregate", "index": videodb_index.INDEX_NAME,
+                    "counts": counts, "avg_confidence": confidence}
+    except Exception as e:
+        fallback_reason = f"{type(e).__name__}: {str(e)[:120]}"
+    else:
+        fallback_reason = "index returned nothing yet"
+
+    rows = db.execute(
+        "SELECT d.technique, COUNT(*) n, AVG(d.confidence) c FROM detections d"
+        " JOIN videos v ON v.videodb_id = d.videodb_id"
+        f" WHERE {technique_filter_sql()} AND {NOT_DUPLICATE_SQL} AND {NOT_REFUTED_SQL}"
+        " GROUP BY d.technique", SHIPPING_TECHNIQUES).fetchall()
+    return {"source": "local_catalog", "reason": fallback_reason,
+            "counts": {TECHNIQUE_LABELS.get(r["technique"], r["technique"]): r["n"] for r in rows},
+            "avg_confidence": {TECHNIQUE_LABELS.get(r["technique"], r["technique"]): round(r["c"], 3)
+                               for r in rows}}
 
 
 @app.get("/api/pacing")

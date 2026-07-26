@@ -42,7 +42,7 @@ function detachStream(videoEl) {
    server serves the same shell for each of these paths (see app.py). */
 const ROUTES = [
   [/^\/$/, () => showView("analyse")],
-  [/^\/library\/?$/, () => { showView("library"); loadRails(); loadClips(); }],
+  [/^\/library\/?$/, () => { showView("library"); loadRails(); loadClips(); loadInsights(); }],
   [/^\/technique\/([\w-]+)\/?$/, (t) => {
     showView("library"); state.technique = t; state.creator = null; loadRails(); loadClips();
   }],
@@ -489,6 +489,35 @@ function markdown(src) {
 }
 
 /* ---------- rails ---------- */
+async function loadInsights() {
+  const el = $("#insights");
+  try {
+    const d = await api("/api/insights");
+    const rows = Object.entries(d.counts).sort((a, b) => b[1] - a[1]);
+    const total = rows.reduce((a, [, n]) => a + n, 0) || 1;
+    el.innerHTML = `
+      <div class="ins-head">
+        <b>${total} techniques across the library</b>
+        <span class="mono">${d.source === "videodb_aggregate"
+          ? `aggregated by VideoDB · index “${d.index}”`
+          : `local catalog (${d.reason || "index unavailable"})`}</span>
+      </div>
+      <div class="ins-bars">
+        ${rows.map(([label, n]) => `
+          <div class="ins-row">
+            <span class="ins-label">${label}</span>
+            <span class="ins-bar"><i style="width:${Math.max(2, (n / total) * 100)}%"></i></span>
+            <span class="ins-n">${n}</span>
+            <span class="ins-conf">${d.avg_confidence?.[label] != null
+              ? Math.round(d.avg_confidence[label] * 100) + "% mean conf" : ""}</span>
+          </div>`).join("")}
+      </div>`;
+    el.hidden = false;
+  } catch {
+    el.hidden = true;
+  }
+}
+
 async function loadRails() {
   const [techs, creators, health] = await Promise.all([
     api("/api/techniques"), api("/api/creators"), api("/api/health"),
