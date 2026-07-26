@@ -407,14 +407,17 @@ def gallery(limit: int = Query(60, le=200)):
     rows = db.execute(
         f"SELECT v.videodb_id, v.title, v.source_url, v.creator, v.duration_s,"
         f" COUNT(d.id) FILTER (WHERE {technique_filter_sql()}) AS techniques,"
+        # poster picked by technique first: a luma fade's frame is near-blank by
+        # definition, so it makes a poor card even at high confidence
         "  (SELECT d2.id FROM detections d2 WHERE d2.videodb_id = v.videodb_id"
         f"     AND {technique_filter_sql('d2')}"
-        "     ORDER BY d2.confidence DESC LIMIT 1) AS poster_clip_id"
+        f"     ORDER BY CASE d2.technique {rank} ELSE 99 END, d2.confidence DESC LIMIT 1)"
+        "   AS poster_clip_id"
         " FROM videos v LEFT JOIN detections d ON d.videodb_id = v.videodb_id"
         f" WHERE {NOT_DUPLICATE_SQL}"
         " GROUP BY v.videodb_id HAVING techniques > 0"
         " ORDER BY techniques DESC LIMIT ?",
-        [*SHIPPING_TECHNIQUES, *SHIPPING_TECHNIQUES, limit]).fetchall()
+        [*SHIPPING_TECHNIQUES, *SHIPPING_TECHNIQUES, *SHIPPING_TECHNIQUES, limit]).fetchall()
 
     out = []
     for r in rows:

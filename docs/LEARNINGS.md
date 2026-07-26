@@ -354,6 +354,22 @@ Visitor analyses are runtime rows, so they need storage outliving the container.
 
 **CLI blocker:** the Railway CLI is installed and logged in as `thelonelyrulershiv@gmail.com`, but that workspace does not contain the CutSense project id — only an unrelated project (whose services I deliberately left alone). Needs a login as the owning account, an invite, or `RAILWAY_TOKEN`.
 
+### Thumbnails: two faults, neither one "broken URLs"
+An audit of all 582 detections found **0 failing URLs**. The visible problem was:
+- **11 detections had no thumbnail at all** — `generate_thumbnail` fails for some timestamps (a cut landing on the final frame, for instance) and a single attempt at the exact cut time leaves a hole.
+- **~17 were near-solid-colour frames.** A 755-byte PNG is effectively a flat colour. That is *correct* for a luma fade (the frame really is black) but useless as a poster, and indistinguishable from a bug to anyone looking at the page.
+
+Fixes:
+1. `scripts/fix_thumbnails.py` — repairs missing/blank posters by trying neighbouring timestamps (±0.4s, ±0.8s, +1.2s) and keeping the frame with the most detail (grey-level std-dev), falling back to a frame image from the shot's scene collection, which already exists and costs nothing. **27 repaired; the re-audit reports 0 missing, 0 failing, 0 blank.**
+2. `clips._make_thumbnail` retries offsets at generation time, so new analyses do not create holes.
+3. Cheap audit trick: HEAD content-length is a fine blankness proxy, which turned a 571-image download into a fast pass.
+4. Gallery posters are now ranked **by technique** before confidence — a luma fade is a near-blank frame by definition, so it made a poor card even at 1.00 confidence. Picking whip pan / zoom punch first transformed the gallery from rows of black rectangles into legible motion frames.
+
+A whip pan's blur sits exactly at the cut and *is* the signal, so frames are only replaced when they carry almost no detail — never merely for being blurry.
+
+### Railway auth: what I could and could not do
+`railway login` needs a TTY (browser handoff or a pairing prompt); `--browserless` under a captured pipe produced no output and `script -q` cannot allocate a pty in this environment, so **the login has to be run in a real terminal**. The already-authenticated account's workspace does not contain the CutSense project — only an unrelated one, which I linked briefly to inspect and then unlinked without touching. `scripts/railway_setup.sh` now does the whole configuration (link → volume at `/data` → `CUTSENSE_DB` → deploy) idempotently once auth exists, either from `railway login` or a `RAILWAY_TOKEN` project token.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
