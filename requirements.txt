@@ -1,0 +1,6 @@
+videodb>=0.5.1
+python-dotenv>=1.0
+fastapi>=0.110
+uvicorn[standard]>=0.27
+pillow>=10.0
+numpy>=1.26

@@ -7138,5 +7138,3337 @@
    "prompt_version": "v2",
    "raw_json": "{\"composition_match\": true, \"confidence\": 0.88, \"evidence\": \"Both frames depict a similar staged dance tableau with six performers, but the set changes from rain-soaked stage with lights to an industrial shower-head setup.\", \"matched_element\": \"six-dancer symmetrical wide shot with a central front-center figure and strong vertical downward water/rain streams\", \"same_context\": false, \"label\": \"match_cut\"}"
   }
+ ],
+ "thumbnails": [
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 5.208,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-5.208/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 22.792,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-22.792/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 34.0,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-34.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 39.458,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-39.458/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 42.75,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-42.75/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 47.583,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-47.583/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 48.208,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-48.208/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 50.5,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-50.5/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 91.167,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-91.167/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 94.042,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-94.042/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 94.667,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-94.667/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 95.292,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-95.292/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 97.917,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-97.917/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 106.875,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-106.875/image"
+  },
+  {
+   "videodb_id": "m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af",
+   "cut_time_s": 112.375,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9a8e-dd77-7510-a4fb-c1c298b656af-thumbnail-112.375/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 18.16,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-18.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 24.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-24.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 62.4,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-62.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 77.16,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-77.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 90.88,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-90.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 93.52,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-93.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 136.28,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-136.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 172.2,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-172.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 201.6,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-201.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 204.36,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-204.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 205.0,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-205.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 208.36,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-208.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086",
+   "cut_time_s": 249.12,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9aab-eff6-7ad1-a6a4-e3c6cf179086-thumbnail-249.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec",
+   "cut_time_s": 7.0,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec-thumbnail-7.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec",
+   "cut_time_s": 9.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec-thumbnail-9.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec",
+   "cut_time_s": 12.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec-thumbnail-12.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec",
+   "cut_time_s": 26.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec-thumbnail-26.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec",
+   "cut_time_s": 42.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-d584-7a03-9f78-fe1f11e1e3ec-thumbnail-42.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-76ab-7c33-8d26-74d4d926bc04",
+   "cut_time_s": 72.864,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-76ab-7c33-8d26-74d4d926bc04-thumbnail-72.864/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-76ab-7c33-8d26-74d4d926bc04",
+   "cut_time_s": 120.412,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-76ab-7c33-8d26-74d4d926bc04-thumbnail-120.412/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-76ab-7c33-8d26-74d4d926bc04",
+   "cut_time_s": 176.76,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-76ab-7c33-8d26-74d4d926bc04-thumbnail-176.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c",
+   "cut_time_s": 74.074,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c-thumbnail-74.074/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c",
+   "cut_time_s": 101.268,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c-thumbnail-101.268/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c",
+   "cut_time_s": 103.228,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c-thumbnail-103.228/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c",
+   "cut_time_s": 103.895,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c-thumbnail-103.895/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c",
+   "cut_time_s": 134.635,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c-thumbnail-134.635/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 21.4,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-21.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 25.6,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-25.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 35.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-35.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 37.2,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-37.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 37.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-37.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 38.4,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-38.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 39.0,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-39.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 39.6,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-39.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 40.2,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-40.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 40.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-40.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 47.12,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-47.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 49.52,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-49.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 53.16,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-53.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 53.76,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-53.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 56.76,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-56.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 57.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-57.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 57.96,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-57.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 65.52,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-65.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 66.12,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-66.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 78.52,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-78.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 79.12,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-79.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 79.76,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-79.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 99.44,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-99.44/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 100.08,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-100.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 100.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-100.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 104.04,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-104.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 104.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-104.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 106.08,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-106.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 106.76,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-106.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 131.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-131.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 136.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-136.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 141.28,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-141.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 141.88,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-141.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 142.56,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-142.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 144.04,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-144.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 145.88,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-145.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 146.52,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-146.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 149.2,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-149.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 150.52,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-150.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 164.04,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-164.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 165.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-165.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 165.84,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-165.84/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 170.32,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-170.32/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
+   "cut_time_s": 177.56,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-8104-7333-aed3-1de82fb791a2-thumbnail-177.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-2a1f-71a1-afab-67fead9965ba",
+   "cut_time_s": 88.005,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-2a1f-71a1-afab-67fead9965ba-thumbnail-88.005/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-2a1f-71a1-afab-67fead9965ba",
+   "cut_time_s": 88.755,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-2a1f-71a1-afab-67fead9965ba-thumbnail-88.755/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b02-2a1f-71a1-afab-67fead9965ba",
+   "cut_time_s": 90.34,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b02-2a1f-71a1-afab-67fead9965ba-thumbnail-90.34/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b00-b2c1-77f3-a4ca-dfe2f707d95d",
+   "cut_time_s": 22.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b00-b2c1-77f3-a4ca-dfe2f707d95d-thumbnail-22.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b00-b2c1-77f3-a4ca-dfe2f707d95d",
+   "cut_time_s": 104.76,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b00-b2c1-77f3-a4ca-dfe2f707d95d-thumbnail-104.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b00-b2c1-77f3-a4ca-dfe2f707d95d",
+   "cut_time_s": 136.2,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b00-b2c1-77f3-a4ca-dfe2f707d95d-thumbnail-136.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c",
+   "cut_time_s": 1.126,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9b03-22e5-75d1-aaa8-f983bb78a09c-thumbnail-1.126/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f34-2385-7083-ac83-84acb2683e56",
+   "cut_time_s": 95.829,
+   "technique": "match_cut",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9f34-2385-7083-ac83-84acb2683e56-thumbnail-95.829/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f34-2385-7083-ac83-84acb2683e56",
+   "cut_time_s": 158.058,
+   "technique": "match_cut",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9f34-2385-7083-ac83-84acb2683e56-thumbnail-158.058/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f34-2385-7083-ac83-84acb2683e56",
+   "cut_time_s": 161.495,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9f34-2385-7083-ac83-84acb2683e56-thumbnail-161.495/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f34-2385-7083-ac83-84acb2683e56",
+   "cut_time_s": 162.229,
+   "technique": "match_cut",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9f34-2385-7083-ac83-84acb2683e56-thumbnail-162.229/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f34-2385-7083-ac83-84acb2683e56",
+   "cut_time_s": 163.73,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9f34-2385-7083-ac83-84acb2683e56-thumbnail-163.73/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f34-2385-7083-ac83-84acb2683e56",
+   "cut_time_s": 166.033,
+   "technique": "match_cut",
+   "thumbnail_url": "https://storage.videodb.io/media/u-5a412c8f-0156-436c-b6b1-a47beccea941/img-m-z-019f9f34-2385-7083-ac83-84acb2683e56-thumbnail-166.033/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-1159-75a2-a66e-f20bacad659a",
+   "cut_time_s": 36.036,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-1159-75a2-a66e-f20bacad659a-thumbnail-36.036/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-1159-75a2-a66e-f20bacad659a",
+   "cut_time_s": 40.29,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-1159-75a2-a66e-f20bacad659a-thumbnail-40.29/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-1159-75a2-a66e-f20bacad659a",
+   "cut_time_s": 42.918,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-1159-75a2-a66e-f20bacad659a-thumbnail-42.918/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-1159-75a2-a66e-f20bacad659a",
+   "cut_time_s": 47.547,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-1159-75a2-a66e-f20bacad659a-thumbnail-47.547/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 15.39,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-15.39/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 16.016,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-16.016/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 19.77,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-19.77/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 25.15,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-25.15/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 25.776,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-25.776/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 26.401,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-26.401/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 35.285,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-35.285/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 75.117,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-75.117/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 86.67,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-86.67/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 89.631,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-89.631/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 97.306,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-97.306/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 107.858,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-107.858/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 119.536,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-119.536/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 136.97,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-136.97/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 149.691,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-149.691/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 154.237,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-154.237/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 154.863,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-154.863/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 171.505,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-171.505/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 172.756,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-172.756/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 174.591,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-174.591/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 175.842,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-175.842/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 198.323,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-198.323/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 224.433,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-224.433/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 236.278,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-236.278/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 236.903,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-236.903/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 237.654,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-237.654/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 310.302,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-310.302/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 313.43,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-313.43/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 314.056,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-314.056/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 325.4,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-325.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21",
+   "cut_time_s": 375.075,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-af57-7d62-86e5-de98a0dfcc21-thumbnail-375.075/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-4e3b-7db1-8c07-595168502c47",
+   "cut_time_s": 26.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-4e3b-7db1-8c07-595168502c47-thumbnail-26.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-4e3b-7db1-8c07-595168502c47",
+   "cut_time_s": 122.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-4e3b-7db1-8c07-595168502c47-thumbnail-122.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-4e3b-7db1-8c07-595168502c47",
+   "cut_time_s": 123.6,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-4e3b-7db1-8c07-595168502c47-thumbnail-123.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-4e3b-7db1-8c07-595168502c47",
+   "cut_time_s": 124.96,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-4e3b-7db1-8c07-595168502c47-thumbnail-124.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-4e3b-7db1-8c07-595168502c47",
+   "cut_time_s": 148.0,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-4e3b-7db1-8c07-595168502c47-thumbnail-148.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-4e3b-7db1-8c07-595168502c47",
+   "cut_time_s": 166.2,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-4e3b-7db1-8c07-595168502c47-thumbnail-166.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8a-4e3b-7db1-8c07-595168502c47",
+   "cut_time_s": 170.84,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8a-4e3b-7db1-8c07-595168502c47-thumbnail-170.84/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 30.64,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-30.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 35.64,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-35.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 36.92,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-36.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 39.64,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-39.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 41.6,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-41.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 56.96,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-56.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 64.56,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-64.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 84.96,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-84.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-f804-73c1-910d-0e97840e956f",
+   "cut_time_s": 116.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-f804-73c1-910d-0e97840e956f-thumbnail-116.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-b3d7-7830-9708-f8c3189545dc",
+   "cut_time_s": 11.48,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-b3d7-7830-9708-f8c3189545dc-thumbnail-11.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 1.6,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-1.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 3.32,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-3.32/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 4.28,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-4.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 26.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-26.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 31.12,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-31.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 44.96,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-44.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 45.56,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-45.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 62.08,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-62.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 62.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-62.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 64.56,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-64.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 87.08,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-87.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 96.2,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-96.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 96.96,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-96.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 98.72,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-98.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 100.36,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-100.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 128.08,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-128.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 128.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-128.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 133.12,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-133.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 133.8,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-133.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 134.4,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-134.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 136.44,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-136.44/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 138.36,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-138.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 139.6,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-139.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 140.28,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-140.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 144.96,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-144.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 146.56,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-146.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
+   "cut_time_s": 150.4,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-632f-7d20-a482-ed9487de3a96-thumbnail-150.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 20.96,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-20.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 21.96,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-21.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 23.96,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-23.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 26.96,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-26.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 28.96,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-28.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 30.76,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-30.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 61.0,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-61.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 66.32,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-66.32/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 86.52,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-86.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 103.08,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-103.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 103.68,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-103.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 107.24,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-107.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 110.16,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-110.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 112.56,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-112.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 133.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-133.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 137.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-137.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 152.04,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-152.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 156.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-156.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 157.08,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-157.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 157.68,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-157.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 182.0,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-182.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 187.96,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-187.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 276.64,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-276.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 285.16,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-285.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 288.88,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-288.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 289.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-289.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 291.0,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-291.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
+   "cut_time_s": 327.72,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb-thumbnail-327.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 58.517,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-58.517/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 65.691,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-65.691/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 139.306,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-139.306/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 144.895,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-144.895/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 152.778,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-152.778/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 164.081,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-164.081/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 172.339,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-172.339/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 188.146,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-188.146/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c",
+   "cut_time_s": 48.882,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c-thumbnail-48.882/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c",
+   "cut_time_s": 59.017,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c-thumbnail-59.017/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c",
+   "cut_time_s": 103.52,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c-thumbnail-103.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c",
+   "cut_time_s": 164.081,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c-thumbnail-164.081/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c",
+   "cut_time_s": 166.124,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c-thumbnail-166.124/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c",
+   "cut_time_s": 166.75,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c-thumbnail-166.75/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c",
+   "cut_time_s": 169.461,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-799a-7ff3-9442-f5e0f257c80c-thumbnail-169.461/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 7.424,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-7.424/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 8.05,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-8.05/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 8.675,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-8.675/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 12.888,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-12.888/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 21.647,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-21.647/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 22.94,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-22.94/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 23.815,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-23.815/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 24.483,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-24.483/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 25.108,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-25.108/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 25.734,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-25.734/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 26.777,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-26.777/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 27.402,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-27.402/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 64.147,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-64.147/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 78.62,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-78.62/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 79.913,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-79.913/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 80.581,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-80.581/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 91.049,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-91.049/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 105.689,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-105.689/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 106.315,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-106.315/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 113.572,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-113.572/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 126.585,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-126.585/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 128.587,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-128.587/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
+   "cut_time_s": 142.476,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-1581-72d1-ab58-7d699019303b-thumbnail-142.476/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-836b-7091-89ac-31de8e8ad6be",
+   "cut_time_s": 137.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-836b-7091-89ac-31de8e8ad6be-thumbnail-137.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 58.016,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-58.016/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 114.448,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-114.448/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 116.658,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-116.658/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 118.827,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-118.827/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 119.619,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-119.619/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 121.58,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-121.58/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 123.165,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-123.165/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 125.959,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-125.959/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
+   "cut_time_s": 147.939,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f87-3356-78a3-a731-5e183d8cba48-thumbnail-147.939/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 44.68,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-44.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 52.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-52.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 54.08,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-54.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 58.48,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-58.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 59.08,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-59.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 59.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-59.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 74.92,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-74.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 80.72,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-80.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 82.56,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-82.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 89.48,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-89.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 101.68,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-101.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 102.28,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-102.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 111.68,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-111.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 129.88,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-129.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 130.48,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-130.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 136.92,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-136.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 142.64,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-142.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 154.0,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-154.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 163.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-163.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 180.48,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-180.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 181.12,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-181.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 181.72,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-181.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 211.44,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-211.44/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95",
+   "cut_time_s": 221.6,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f86-dd0b-7f03-b796-700e8c03ac95-thumbnail-221.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 39.667,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-39.667/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 40.417,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-40.417/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 43.542,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-43.542/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 50.167,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-50.167/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 52.667,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-52.667/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 54.5,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-54.5/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 78.5,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-78.5/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 84.75,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-84.75/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 91.333,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-91.333/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 95.875,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-95.875/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 97.458,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-97.458/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 98.083,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-98.083/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 104.167,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-104.167/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 161.333,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-161.333/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 167.708,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-167.708/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 175.708,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-175.708/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 180.5,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-180.5/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 191.5,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-191.5/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f76-418c-7252-b868-b01b4966c9b4",
+   "cut_time_s": 197.333,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f76-418c-7252-b868-b01b4966c9b4-thumbnail-197.333/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 3.0,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-3.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 13.76,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-13.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 15.4,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-15.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 26.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-26.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 28.12,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-28.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 32.32,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-32.32/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 36.32,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-36.32/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 40.12,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-40.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 43.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-43.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 54.92,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-54.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 55.92,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-55.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 57.16,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-57.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 62.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-62.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 68.2,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-68.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 68.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-68.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 69.4,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-69.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 70.04,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-70.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 70.68,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-70.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 72.2,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-72.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 103.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-103.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 107.92,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-107.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 109.12,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-109.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 110.72,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-110.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
+   "cut_time_s": 116.56,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44-thumbnail-116.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 12.68,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-12.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 20.52,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-20.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 35.72,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-35.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 38.16,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-38.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 38.76,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-38.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 39.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-39.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 41.6,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-41.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 60.72,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-60.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 63.52,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-63.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 76.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-76.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 92.2,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-92.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 104.12,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-104.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 110.72,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-110.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 113.16,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-113.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 119.2,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-119.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 127.32,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-127.32/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 132.44,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-132.44/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 135.36,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-135.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 136.56,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-136.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-1d59-7751-9f4b-a60804988cec",
+   "cut_time_s": 107.674,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-1d59-7751-9f4b-a60804988cec-thumbnail-107.674/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-1d59-7751-9f4b-a60804988cec",
+   "cut_time_s": 141.842,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-1d59-7751-9f4b-a60804988cec-thumbnail-141.842/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-1d59-7751-9f4b-a60804988cec",
+   "cut_time_s": 144.144,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-1d59-7751-9f4b-a60804988cec-thumbnail-144.144/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-1d59-7751-9f4b-a60804988cec",
+   "cut_time_s": 144.745,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-1d59-7751-9f4b-a60804988cec-thumbnail-144.745/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-1d59-7751-9f4b-a60804988cec",
+   "cut_time_s": 162.229,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-1d59-7751-9f4b-a60804988cec-thumbnail-162.229/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-1d59-7751-9f4b-a60804988cec",
+   "cut_time_s": 163.73,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-1d59-7751-9f4b-a60804988cec-thumbnail-163.73/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-1d59-7751-9f4b-a60804988cec",
+   "cut_time_s": 166.033,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-1d59-7751-9f4b-a60804988cec-thumbnail-166.033/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f74-41b5-7082-a080-f828bc7855c7",
+   "cut_time_s": 72.864,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f74-41b5-7082-a080-f828bc7855c7-thumbnail-72.864/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f74-41b5-7082-a080-f828bc7855c7",
+   "cut_time_s": 113.405,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f74-41b5-7082-a080-f828bc7855c7-thumbnail-113.405/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f74-41b5-7082-a080-f828bc7855c7",
+   "cut_time_s": 120.412,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f74-41b5-7082-a080-f828bc7855c7-thumbnail-120.412/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe",
+   "cut_time_s": 73.282,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe-thumbnail-73.282/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe",
+   "cut_time_s": 103.228,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe-thumbnail-103.228/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe",
+   "cut_time_s": 103.895,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe-thumbnail-103.895/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe",
+   "cut_time_s": 134.635,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe-thumbnail-134.635/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-8841-76f2-a15d-69994a9fb58b",
+   "cut_time_s": 2.0,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-8841-76f2-a15d-69994a9fb58b-thumbnail-2.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-8841-76f2-a15d-69994a9fb58b",
+   "cut_time_s": 7.0,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-8841-76f2-a15d-69994a9fb58b-thumbnail-7.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-8841-76f2-a15d-69994a9fb58b",
+   "cut_time_s": 9.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-8841-76f2-a15d-69994a9fb58b-thumbnail-9.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-8841-76f2-a15d-69994a9fb58b",
+   "cut_time_s": 12.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-8841-76f2-a15d-69994a9fb58b-thumbnail-12.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-8841-76f2-a15d-69994a9fb58b",
+   "cut_time_s": 33.72,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-8841-76f2-a15d-69994a9fb58b-thumbnail-33.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-8841-76f2-a15d-69994a9fb58b",
+   "cut_time_s": 42.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-8841-76f2-a15d-69994a9fb58b-thumbnail-42.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 24.4,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-24.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 32.28,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-32.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 35.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-35.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 36.4,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-36.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 37.2,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-37.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 37.8,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-37.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 38.4,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-38.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 39.0,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-39.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 39.6,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-39.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 40.2,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-40.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 40.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-40.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 46.52,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-46.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 47.12,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-47.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 47.72,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-47.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 49.52,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-49.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 53.16,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-53.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 53.76,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-53.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 54.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-54.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 57.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-57.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 57.96,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-57.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 65.52,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-65.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 66.12,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-66.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 78.52,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-78.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 79.12,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-79.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 79.76,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-79.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 96.16,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-96.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 98.64,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-98.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 99.44,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-99.44/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 100.08,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-100.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 100.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-100.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 104.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-104.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 105.4,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-105.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 106.08,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-106.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 131.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-131.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 136.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-136.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 141.28,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-141.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 141.88,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-141.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 145.88,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-145.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 146.52,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-146.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 149.2,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-149.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 150.52,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-150.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 164.04,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-164.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 164.64,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-164.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 165.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-165.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 170.32,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-170.32/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 177.56,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-177.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
+   "cut_time_s": 178.16,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-3629-7223-8596-9b2800af172e-thumbnail-178.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f72-dca5-7443-897e-d9106faec60d",
+   "cut_time_s": 88.005,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f72-dca5-7443-897e-d9106faec60d-thumbnail-88.005/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f72-dca5-7443-897e-d9106faec60d",
+   "cut_time_s": 88.755,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f72-dca5-7443-897e-d9106faec60d-thumbnail-88.755/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f72-dca5-7443-897e-d9106faec60d",
+   "cut_time_s": 90.34,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f72-dca5-7443-897e-d9106faec60d-thumbnail-90.34/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f72-8903-7d22-9a27-8ac5be270943",
+   "cut_time_s": 166.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f72-8903-7d22-9a27-8ac5be270943-thumbnail-166.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f72-3f0c-7681-a4aa-b8c3317b1470",
+   "cut_time_s": 22.36,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f72-3f0c-7681-a4aa-b8c3317b1470-thumbnail-22.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f72-3f0c-7681-a4aa-b8c3317b1470",
+   "cut_time_s": 104.76,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f72-3f0c-7681-a4aa-b8c3317b1470-thumbnail-104.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f72-3f0c-7681-a4aa-b8c3317b1470",
+   "cut_time_s": 136.2,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f72-3f0c-7681-a4aa-b8c3317b1470-thumbnail-136.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 36.36,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-36.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 93.52,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-93.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 135.6,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-135.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 136.28,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-136.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 152.48,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-152.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 172.2,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-172.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 204.36,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-204.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 205.0,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-205.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f71-10c8-7233-8c07-ba393eacd277",
+   "cut_time_s": 230.68,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f71-10c8-7233-8c07-ba393eacd277-thumbnail-230.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8d-8a9c-7620-b9b2-5378291e7a1d",
+   "cut_time_s": 31.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8d-8a9c-7620-b9b2-5378291e7a1d-thumbnail-31.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8d-8a9c-7620-b9b2-5378291e7a1d",
+   "cut_time_s": 36.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8d-8a9c-7620-b9b2-5378291e7a1d-thumbnail-36.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8d-8a9c-7620-b9b2-5378291e7a1d",
+   "cut_time_s": 60.72,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8d-8a9c-7620-b9b2-5378291e7a1d-thumbnail-60.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8d-8a9c-7620-b9b2-5378291e7a1d",
+   "cut_time_s": 75.88,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8d-8a9c-7620-b9b2-5378291e7a1d-thumbnail-75.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8d-1a40-7e02-95cb-e0e5cc9554d3",
+   "cut_time_s": 113.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8d-1a40-7e02-95cb-e0e5cc9554d3-thumbnail-113.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8d-1a40-7e02-95cb-e0e5cc9554d3",
+   "cut_time_s": 113.84,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8d-1a40-7e02-95cb-e0e5cc9554d3-thumbnail-113.84/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8d-1a40-7e02-95cb-e0e5cc9554d3",
+   "cut_time_s": 232.32,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8d-1a40-7e02-95cb-e0e5cc9554d3-thumbnail-232.32/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8d-1a40-7e02-95cb-e0e5cc9554d3",
+   "cut_time_s": 232.96,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8d-1a40-7e02-95cb-e0e5cc9554d3-thumbnail-232.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 14.76,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-14.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 15.36,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-15.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 16.44,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-16.44/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 17.04,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-17.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 17.64,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-17.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 29.56,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-29.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 45.16,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-45.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 45.76,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-45.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 46.64,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-46.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 51.6,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-51.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 54.0,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-54.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 54.64,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-54.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 57.12,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-57.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 69.76,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-69.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 86.72,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-86.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 110.68,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-110.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 123.2,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-123.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 129.16,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-129.16/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 132.88,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-132.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 133.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-133.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 136.6,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-136.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 142.12,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-142.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 144.12,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-144.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 149.12,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-149.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 158.04,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-158.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 167.96,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-167.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 169.6,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-169.6/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 172.4,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-172.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 173.0,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-173.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 179.36,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-179.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 179.96,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-179.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 181.2,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-181.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 183.64,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-183.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 184.88,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-184.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 189.64,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-189.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 190.96,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-190.96/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 191.56,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-191.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 194.4,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-194.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 197.08,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-197.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 197.68,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-197.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 198.28,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-198.28/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 204.76,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-204.76/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 208.12,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-208.12/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 214.08,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-214.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 214.68,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-214.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 223.08,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-223.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 224.92,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-224.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 225.68,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-225.68/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 226.56,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-226.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a",
+   "cut_time_s": 228.72,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-c7d5-7ba2-8f95-d0546e5b261a-thumbnail-228.72/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 78.704,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-78.704/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 81.79,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-81.79/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 83.208,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-83.208/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 84.376,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-84.376/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 86.962,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-86.962/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 125.375,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-125.375/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 160.994,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-160.994/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 177.469,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-177.469/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 190.774,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-190.774/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6",
+   "cut_time_s": 156.042,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6-thumbnail-156.042/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6",
+   "cut_time_s": 186.792,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6-thumbnail-186.792/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6",
+   "cut_time_s": 187.417,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6-thumbnail-187.417/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6",
+   "cut_time_s": 188.75,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6-thumbnail-188.75/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6",
+   "cut_time_s": 189.375,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6-thumbnail-189.375/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6",
+   "cut_time_s": 334.25,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6-thumbnail-334.25/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6",
+   "cut_time_s": 334.917,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6-thumbnail-334.917/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6",
+   "cut_time_s": 426.542,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-0c66-7083-90f0-be69f7d9c3c6-thumbnail-426.542/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 8.4,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-8.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 18.44,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-18.44/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 28.8,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-28.8/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 45.64,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-45.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 49.88,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-49.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 50.48,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-50.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 51.08,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-51.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 54.0,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-54.0/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 56.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-56.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 61.08,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-61.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 64.92,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-64.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 65.52,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-65.52/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 70.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-70.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 70.84,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-70.84/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 75.08,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-75.08/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 90.48,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-90.48/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 91.2,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-91.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 100.84,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-100.84/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 119.04,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-119.04/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 125.24,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-125.24/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 145.2,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-145.2/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c",
+   "cut_time_s": 149.4,
+   "technique": "luma_fade",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-b6f2-7191-8063-8bdcf768913c-thumbnail-149.4/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 132.632,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-132.632/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 148.148,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-148.148/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 148.649,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-148.649/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 211.478,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-211.478/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 211.978,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-211.978/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 246.213,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-246.213/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 246.713,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-246.713/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 247.547,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-247.547/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 248.048,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-248.048/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 249.382,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-249.382/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 250.717,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-250.717/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 251.885,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-251.885/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 253.42,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-253.42/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 255.055,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-255.055/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 256.223,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-256.223/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 256.723,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-256.723/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 258.759,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-258.759/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 259.86,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-259.86/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 260.36,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-260.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 262.095,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-262.095/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 262.596,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-262.596/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 263.463,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-263.463/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 265.132,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-265.132/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 265.632,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-265.632/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 266.133,
+   "technique": "whip_pan",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-266.133/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
+   "cut_time_s": 274.641,
+   "technique": "zoom_punch",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8-thumbnail-274.641/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe",
+   "cut_time_s": 1.126,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe-thumbnail-1.126/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 6.92,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-6.92/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 8.84,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-8.84/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 9.64,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-9.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 56.88,
+   "technique": "match_cut",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-56.88/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 111.36,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-111.36/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
+   "cut_time_s": 141.56,
+   "technique": "match_cut",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f-thumbnail-141.56/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 97.931,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-97.931/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f88-c255-74d3-84f4-b58bf0220176",
+   "cut_time_s": 98.64,
+   "technique": "graphic_match",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f88-c255-74d3-84f4-b58bf0220176-thumbnail-98.64/image"
+  },
+  {
+   "videodb_id": "m-z-019f9f8c-6d5b-7841-8332-fff85804bf21",
+   "cut_time_s": 173.423,
+   "technique": "match_cut",
+   "thumbnail_url": "https://storage.videodb.io/media/u-7c4327e8-15d7-4573-80f2-5f5726b36a19/img-m-z-019f9f8c-6d5b-7841-8332-fff85804bf21-thumbnail-173.423/image"
+  }
  ]
 }

@@ -18,6 +18,7 @@ from src.api import clips as clip_service
 from src.catalog.db import get_db
 from src.catalog.snapshot import seed_if_empty
 from src.detect.prompts import SHIPPING_TECHNIQUES, TECHNIQUE_LABELS
+from src.videodb_client import NotConfigured
 
 ROOT = Path(__file__).resolve().parents[2]
 WEB_DIR = ROOT / "web"
@@ -144,8 +145,11 @@ def thumb(detection_id: int):
         " WHERE d.id = ?", [detection_id]).fetchone()
     if not row:
         raise HTTPException(404, "clip not found")
-    url = clip_service.clip_assets(
-        db, row, account=row["account"] or "primary", want_stream=False)["thumbnail_url"]
+    try:
+        url = clip_service.clip_assets(
+            db, row, account=row["account"] or "primary", want_stream=False)["thumbnail_url"]
+    except NotConfigured as e:
+        raise HTTPException(503, f"thumbnail unavailable: {e}")
     if not url:
         raise HTTPException(404, "no thumbnail")
     try:
@@ -165,7 +169,11 @@ def clip_stream(detection_id: int):
         " WHERE d.id = ?", [detection_id]).fetchone()
     if not row:
         raise HTTPException(404, "clip not found")
-    return clip_service.clip_assets(db, row, account=row["account"] or "primary")
+    try:
+        return clip_service.clip_assets(db, row, account=row["account"] or "primary")
+    except NotConfigured as e:
+        # streams are generated on demand, so this is the one path that needs a key
+        raise HTTPException(503, f"playback unavailable: {e}")
 
 
 @app.get("/api/clips/{detection_id}")

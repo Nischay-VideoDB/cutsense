@@ -1,0 +1,14 @@
+.git
+.venv
+data
+scripts
+docs/*.md
+tests
+__pycache__
+**/__pycache__
+*.pyc
+.env
+.env.*
+!.env.example
+.DS_Store
+library/eyecannndy
