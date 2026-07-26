@@ -145,6 +145,48 @@ export const LumaFade: React.FC<{
 
 *(This works because Remotion re-renders the whole tree every frame, so the regenerated `tableValues` animate the key edge — but it costs you a second full render of scene A into a `foreignObject`, which roughly doubles the cost of the transition frames. `mask-image: url(#id)` also needs the `-webkit-` prefix in Chrome, which is what the renderer uses. If A is a video rather than a component, or you want a genuinely soft, gradeable key, do the composite in a shader instead — `mix(colorA, colorB, smoothstep(threshold - softness, threshold, luma(colorA)))` with `threshold` as a uniform — since sampling a video twice through an SVG filter chain gets expensive fast. The dip mode has none of these caveats and is exact as written.)*
 
+## Programmable editing (VideoDB)
+
+**Can VideoDB author this?** Yes — this is the one transition in our vocabulary the
+editor API renders natively.
+
+```python
+from videodb.editor import Clip, Transition, VideoAsset
+Clip(asset=VideoAsset(id=video_id, start=start), duration=duration,
+     transition=Transition(in_="fade", out="fade", duration=0.4))
+```
+
+`Timeline.background` sets what you fade *through*, so a dip to white is
+`timeline.background = "#FFFFFF"` with the same fade transition.
+
+Assembly is what the editor API is genuinely good at: cutting, placing, layering,
+static filters, named transitions and burned captions, with no local ffmpeg and no
+render wait. Authoring *motion* — keyframed scale, directional blur, rate curves — is
+not in the API; that is what the Remotion section above is for.
+
+```python
+# a study reel of every instance of this technique in the library
+from videodb.editor import Timeline, Track, Clip, VideoAsset
+
+timeline = Timeline(conn)
+track = Track(z_index=0)
+cursor = 0.0
+for d in detections:                       # our detections, each with a video + window
+    duration = round(d["window_end_s"] - d["window_start_s"], 3)
+    track.add_clip(cursor, Clip(
+        asset=VideoAsset(id=d["videodb_id"], start=d["window_start_s"]),
+        duration=duration,
+    ))
+    cursor += duration
+timeline.add_track(track)
+stream_url = timeline.generate_stream()    # HLS, instantly playable
+mp4 = timeline.download_stream(stream_url) # optional MP4 export
+```
+
+Two constraints worth knowing: a clip's out-point is `asset.start + clip.duration`
+(there is no `end`), and a timeline serialising past ~100KB is uploaded as a URL — so
+a few hundred clips is the practical ceiling for one reel.
+
 ## Premiere Pro
 
 1. Dip version: place a **Dip to Black** or **Dip to White** transition on the cut, then set Duration to 12 frames and drag the alignment so the midpoint sits on the beat.

@@ -1103,8 +1103,8 @@
    "evidence": "The first frames show a strong radial zoom-like blur and sudden close composition that then settles.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.74, \"evidence\": \"The first frames show a strong radial zoom-like blur and sudden close composition that then settles.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
@@ -1117,8 +1117,8 @@
    "evidence": "The first frame has strong radial blur and a sudden close-up scale that settles over the next frames.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.96, \"evidence\": \"The first frame has strong radial blur and a sudden close-up scale that settles over the next frames.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The subject stays centered while the image rapidly punches closer/wider with strong radial blur."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
@@ -1271,8 +1271,8 @@
    "evidence": "The first frame is already strongly distorted with radial/scale blur that settles into a clearer composition over the next frames.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.93, \"evidence\": \"The first frame is already strongly distorted with radial/scale blur that settles into a clearer composition over the next frames.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9b02-8104-7333-aed3-1de82fb791a2",
@@ -2587,8 +2587,8 @@
    "evidence": "The shot begins with an abrupt extreme close-up that quickly settles into a more normal composition, consistent with a punch-in zoom.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.95, \"evidence\": \"The shot begins with an abrupt extreme close-up that quickly settles into a more normal composition, consistent with a punch-in zoom.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The shot begins with a rapid push/scale change into the face/eye accompanied by heavy blur."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f89-632f-7d20-a482-ed9487de3a96",
@@ -2979,8 +2979,8 @@
    "evidence": "The initial frames show significant radial blur and a sudden change in scale as if zooming in rapidly, which then resolves into a clearer image.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.9, \"evidence\": \"The initial frames show significant radial blur and a sudden change in scale as if zooming in rapidly, which then resolves into a clearer image.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The frames show a rapid increase in scale from wider to closer, with prominent radial blur evident in the intermediate frame, consistent with a zoom punch."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f89-0cc6-7a20-b614-b95de5a3d7eb",
@@ -3623,8 +3623,8 @@
    "evidence": "The first frame shows a sudden zoomed-in, radially blurred view that quickly settles into a sharp composition.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.95, \"evidence\": \"The first frame shows a sudden zoomed-in, radially blurred view that quickly settles into a sharp composition.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The shot opens with the vehicle in a radial zoom blur and immediately resolves into a much closer framing of the same subject."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.12x out, gain 0.001)"
   },
   {
    "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
@@ -3637,8 +3637,8 @@
    "evidence": "The shot opens with an abrupt close-up scale and radial streaking around the vehicle, indicating a punch-in zoom transition.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.9, \"evidence\": \"The shot opens with an abrupt close-up scale and radial streaking around the vehicle, indicating a punch-in zoom transition.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.9x out, gain 0.376)"
   },
   {
    "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
@@ -3651,8 +3651,8 @@
    "evidence": "The shot opens with an abrupt scale change and radial edge blur around the truck.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.96, \"evidence\": \"The shot opens with an abrupt scale change and radial edge blur around the truck.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
@@ -3665,8 +3665,8 @@
    "evidence": "The first frames show an abrupt zoomed-in composition with strong radial blur and edge smear that quickly settles.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.93, \"evidence\": \"The first frames show an abrupt zoomed-in composition with strong radial blur and edge smear that quickly settles.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
@@ -3679,8 +3679,8 @@
    "evidence": "The shot starts with an abrupt scale/zoom effect and strong radial blur around the entire image.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.97, \"evidence\": \"The shot starts with an abrupt scale/zoom effect and strong radial blur around the entire image.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
@@ -3721,8 +3721,8 @@
    "evidence": "The first frame shows strong radial blur and a sudden scale/center burst that settles across later frames.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.89, \"evidence\": \"The first frame shows strong radial blur and a sudden scale/center burst that settles across later frames.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.6x in, gain 0.088)"
   },
   {
    "videodb_id": "m-z-019f9f88-1581-72d1-ab58-7d699019303b",
@@ -3931,8 +3931,8 @@
    "evidence": "The shot starts with an abrupt close-up and radial-looking motion blur that quickly settles.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.86, \"evidence\": \"The shot starts with an abrupt close-up and radial-looking motion blur that quickly settles.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f87-3356-78a3-a731-5e183d8cba48",
@@ -4687,8 +4687,8 @@
    "evidence": "The first frames show the same subject at a suddenly tighter scale with slight edge blur, then stabilize.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.93, \"evidence\": \"The first frames show the same subject at a suddenly tighter scale with slight edge blur, then stabilize.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.9x in, gain 0.168)"
   },
   {
    "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
@@ -4729,8 +4729,8 @@
    "evidence": "The first frame is a much wider, blurred view that quickly settles into a tighter, sharp composition, indicating an abrupt zoom-in.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.94, \"evidence\": \"The first frame is a much wider, blurred view that quickly settles into a tighter, sharp composition, indicating an abrupt zoom-in.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The frames jump abruptly from a wide centered view to a much closer view of the same subject, with visible zoom-like blur."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.4x in, gain 0.015)"
   },
   {
    "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
@@ -4743,8 +4743,8 @@
    "evidence": "The first frame is a much tighter view that quickly settles into a wider composition, indicating an abrupt zoom change.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.91, \"evidence\": \"The first frame is a much tighter view that quickly settles into a wider composition, indicating an abrupt zoom change.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The shot jumps abruptly from a tight view of the performer to a much wider view of the same setup."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.6x out, gain 0.058)"
   },
   {
    "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
@@ -4771,8 +4771,8 @@
    "evidence": "The first frame is a close, blurred, high-scale view that quickly settles into a wider sharp composition.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.97, \"evidence\": \"The first frame is a close, blurred, high-scale view that quickly settles into a wider sharp composition.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The shot opens with a sudden radial-blurred zoom into the same centered subject before settling into a wider sharp frame."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.9x in, gain 0.339)"
   },
   {
    "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
@@ -4827,8 +4827,8 @@
    "evidence": "The first frames show a sudden radial zoom blur with the subject and background slightly smeared outward from the center.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.86, \"evidence\": \"The first frames show a sudden radial zoom blur with the subject and background slightly smeared outward from the center.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The framing abruptly pulses closer with strong radial blur while keeping the performer centered, matching a zoom-punch effect."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.9x out, gain 0.039)"
   },
   {
    "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
@@ -4911,8 +4911,8 @@
    "evidence": "The first frame is heavily radial-blurred with a sudden scale change, then it settles into a clearer composition.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.95, \"evidence\": \"The first frame is heavily radial-blurred with a sudden scale change, then it settles into a clearer composition.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.9x in, gain 0.092)"
   },
   {
    "videodb_id": "m-z-019f9f75-b9b9-7093-a45f-da2c5c5f5c44",
@@ -5177,8 +5177,8 @@
    "evidence": "The frames show a rapid zoom-in, with the composition changing significantly from a wider shot to a much closer one, and the blur is consistent with a rapid change in focal length.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.9, \"evidence\": \"The frames show a rapid zoom-in, with the composition changing significantly from a wider shot to a much closer one, and the blur is consistent with a rapid change in focal length.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The frames show an abrupt and significant increase in scale, moving from a wider shot to a close-up, accompanied by pronounced motion blur that exhibits charact"
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
@@ -5191,8 +5191,8 @@
    "evidence": "The first frame is a wide view that quickly jumps to a much closer, slightly blurred composition.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.95, \"evidence\": \"The first frame is a wide view that quickly jumps to a much closer, slightly blurred composition.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The same group framing rapidly pushes closer with strong radial zoom blur between frames."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.6x in, gain 0.081)"
   },
   {
    "videodb_id": "m-z-019f9f75-72f1-73b1-89f4-9b6f12d6006f",
@@ -5569,8 +5569,8 @@
    "evidence": "The shot opens with a noticeably closer, slightly blurred composition that settles into focus over the next frames.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.88, \"evidence\": \"The shot opens with a noticeably closer, slightly blurred composition that settles into focus over the next frames.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.6x out, gain 0.199)"
   },
   {
    "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
@@ -5611,8 +5611,8 @@
    "evidence": "The shot opens with a strong radial zoom blur and enlarged close-up framing that settles over the next frames.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.95, \"evidence\": \"The shot opens with a strong radial zoom blur and enlarged close-up framing that settles over the next frames.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The shot shows the subject abruptly changing scale with strong radial blur, matching a zoom-punch effect."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
@@ -5625,8 +5625,8 @@
    "evidence": "The shot opens with a strong radial zoom blur and changed scale before settling into a sharper image.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.92, \"evidence\": \"The shot opens with a strong radial zoom blur and changed scale before settling into a sharper image.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.9x out, gain 0.11)"
   },
   {
    "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
@@ -5639,8 +5639,8 @@
    "evidence": "The shot starts with strong radial blur and a sudden close, distorted scale that settles over the next frames.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.93, \"evidence\": \"The shot starts with strong radial blur and a sudden close, distorted scale that settles over the next frames.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.25x in, gain 0.057)"
   },
   {
    "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
@@ -5695,8 +5695,8 @@
    "evidence": "The shot opens with an abrupt scale change and radial blur around the subject, then becomes less extreme.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.93, \"evidence\": \"The shot opens with an abrupt scale change and radial blur around the subject, then becomes less extreme.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f73-3629-7223-8596-9b2800af172e",
@@ -7767,8 +7767,8 @@
    "evidence": "The shot begins with a sudden closer scale of the trumpet bell, consistent with an abrupt zoom-in.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.96, \"evidence\": \"The shot begins with a sudden closer scale of the trumpet bell, consistent with an abrupt zoom-in.\"}",
-   "verified": 1,
-   "verify_note": "confirmed: The same centered trumpet bell suddenly appears much closer with matching framing, consistent with an abrupt punch-in scale jump."
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f8b-5558-7721-a464-23fb1e42d4b8",
@@ -8117,8 +8117,8 @@
    "evidence": "The first frames show an abrupt push-in with radial/scale change centered on the circular object.",
    "prompt_version": "v2",
    "raw_json": "{\"label\": \"zoom_punch\", \"confidence\": 0.97, \"evidence\": \"The first frames show an abrupt push-in with radial/scale change centered on the circular object.\"}",
-   "verified": null,
-   "verify_note": null
+   "verified": 0,
+   "verify_note": "refuted: no scale jump across the cut (scale 1.0x in, gain 0.0)"
   },
   {
    "videodb_id": "m-z-019f9f73-eb78-74f3-aef2-2a37b1ebecbe",

@@ -96,6 +96,40 @@ export const SpeedRamp: React.FC<{src: string}> = ({src}) => {
 
 *(Remotion has no optical-flow interpolation: seeking below 1x repeats source frames rather than synthesising new ones, so a 0.35x section will look stepped unless the source was shot at high frame rate — conform a 120 fps file and the ramp comes out clean. The `blur()` here is a uniform gaussian standing in for directional motion blur; for a real smear on the fast section use an SVG `feGaussianBlur` with `stdDeviation="8 0"` oriented along the dominant motion. For long compositions, replace the loop in `sourceFrameAt` with a precomputed prefix-sum array so you are not integrating from zero on every frame.)*
 
+## Programmable editing (VideoDB)
+
+**Can VideoDB author this?** No. There is no playback-rate control on a clip, so a
+ramp cannot be expressed on the timeline. Author it in Remotion (or your NLE) and use
+VideoDB to assemble the results.
+
+Assembly is what the editor API is genuinely good at: cutting, placing, layering,
+static filters, named transitions and burned captions, with no local ffmpeg and no
+render wait. Authoring *motion* — keyframed scale, directional blur, rate curves — is
+not in the API; that is what the Remotion section above is for.
+
+```python
+# a study reel of every instance of this technique in the library
+from videodb.editor import Timeline, Track, Clip, VideoAsset
+
+timeline = Timeline(conn)
+track = Track(z_index=0)
+cursor = 0.0
+for d in detections:                       # our detections, each with a video + window
+    duration = round(d["window_end_s"] - d["window_start_s"], 3)
+    track.add_clip(cursor, Clip(
+        asset=VideoAsset(id=d["videodb_id"], start=d["window_start_s"]),
+        duration=duration,
+    ))
+    cursor += duration
+timeline.add_track(track)
+stream_url = timeline.generate_stream()    # HLS, instantly playable
+mp4 = timeline.download_stream(stream_url) # optional MP4 export
+```
+
+Two constraints worth knowing: a clip's out-point is `asset.start + clip.duration`
+(there is no `end`), and a timeline serialising past ~100KB is uploaded as a URL — so
+a few hundred clips is the practical ceiling for one reel.
+
 ## Premiere Pro
 
 1. Shoot high frame rate. Interpret the clip first: right-click in the Project panel → **Modify → Interpret Footage → Assume this frame rate: 23.976** to conform 120 fps to base slow motion with real frames.

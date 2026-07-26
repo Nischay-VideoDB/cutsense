@@ -85,6 +85,41 @@ export const ZoomPunch: React.FC<{
 
 *(CSS `blur()` is a uniform gaussian, not a true radial/zoom blur — the centre smears as much as the edges. For a real crash-zoom smear, stack 4–6 copies of the scene at scales stepping from `scale` to `scale * 1.04` with opacity `1/n`, which approximates a radial streak outward from the origin.)*
 
+## Programmable editing (VideoDB)
+
+**Can VideoDB author this?** No. `Clip.scale` is a static value, not an animatable
+property, so a punch — which is a one-frame scale *step* — has no representation in the
+editor API. Build it in Remotion. VideoDB's job here is assembly: stitching the punches
+you have detected into something watchable.
+
+Assembly is what the editor API is genuinely good at: cutting, placing, layering,
+static filters, named transitions and burned captions, with no local ffmpeg and no
+render wait. Authoring *motion* — keyframed scale, directional blur, rate curves — is
+not in the API; that is what the Remotion section above is for.
+
+```python
+# a study reel of every instance of this technique in the library
+from videodb.editor import Timeline, Track, Clip, VideoAsset
+
+timeline = Timeline(conn)
+track = Track(z_index=0)
+cursor = 0.0
+for d in detections:                       # our detections, each with a video + window
+    duration = round(d["window_end_s"] - d["window_start_s"], 3)
+    track.add_clip(cursor, Clip(
+        asset=VideoAsset(id=d["videodb_id"], start=d["window_start_s"]),
+        duration=duration,
+    ))
+    cursor += duration
+timeline.add_track(track)
+stream_url = timeline.generate_stream()    # HLS, instantly playable
+mp4 = timeline.download_stream(stream_url) # optional MP4 export
+```
+
+Two constraints worth knowing: a clip's out-point is `asset.start + clip.duration`
+(there is no `end`), and a timeline serialising past ~100KB is uploaded as a URL — so
+a few hundred clips is the practical ceiling for one reel.
+
 ## Premiere Pro
 
 1. Cut on the beat. Duplicate the clip end onto a second track if you want the punch to read against a held frame.

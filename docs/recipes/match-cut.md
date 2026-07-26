@@ -86,6 +86,47 @@ export const MatchCut: React.FC<{
 
 *(The alignment offsets are per-pair and have to be measured, not guessed: render both scenes at the cut frame, overlay them with `mix-blend-mode: difference` in a scratch composition, and tune `align` until the overlap goes black. Uniform scale and rotation can only get you so far — if the shapes disagree in perspective you need a real warp, which means an SVG `feDisplacementMap` or a WebGL layer rather than a CSS transform.)*
 
+## Programmable editing (VideoDB)
+
+**Can VideoDB author this?** Yes — a match cut *is* a hard cut, and hard cuts are
+exactly what a timeline does. Place the two clips adjacently on one track with no
+transition, and the effect is entirely in your choice of in/out points.
+
+```python
+from videodb.editor import Clip, VideoAsset
+track.add_clip(0.0, Clip(asset=VideoAsset(id=shot_a_video, start=a_out - 1.2), duration=1.2))
+track.add_clip(1.2, Clip(asset=VideoAsset(id=shot_b_video, start=b_in), duration=1.8))
+# no Transition: the cut lands at 1.2s and the matched form does the work
+```
+
+Assembly is what the editor API is genuinely good at: cutting, placing, layering,
+static filters, named transitions and burned captions, with no local ffmpeg and no
+render wait. Authoring *motion* — keyframed scale, directional blur, rate curves — is
+not in the API; that is what the Remotion section above is for.
+
+```python
+# a study reel of every instance of this technique in the library
+from videodb.editor import Timeline, Track, Clip, VideoAsset
+
+timeline = Timeline(conn)
+track = Track(z_index=0)
+cursor = 0.0
+for d in detections:                       # our detections, each with a video + window
+    duration = round(d["window_end_s"] - d["window_start_s"], 3)
+    track.add_clip(cursor, Clip(
+        asset=VideoAsset(id=d["videodb_id"], start=d["window_start_s"]),
+        duration=duration,
+    ))
+    cursor += duration
+timeline.add_track(track)
+stream_url = timeline.generate_stream()    # HLS, instantly playable
+mp4 = timeline.download_stream(stream_url) # optional MP4 export
+```
+
+Two constraints worth knowing: a clip's out-point is `asset.start + clip.duration`
+(there is no `end`), and a timeline serialising past ~100KB is uploaded as a URL — so
+a few hundred clips is the practical ceiling for one reel.
+
 ## Premiere Pro
 
 1. Put A and B on stacked tracks V1/V2 with a generous overlap, and set the V2 clip **Opacity → Blend Mode → Difference** so you can visually align the shapes.

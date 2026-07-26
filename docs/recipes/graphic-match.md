@@ -86,6 +86,49 @@ export const GraphicMatch: React.FC<{
 
 *(Unlike a match cut, the alignment offset here should stay put rather than relaxing to identity — the echoed geometry is the composition of shot B, not a temporary cheat, so animating it away undoes the match on the very next frames. Note also that `mixBlendMode: 'difference'` composites against the layers beneath it inside the same stacking context, so keep the debug mode's parent background black or the difference render will lie to you.)*
 
+## Programmable editing (VideoDB)
+
+**Can VideoDB author this?** Yes, the same way as a match cut — adjacent clips, no
+transition. Because the shots stay in one scene, the useful VideoDB trick is *comparison*:
+put the two sides on separate tracks at half scale to check the echoed form lines up.
+
+```python
+from videodb.editor import Clip, VideoAsset, Position
+left  = Track(z_index=0); right = Track(z_index=1)
+left.add_clip(0.0,  Clip(asset=VideoAsset(id=vid, start=a_out - 0.5), duration=1.0,
+                         scale=0.5, position=Position.left,  fit=None))
+right.add_clip(0.0, Clip(asset=VideoAsset(id=vid, start=b_in),       duration=1.0,
+                         scale=0.5, position=Position.right, fit=None))
+```
+
+Assembly is what the editor API is genuinely good at: cutting, placing, layering,
+static filters, named transitions and burned captions, with no local ffmpeg and no
+render wait. Authoring *motion* — keyframed scale, directional blur, rate curves — is
+not in the API; that is what the Remotion section above is for.
+
+```python
+# a study reel of every instance of this technique in the library
+from videodb.editor import Timeline, Track, Clip, VideoAsset
+
+timeline = Timeline(conn)
+track = Track(z_index=0)
+cursor = 0.0
+for d in detections:                       # our detections, each with a video + window
+    duration = round(d["window_end_s"] - d["window_start_s"], 3)
+    track.add_clip(cursor, Clip(
+        asset=VideoAsset(id=d["videodb_id"], start=d["window_start_s"]),
+        duration=duration,
+    ))
+    cursor += duration
+timeline.add_track(track)
+stream_url = timeline.generate_stream()    # HLS, instantly playable
+mp4 = timeline.download_stream(stream_url) # optional MP4 export
+```
+
+Two constraints worth knowing: a clip's out-point is `asset.start + clip.duration`
+(there is no `end`), and a timeline serialising past ~100KB is uploaded as a URL — so
+a few hundred clips is the practical ceiling for one reel.
+
 ## Premiere Pro
 
 1. Lay the two angles on V1/V2 with overlap. Set the top clip's **Opacity → Blend Mode → Difference** and step through both to find the frame pair where the echoed shape overlaps.

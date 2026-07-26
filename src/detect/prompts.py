@@ -107,8 +107,9 @@ Classify what happens at the START of this shot. Choose exactly one label:
 - whip_pan: the first frame(s) show strong directional motion blur smearing the whole image \
 (horizontal or vertical streaks across everything), then later frames settle into a sharp image. \
 The blur must affect the entire frame, not just a moving subject.
-- zoom_punch: an abrupt zoom-in or zoom-out right at the shot start — radial blur, or the first \
-frames show the same composition at a suddenly different scale, often with slight blur toward edges.
+- zoom_punch: the shot opens ALREADY at a different scale of essentially the same framing — as \
+if the previous shot were cropped in or pulled back. The jump happened at the cut, so the scale \
+is stable from the first frame onward.
 - luma_fade: the first frame(s) are near-black or near-white (a fade or dip), with the image \
 emerging from darkness/brightness over the next frames.
 - hard_cut: the shot starts clean and sharp. No transition artifact.
@@ -118,6 +119,16 @@ Rules:
 - A blurry moving SUBJECT on a sharp background is NOT a whip_pan.
 - Judge only the start of the shot; ignore what happens later.
 - Be conservative: prefer hard_cut over a technique unless the artifact is obvious.
+
+- zoom_punch is a STEP, not a MOVE. If the framing keeps getting closer or wider across the
+  sampled frames, that is a continuous camera move (a dolly, push-in, pull-back or a subject
+  approaching the lens) and the answer is hard_cut. A punch has already finished by frame one.
+- Radial blur ALONE is not a zoom punch — any fast forward camera movement produces it. Ask
+  instead: does this shot look like a magnified or widened crop of the SAME subject and
+  composition? If the subject, angle or location changed, it is not a punch.
+- A rotation, a whip, or a flash into a new angle is not a punch either.
+- Tie-break: if the frame is smeared BUT the composition is recognisably the previous
+  framing at a closer or wider scale, prefer zoom_punch over whip_pan.
 
 Respond ONLY with JSON, no prose:
 {"label": "<one label>", "confidence": <0.0-1.0>, "evidence": "<one short sentence>"}"""

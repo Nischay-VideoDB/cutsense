@@ -65,6 +65,47 @@ export const WhipPan: React.FC<{A: React.FC; B: React.FC}> = ({A, B}) => {
 
 *(CSS `blur()` is radial; for a true directional smear use an SVG `feGaussianBlur` with `stdDeviation="40 0"` as the filter, or layer 3–5 offset copies with low opacity.)*
 
+## Programmable editing (VideoDB)
+
+**Can VideoDB author this?** Partly. The editor API has named transitions but no
+keyframed motion or directional blur, so `Transition(in_="shuffle", out="shuffle")` gives
+you the *slide* of a whip without the smear that sells it. Use it for a rough assembly;
+use Remotion when the blur matters.
+
+```python
+from videodb.editor import Clip, Transition, VideoAsset
+Clip(asset=VideoAsset(id=video_id, start=cut_time - 1.0), duration=2.0,
+     transition=Transition(in_="shuffle", out=None, duration=0.3))
+```
+
+Assembly is what the editor API is genuinely good at: cutting, placing, layering,
+static filters, named transitions and burned captions, with no local ffmpeg and no
+render wait. Authoring *motion* — keyframed scale, directional blur, rate curves — is
+not in the API; that is what the Remotion section above is for.
+
+```python
+# a study reel of every instance of this technique in the library
+from videodb.editor import Timeline, Track, Clip, VideoAsset
+
+timeline = Timeline(conn)
+track = Track(z_index=0)
+cursor = 0.0
+for d in detections:                       # our detections, each with a video + window
+    duration = round(d["window_end_s"] - d["window_start_s"], 3)
+    track.add_clip(cursor, Clip(
+        asset=VideoAsset(id=d["videodb_id"], start=d["window_start_s"]),
+        duration=duration,
+    ))
+    cursor += duration
+timeline.add_track(track)
+stream_url = timeline.generate_stream()    # HLS, instantly playable
+mp4 = timeline.download_stream(stream_url) # optional MP4 export
+```
+
+Two constraints worth knowing: a clip's out-point is `asset.start + clip.duration`
+(there is no `end`), and a timeline serialising past ~100KB is uploaded as a URL — so
+a few hundred clips is the practical ceiling for one reel.
+
 ## Premiere Pro
 
 1. Shoot/select clips with real whips if possible (in-camera beats faked every time).
