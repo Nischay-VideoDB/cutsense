@@ -450,6 +450,7 @@ def gallery(limit: int = Query(60, le=200)):
         breakdown = {row["technique"]: row["n"] for row in db.execute(
             f"SELECT technique, COUNT(*) n FROM detections WHERE videodb_id=?"
             f" AND technique IN ({','.join('?' * len(SHIPPING_TECHNIQUES))})"
+            "  AND (verified IS NULL OR verified = 1)"   # must agree with the count above
             " GROUP BY technique", [r["videodb_id"], *SHIPPING_TECHNIQUES])}
         shots = [dict(s) for s in db.execute(
             "SELECT start_s, end_s FROM shots WHERE videodb_id=?", [r["videodb_id"]])]
