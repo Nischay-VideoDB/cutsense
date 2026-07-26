@@ -448,6 +448,19 @@ Each recipe now carries a **Programmable editing (VideoDB)** section between Rem
 
 On remotion.dev/prompts: it is a community **gallery**, not a prompt guide, and `/docs/ai/coding-agents` just points at Remotion Agent Skills. The substantive rules are the ones already captured in `docs/recipes/_prompt-kit.md` from the vendored copy of those same skills.
 
+## 2026-07-27 — Search V2: our detections became a VideoDB index
+
+The last gap before submission was depth of VideoDB usage: detections lived only in SQLite, so none of the Search V2 surface was in play. Now `src/catalog/videodb_index.py` publishes them as a real index.
+
+- `video.index(source=records, name="techniques", use_for=["semantic","query","aggregate"], fields={...})` per video. Records carry reserved `start`/`end` plus `technique`, `label`, `confidence`, `cut_time`, `verified`, `evidence` — non-reserved keys become queryable `data`, referenced **without** a `data.` prefix.
+- Field groups are declared explicitly rather than inferred, so `technique`/`label` are definitely groupable and `confidence` sortable.
+- Collection scope comes from every video's index sharing the **same name** — there is no `collection.index()`. Verified: `collection.aggregate(index_name="techniques", group_by="label", metric="count")` returns the whole library's technique frequency, and `metric="avg(confidence)"` its mean confidence, both computed server-side.
+- `collection.query(filter=[...], sort=[("confidence","desc")], return_fields=[...])` returns playable shots with our own metadata attached, and `semantic_search` over the evidence text ranks a real whip pan second for *"the frame smears sideways as the camera whips"*.
+- **Gotcha:** aggregate returns the metric under `value`, not under the metric name — `row["count"]` is empty.
+- 32 of 35 videos indexed; the three failures had no detections. Two bugs fixed on the way: a null confidence crashed `float()`, and `records_for` queried the shared SQLite connection from inside a thread pool without the lock (`InterfaceError: bad parameter or other API misuse`).
+
+The library page now opens with an insights strip fed by `/api/insights`, which labels its own provenance — "aggregated by VideoDB · index techniques" — and falls back to the local catalog with a stated reason rather than erroring.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
