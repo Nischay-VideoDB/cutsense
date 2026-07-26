@@ -54,9 +54,25 @@ def _compile_legacy(conn, segments):
     return timeline.generate_stream()
 
 
-def build_reel(db, clips, name, query=None, account="primary", limit=MAX_CLIPS):
-    """Compile clips into one stream. Returns the reel record, or None if nothing to stitch."""
-    segments = _segments(clips, limit)
+def build_reel(db, clips, name, query=None, account=None, limit=MAX_CLIPS):
+    """Compile clips into one stream. Returns the reel record, or None if nothing to stitch.
+
+    A timeline can only reference assets belonging to the connection that builds it, and
+    the library spans two VideoDB accounts, so clips are grouped by account and the reel
+    is built from whichever holds the most. Anything dropped is reported rather than
+    silently missing from the compilation.
+    """
+    by_account = {}
+    for clip in clips:
+        by_account.setdefault(clip["account"] or "primary", []).append(clip)
+    if not by_account:
+        return None
+    if account is None:
+        account = max(by_account, key=lambda a: len(by_account[a]))
+    usable = by_account.get(account, [])
+    dropped = sum(len(v) for a, v in by_account.items() if a != account)
+
+    segments = _segments(usable, limit)
     if not segments:
         return None
 
@@ -67,6 +83,10 @@ def build_reel(db, clips, name, query=None, account="primary", limit=MAX_CLIPS):
     except Exception as e:
         stream_url = _compile_legacy(conn, segments)
         note = f"built with the legacy timeline ({type(e).__name__})"
+
+    if dropped:
+        extra = f"{dropped} clip{'s' if dropped > 1 else ''} from another account left out"
+        note = f"{note}; {extra}" if note else extra
 
     total = round(sum(s["end"] - s["start"] for s in segments), 2)
     with LOCK:

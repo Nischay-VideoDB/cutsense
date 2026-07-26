@@ -370,6 +370,39 @@ A whip pan's blur sits exactly at the cut and *is* the signal, so frames are onl
 ### Railway auth: what I could and could not do
 `railway login` needs a TTY (browser handoff or a pairing prompt); `--browserless` under a captured pipe produced no output and `script -q` cannot allocate a pty in this environment, so **the login has to be run in a real terminal**. The already-authenticated account's workspace does not contain the CutSense project — only an unrelated one, which I linked briefly to inspect and then unlinked without touching. `scripts/railway_setup.sh` now does the whole configuration (link → volume at `/data` → `CUTSENSE_DB` → deploy) idempotently once auth exists, either from `railway login` or a `RAILWAY_TOKEN` project token.
 
+## 2026-07-27 — VideoDB deep dive (programmable editing · indexes/search · events · data model)
+
+Verified page-by-page against the installed SDK (0.5.1). **Read the docs as markdown via `curl https://docs.videodb.io/<path>.md`** — WebFetch summarises and drops the code. `llms.txt` lists every page; `llms-full.txt` does not exist.
+
+### Documented APIs that do not exist in 0.5.1 (would have cost us hours)
+`ws.stream()` (it is `receive()`), `conn.get_event()`, `conn.delete_event()`, `index.delete_alert()`, `collection.index()`, `collection.list_videos()` (it is `get_videos()`). The `streams-and-exports` page teaches the **deprecated** timeline under the *new* import — `videodb.editor.Timeline` has no `add_inline`, and its `VideoAsset` has no `end`. Trust the SDK source over the editor docs.
+
+### Programmable editing — what is actually true
+- Current API is `videodb.editor`: `Timeline(conn)` (`.background`, `.resolution`) → `Track(z_index)` → `track.add_clip(start, Clip(asset, duration, transition, filter, scale, opacity, fit, position, offset, z_index))`. **Later `add_track()` renders on top.**
+- Trimming vs timing are separate axes: `asset.start` indexes into the source; `add_clip(start=…)` places on the output; there is no `end` — the out point is `asset.start + clip.duration`.
+- `Fit.none.value == "None"` (the *string*). Use `fit=None`.
+- Timeline JSON over **100 KB** is auto-uploaded as a URL — roughly a few hundred clips, so long supercuts have a real ceiling.
+- Editor `AudioAsset` has **no fade and no ducking** (the legacy asset did) — a regression to plan around for music beds.
+- `CaptionAsset(src="auto")` needs `index_spoken_words()` first; animations: box_highlight, color_highlight, reveal, karaoke, impact, supersize.
+- `generate_stream()` is a blocking POST — no job handle, no `callback_url`.
+
+### Indexes & search v2 — the architecture we should be growing into
+`understand(analyzers=[…])` → `index(source=analyzer, name=…, use_for=[semantic|query|aggregate], fields={semantic|filter|aggregate|sort: [...]})` → `semantic_search()` / `query(filter=…)` / `aggregate(group_by=…, metric=…)` / `ask()`.
+- **`collection.index()` does not exist.** Collection-level grouping = giving per-video indexes the *same name* (and identical field structure, or the create 400s).
+- A VLM analyzer can emit a **structured schema**, so our technique taxonomy could live in VideoDB as filterable/aggregatable fields instead of only in SQLite — `aggregate(group_by="technique")` would give style profiles server-side.
+- Indexing is rows-first: `query`/`aggregate` work while an index is still `building`; only `semantic_search` needs `ready`.
+- **Never mix v2 and legacy kwargs** — passing `index_id`/`search_type`/`result_threshold` silently downgrades the whole call to `legacy_search()`.
+- `Index.field_schema[f].operators` is the runtime authority on which filters a field supports.
+
+### Events are RTStream-only
+`create_event`/`create_alert` hang off RTStream indexes; `videodb/video.py` has no alert methods at all. For uploaded video the only push is a one-shot `callback_url` on job completion. **So there is no "alert me when a technique appears" for VOD** — that has to be our own layer over `callback_url` + a query. Also: the two documented webhook payload shapes contradict each other (`event_id` vs `event_label`, ISO-8601 vs epoch-millis) — parse defensively.
+
+### Data model
+Video/Audio/Image carry **no metadata dict** — only name/description. The only filterable place to put session attributes is **index records**, where any non-reserved top-level key becomes queryable `data` (referenced without a `data.` prefix). An array of objects reports as `string_array`; nested dicts get no default field group and stay invisible until you declare a dotted path. `video.update()` changes the **name only**. `remove_storage()` drops bytes but keeps the record and its indexes searchable.
+
+### Applied immediately: a reel bug this surfaced
+Study reels 500'd with `video info not available for video_id: …`. Cause: a timeline can only reference assets belonging to the connection building it, and our library spans two accounts, so a mixed-account clip list is unbuildable. `build_reel` now groups by account, builds from the one holding the most clips, and **reports what it left out** ("3 clips from another account left out") instead of quietly shipping a shorter reel. Confirmed the modern editor path works: 5 clips / 15s across 4 videos, real HLS manifest, no legacy fallback.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
