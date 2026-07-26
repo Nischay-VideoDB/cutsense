@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CutSense — searchable technique archive</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="wordmark" href="/">CUT<span>SENSE</span></a>
+  <div class="searchwrap">
+    <input id="search" type="search" placeholder="whip pan into product shot, match cuts in ads…" autocomplete="off">
+    <button id="searchbtn" title="Search">→</button>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<div class="shell">
+  <nav class="rail">
+    <div class="rail-title">Techniques</div>
+    <ul id="techlist"></ul>
+    <div class="rail-title">Library</div>
+    <ul id="videolist" class="videolist"></ul>
+  </nav>
+
+  <main>
+    <div class="crumb" id="crumb">Every technique</div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      No clips yet. Ingest videos and run detection, then reload.
+    </div>
+  </main>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-inner">
+    <button class="close" id="close">✕</button>
+    <div class="sheet-player">
+      <video id="player" controls playsinline></video>
+    </div>
+    <div class="sheet-meta">
+      <div class="tag" id="d-tag"></div>
+      <h2 id="d-title"></h2>
+      <div class="mono" id="d-time"></div>
+      <p class="evidence" id="d-evidence"></p>
+      <a id="d-source" class="source" target="_blank" rel="noopener">original source ↗</a>
+      <div class="recipe" id="d-recipe"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

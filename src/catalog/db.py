@@ -35,6 +35,15 @@ CREATE TABLE IF NOT EXISTS detections (
   evidence TEXT, prompt_version TEXT, raw_json TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
+CREATE TABLE IF NOT EXISTS clip_assets (  -- playable assets per detection; HLS urls expire
+  detection_id INTEGER PRIMARY KEY,
+  stream_url TEXT, thumbnail_url TEXT, refreshed_at TEXT
+);
+CREATE TABLE IF NOT EXISTS reels (
+  id INTEGER PRIMARY KEY,
+  name TEXT, query TEXT, clip_order_json TEXT,
+  stream_url TEXT, mp4_url TEXT, created_at TEXT DEFAULT (datetime('now'))
+);
 CREATE TABLE IF NOT EXISTS frame_descs (  -- cache: VLM frame descriptions are reusable
   frame_id TEXT PRIMARY KEY,
   videodb_id TEXT, frame_time REAL, prompt_tag TEXT, description TEXT,

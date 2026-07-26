@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cutsense"
+version = "0.1.0"
+description = "Searchable technique archive for video editors"
+requires-python = ">=3.10"
+dependencies = [
+  "videodb>=0.5.1",
+  "python-dotenv>=1.0",
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.27",
+  "pillow>=10.0",
+  "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "httpx>=0.27"]
+
+[tool.setuptools]
+packages = ["src", "src.api", "src.catalog", "src.detect"]

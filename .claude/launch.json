@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cutsense-api",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": ["src.api.app:app", "--port", "8321"],
+      "port": 8321
+    }
+  ]
+}
