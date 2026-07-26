@@ -14,22 +14,26 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.catalog.db import add_detection, get_db
+from src.catalog.db import add_detection, get_db, get_frame_desc, put_frame_desc
 from src.detect import boundary as bd
 from src.detect import pipeline as pl
 from src.videodb_client import get_collection
 
 WORKERS = 8
+FRAME_PROMPT_TAG = "compo_v1"
 
 
 def run_match_cuts(coll, video, scenes, db):
+    """Frame descriptions are cached in SQLite so judge-prompt iteration is free."""
     started = time.time()
-    frame_cache = {}
 
     def describe(frame):
-        if frame.id not in frame_cache:
-            frame_cache[frame.id] = frame.describe(prompt=bd.FRAME_COMPO_PROMPT)
-        return frame_cache[frame.id]
+        cached = get_frame_desc(db, frame.id, FRAME_PROMPT_TAG)
+        if cached is not None:
+            return cached
+        desc = frame.describe(prompt=bd.FRAME_COMPO_PROMPT)
+        put_frame_desc(db, frame.id, video.id, frame.frame_time, FRAME_PROMPT_TAG, desc)
+        return desc
 
     pairs = [(i, scenes[i - 1], scenes[i]) for i in range(1, len(scenes))
              if (scenes[i - 1].end - scenes[i - 1].start) >= bd.MIN_SHOT_DUR
@@ -53,14 +57,15 @@ def run_match_cuts(coll, video, scenes, db):
     hits = 0
     for i, scene, result in results:
         accepted = bd.accepted_match_cut(result)
-        label = "match_cut" if accepted else f"rejected:{result.get('label')}"
+        label = "match_cut" if accepted else f"rejected:{bd.match_cut_label(result)}"
         add_detection(db, video.id, i, {**result, "label": label},
                       pl.detection_window(scene, getattr(video, "length", scene.end)),
                       scene.start, pl.PROMPT_VERSION)
         if accepted:
             hits += 1
-            print(f"  match_cut @{scene.start:7.2f}s conf={result['confidence']}"
-                  f"  {result.get('evidence', '')[:80]}")
+            print(f"  match_cut @{scene.start:7.2f}s conf={result.get('confidence')}"
+                  f"  [{result.get('matched_element', '')[:40]}]"
+                  f"  {result.get('evidence', '')[:60]}")
     print(f"match cuts: {hits} of {len(results)} cuts in {time.time() - started:.0f}s")
 
 

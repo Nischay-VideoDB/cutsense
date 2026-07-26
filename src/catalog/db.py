@@ -2,9 +2,14 @@
 
 import json
 import sqlite3
+import threading
 from pathlib import Path
 
 DB_PATH = Path(__file__).resolve().parents[2] / "data" / "cutsense.sqlite"
+
+# Detection runs classify shots across a thread pool, so the connection is shared
+# across threads and every statement goes through this lock.
+LOCK = threading.Lock()
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS videos (
@@ -27,6 +32,11 @@ CREATE TABLE IF NOT EXISTS detections (
   evidence TEXT, prompt_version TEXT, raw_json TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
+CREATE TABLE IF NOT EXISTS frame_descs (  -- cache: VLM frame descriptions are reusable
+  frame_id TEXT PRIMARY KEY,
+  videodb_id TEXT, frame_time REAL, prompt_tag TEXT, description TEXT,
+  created_at TEXT DEFAULT (datetime('now'))
+);
 CREATE TABLE IF NOT EXISTS labels (  -- hand-labeled ground truth for eval
   id INTEGER PRIMARY KEY,
   videodb_id TEXT NOT NULL,
@@ -40,7 +50,7 @@ CREATE TABLE IF NOT EXISTS labels (  -- hand-labeled ground truth for eval
 
 def get_db():
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    db = sqlite3.connect(DB_PATH)
+    db = sqlite3.connect(DB_PATH, check_same_thread=False, timeout=30)
     db.row_factory = sqlite3.Row
     db.executescript(SCHEMA)
     return db
@@ -48,21 +58,38 @@ def get_db():
 
 def upsert_video(db, videodb_id, **fields):
     cols = ", ".join(fields)
-    db.execute(
-        f"INSERT INTO videos (videodb_id, {cols}) VALUES (?, {','.join('?' * len(fields))}) "
-        f"ON CONFLICT(videodb_id) DO UPDATE SET " + ", ".join(f"{c}=excluded.{c}" for c in fields),
-        [videodb_id, *fields.values()],
-    )
-    db.commit()
+    with LOCK:
+        db.execute(
+            f"INSERT INTO videos (videodb_id, {cols}) VALUES (?, {','.join('?' * len(fields))}) "
+            f"ON CONFLICT(videodb_id) DO UPDATE SET " + ", ".join(f"{c}=excluded.{c}" for c in fields),
+            [videodb_id, *fields.values()],
+        )
+        db.commit()
+
+
+def get_frame_desc(db, frame_id, prompt_tag):
+    with LOCK:
+        row = db.execute("SELECT description FROM frame_descs WHERE frame_id=? AND prompt_tag=?",
+                         [frame_id, prompt_tag]).fetchone()
+    return row["description"] if row else None
+
+
+def put_frame_desc(db, frame_id, videodb_id, frame_time, prompt_tag, description):
+    with LOCK:
+        db.execute(
+            "INSERT OR REPLACE INTO frame_descs (frame_id, videodb_id, frame_time, prompt_tag, description)"
+            " VALUES (?,?,?,?,?)", [frame_id, videodb_id, frame_time, prompt_tag, description])
+        db.commit()
 
 
 def add_detection(db, videodb_id, shot_idx, result: dict, window, cut_time, prompt_version):
-    db.execute(
-        "INSERT INTO detections (videodb_id, shot_idx, technique, confidence, window_start_s,"
-        " window_end_s, cut_time_s, evidence, prompt_version, raw_json)"
-        " VALUES (?,?,?,?,?,?,?,?,?,?)",
-        [videodb_id, shot_idx, result.get("label"), result.get("confidence"),
-         window[0], window[1], cut_time, result.get("evidence"), prompt_version,
-         json.dumps(result)],
-    )
-    db.commit()
+    with LOCK:
+        db.execute(
+            "INSERT INTO detections (videodb_id, shot_idx, technique, confidence, window_start_s,"
+            " window_end_s, cut_time_s, evidence, prompt_version, raw_json)"
+            " VALUES (?,?,?,?,?,?,?,?,?,?)",
+            [videodb_id, shot_idx, result.get("label"), result.get("confidence"),
+             window[0], window[1], cut_time, result.get("evidence"), prompt_version,
+             json.dumps(result)],
+        )
+        db.commit()

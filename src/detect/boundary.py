@@ -25,17 +25,32 @@ FRAME_COMPO_PROMPT = """Describe this single video frame for edit analysis, in <
 framing (close/medium/wide), camera angle, 3) any dominant motion direction or blur.
 Plain prose, no preamble."""
 
-MATCH_JUDGE_PROMPT = """Two consecutive frames sit on either side of a CUT in an edited video.
+# v3: the v2 judge accepted "similar composition" even when the shots were the same
+# scene continuing (26 of 69 cuts on one teaser). Forcing it to commit to the two
+# intermediate facts first, and deriving the label in code, fixes that.
+MATCH_JUDGE_PROMPT = """Two frames sit on either side of a CUT in an edited video.
 
 FRAME A (end of outgoing shot): {desc_a}
 
 FRAME B (start of incoming shot): {desc_b}
 
-A match cut means: DIFFERENT scene/subject/location, but deliberately matched composition
-(same dominant shape, silhouette, screen position, framing, or continued motion direction).
-Same scene/subject continuing = plain_cut. Be strict.
+Answer two independent questions, then nothing else.
 
-Respond ONLY with JSON: {{"label": "<match_cut|plain_cut|unclear>", "confidence": <0.0-1.0>, "evidence": "<one short sentence>"}}"""
+1. same_context: Do both frames show the SAME location/scene/set, or the same subject
+continuing the same action? A cut between two angles of one ongoing scene = true.
+A cut to a genuinely different place, subject, time, or subject matter = false.
+When the descriptions plausibly describe one continuous scene, answer true.
+
+2. composition_match: Is a specific concrete visual element deliberately carried across
+the cut — the same dominant shape or silhouette, the same screen position of the main
+form, the same distinctive framing geometry, or a motion direction that continues?
+Generic similarity ("both are dark", "both are centered", "both are close-ups") is NOT
+a composition match. Answer false unless you can name the specific matched element.
+
+Respond ONLY with JSON:
+{{"same_context": <true|false>, "composition_match": <true|false>,
+ "matched_element": "<the specific element, or empty>", "confidence": <0.0-1.0>,
+ "evidence": "<one short sentence>"}}"""
 
 
 def _first_sharp_frame(scene):
@@ -78,8 +93,19 @@ def classify_speed_ramps(scenes, min_dur=1.0):
         yield i, scene.start, result
 
 
+def match_cut_label(result):
+    """Derive the label in code from the judge's two committed facts."""
+    if result.get("same_context") is None or result.get("composition_match") is None:
+        return result.get("label", "unclear")
+    if result["composition_match"] and not result["same_context"]:
+        return "match_cut"
+    return "plain_cut"
+
+
 def accepted_match_cut(result):
-    return result.get("label") == "match_cut" and float(result.get("confidence") or 0) >= MATCH_CUT_CONF
+    return (match_cut_label(result) == "match_cut"
+            and float(result.get("confidence") or 0) >= MATCH_CUT_CONF
+            and bool(str(result.get("matched_element") or "").strip()))
 
 
 def accepted_speed_ramp(result):

@@ -201,6 +201,21 @@ Environment: Python 3.12 venv, videodb 0.5.1. Scripts in `scripts/m0_0*.py`. Tes
 - Eval now distinguishes `HIT` / `miss` (ran, found nothing) / `n/a` (detector not run) — earlier output made un-run detectors look like failures.
 - Still blocking M1 exit: hand labels for cut-level precision/recall.
 
+### Match-cut detector: v2 was badly over-firing, v3 fixed precision but recall is now the problem
+- v2 (single free-text judgement) flagged **26 of 69 cuts** on the Cowboy Bebop teaser as match cuts. Its own evidence strings gave it away: "both shots keep a rooftop night fight…", i.e. it accepted *same-scene* cuts, which our definition explicitly excludes.
+- **v3 fix — force the judge to commit to two intermediate booleans and derive the label in code**: `same_context` (same location/subject continuing?) and `composition_match` (a *named* specific carried element; generic "both dark/centered" doesn't count). Acceptance = `composition_match AND NOT same_context AND conf>=0.85 AND matched_element non-empty`.
+- v3 result on the same teaser: **0 of 69** — distribution `(same_context, composition_match)`: (F,F) 51, (T,T) 9, (T,F) 8, (F,T) 1. Inspecting the 9 (T,T) blocks confirms they're genuinely same-scene (same rooftop fight, same title card, same western street) — v3 is right to reject them. The single (F,T) scored 0.73 and its evidence argued against itself ("dominant geometry changes"), so the confidence gate correctly held.
+- So: v2 precision was terrible, v3 precision looks clean, but **recall on this video is 0 against eyecannndy's label that it contains a match cut**. Prime suspect: judging from *text descriptions* of two frames throws away the visual specifics a match cut is made of.
+- Next experiments for match-cut recall (in priority order):
+  1. `video.clip(prompt, content_type="visual", model_name="pro")` as a native baseline — one call, VLM sees pixels.
+  2. Get both sides of a cut into ONE scene so the VLM sees both images: a second time_based scene collection whose windows straddle cuts, or a GPU sandbox VLM taking an image pair.
+  3. Perceptual-hash structural similarity across the cut as a cheap candidate generator (also the planned cost pre-filter).
+- Speed ramps: 0 of 43 shots on the same teaser — needs a video with known ramps (Usher/Travis Scott) before judging.
+
+### Two bugs worth remembering
+- **SQLite + ThreadPoolExecutor**: connections are single-thread by default; worker threads raised "SQLite objects created in a thread can only be used in that same thread", and because errors were caught per-item the run *looked* like it completed (0 detections in 0s) instead of crashing. Fixed with `check_same_thread=False` + a module-level `LOCK` around every statement in `catalog/db.py`. Lesson: per-item exception handling can disguise a total failure — watch the wall-clock, 0s for 69 API calls is the tell.
+- Frame descriptions now cached in SQLite (`frame_descs`, keyed by frame id + prompt tag) so judge-prompt iteration costs nothing. Vision calls are the expensive part; never re-pay for them.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
