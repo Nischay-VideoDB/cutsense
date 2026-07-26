@@ -26,17 +26,31 @@ If runtime writes ever need to persist (saved reels, user sets), move the catalo
 
 ## Deploy
 
-```bash
-railway up
-```
-
-Railway builds the `Dockerfile`, which installs the package, copies `src/ web/ docs/recipes/ library/`, and runs:
+Railway builds the `Dockerfile`: dependencies from `requirements.txt` first (so code edits keep the install layer cached), then `src/ web/ docs/recipes/ library/`, then:
 
 ```
 uvicorn src.api.app:app --host 0.0.0.0 --port ${PORT}
 ```
 
-Healthcheck path: `/api/health`.
+Healthcheck path: `/api/health`. Set `VIDEO_DB_API_KEY` in the service variables before the first browse.
+
+**The package is deliberately not installed.** The app runs from the working directory, so `pip install .` would only add a build step that needs `src/` present in the dependency layer — which is exactly what broke the first build (`error: package directory 'src' does not exist`, because `pip install .` ran before `COPY src ./src`).
+
+### Verifying a deploy without Docker locally
+
+The image layout can be reproduced with plain file copies, which catches missing files and unset-variable behaviour:
+
+```bash
+rm -rf /tmp/imgtest && mkdir -p /tmp/imgtest/docs
+cp -R src web library /tmp/imgtest/ && cp -R docs/recipes /tmp/imgtest/docs/
+cd /tmp/imgtest && env -u VIDEO_DB_API_KEY <path-to>/.venv/bin/python -m uvicorn src.api.app:app --port 8399
+```
+
+Expected with no key set: `/api/health`, `/`, `/api/clips`, `/api/thumb/{id}` and `/api/recipes/{t}` all succeed (thumbnails come from the snapshot), and `/api/clips/{id}/stream` returns **503 "playback unavailable"** — not a 500.
+
+### Networking
+
+`cutsense.railway.internal` is the **private** hostname for service-to-service traffic inside the Railway project; a browser cannot reach it. For public access, generate a domain on the service (`railway domain`, or Settings → Networking → Generate Domain) and use that URL.
 
 ## Local
 

@@ -292,6 +292,21 @@ The first sample of 12 looked fine; across the library the judge granted `compos
 
 Related debugging lesson: `loading="lazy"` images never fetch when the page isn't being rendered/visible, so "0 of 60 loaded" is not evidence of a broken image pipeline. Confirm by probing with `new Image()` / `fetch()` from the page before changing anything.
 
+## 2026-07-27 — Railway deploy
+
+### Build failure and the fix
+`pip install --no-cache-dir .` failed with `error: package directory 'src' does not exist`: the Dockerfile copied `pyproject.toml` and installed *before* `COPY src ./src`, and `[tool.setuptools] packages = ["src", ...]` needs the directory present. Reordering would fix it but would also rebuild dependencies on every code change.
+Chosen fix: **don't install the package at all.** The app runs from the working directory (`uvicorn src.api.app:app`), so only dependencies are needed — `requirements.txt` in its own cached layer, then the source. Added `.dockerignore` (drops `.venv`, `data`, `scripts`, the eyecannndy manifests) to keep the context small.
+
+### Thumbnails now ship in the snapshot
+The snapshot carried videos + detections but not `clip_assets`, so a fresh container would have regenerated **555 thumbnails through the VideoDB API on first browse** — slow and billable. Thumbnails are stable URLs, so they now travel in the snapshot. The wrinkle: `clip_assets` keys on detection id, which is reassigned when seeding, so the export carries the natural key `(videodb_id, cut_time_s, technique)` and `seed_if_empty` remaps it (555/555 mapped).
+
+### Verified the image layout without Docker
+No Docker or Railway CLI on this machine, so the image was reproduced with file copies and booted **with `VIDEO_DB_API_KEY` deliberately unset**. Result: health, index, clips (21ms), thumbnails and recipes all work with no key at all — the deployed app reads cached results, exactly as intended. Only `/api/clips/{id}/stream` needs the key; it was returning a bare 500, now a `503 playback unavailable: VIDEO_DB_API_KEY is not set` via a `NotConfigured` exception.
+
+### Networking note
+`cutsense.railway.internal` is Railway's **private** service-to-service hostname — not browser-reachable and not SSH. Public access needs a generated domain on the service.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
