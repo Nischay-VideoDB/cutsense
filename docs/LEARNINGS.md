@@ -307,6 +307,30 @@ No Docker or Railway CLI on this machine, so the image was reproduced with file 
 ### Networking note
 `cutsense.railway.internal` is Railway's **private** service-to-service hostname — not browser-reachable and not SSH. Public access needs a generated domain on the service.
 
+## 2026-07-27 — reframed around "analyse MY video"; the library became supporting cast
+
+The browsable library answered the wrong question. The product is: **paste a video → what techniques does it use, and how do I rebuild them** — with the archive supplying the same technique in other people's work for comparison. Same detection engine, different centre of gravity.
+
+Built: `POST /api/analyze` (threaded job, progress in SQLite, poll by id) → `GET /api/report/{video}` (techniques with exact moments, pacing, recipe per technique, related library clips) → a home screen that is a paste field, with the library behind a second tab.
+
+Also closed the three missing brief features: plain-language `ask` (LLM parse → intent routing), study reels (`POST /api/reels`, cross-video timeline compile), style profiles (per creator/video, structured JSON + evidence clips), and pacing metrics (cut frequency, histogram, rhythm, pacing curve).
+
+### THE BLOCKER: the Basic LLM tier's hackathon budget is spent
+A fresh analysis returned **0 techniques across 88 cuts**. Cause: every `scene.describe()` was failing with
+`You have reached the Hackathon budget for this model tier (Llm Basic). This tier has a $20 budget and needs at least $10 remaining to start. Used: $10.02; remaining: $9.98.`
+- **Supported tiers are `mini, basic, pro, ultra`.** On the project account `mini`/`basic` are dead (they share the Basic budget) while **`pro` and `ultra` work**; the legacy account's `basic` still works.
+- `pipeline.resolve_model()` now probes the chain `basic → pro → ultra` once per account with a live call, remembers the winner, and passes `model_name` on every describe. Re-running the same video with `pro`: **17 techniques found** (15 whip pan, 2 zoom punch) where the broken run reported zero.
+- Budget state is invisible until a call fails — there is no `get_usage()` on the SDK Connection. Assume a tier can die mid-session.
+
+### Two of my own bugs that made this worse
+1. **I overwrote the model's evidence with the rejection reason** when storing a rejected detection, so 87 API failures all recorded as a bland `below_confidence` and the real error was unrecoverable from the database. Rejection reasons are now prefixed (`[reason] original evidence`), never substituted.
+2. **A classifier that fails on every shot was reported as a successful analysis with no findings.** Now if every shot errored, the job is `failed` with the underlying message. Silent zeros are worse than loud failures.
+
+### Smaller fixes
+- Re-analysing a URL uploaded a *second* copy of the video (billed + stored). `analyze.run` now reuses an existing asset with the same `source_url` that already has shots.
+- The plain-language parser routed "show me every whip pan" to `reel` because the phrasing sounds collective; a reel now requires an explicit reel word. A content filter matching nothing (e.g. "sneaker ads", which the library has none of) widens to the technique alone and says so, instead of returning an empty grid.
+- Thumbnails get an `onerror` fallback so a failed image reads as empty rather than a broken-file icon.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
