@@ -17,6 +17,13 @@ from src.detect.pipeline import parse_json_reply
 from src.detect.prompts import SPEED_RAMP_PROMPT
 
 MATCH_CUT_CONF = 0.85
+# graphic_match needs a higher bar than match_cut: because it allows the shots to
+# stay in one scene, the judge happily grants "matched composition" to ordinary
+# continuity cuts ("same living room", "same man in the doorway"), which flooded
+# at 0.86-0.92. Those are not what an editor means by a graphic match.
+# This threshold is a stopgap; the real fix is a judge field asserting the match
+# is deliberate and striking rather than merely the set still being on screen.
+GRAPHIC_MATCH_CONF = 0.95
 SPEED_RAMP_CONF = 0.85
 MIN_SHOT_DUR = 0.15
 
@@ -108,11 +115,15 @@ def match_cut_label(result):
     return "graphic_match" if result["same_context"] else "match_cut"
 
 
+CONF_BY_LABEL = {"match_cut": MATCH_CUT_CONF, "graphic_match": GRAPHIC_MATCH_CONF}
+
+
 def accepted_boundary(result):
     """True when the derived label is a technique we ship, at sufficient confidence."""
     label = match_cut_label(result)
-    return (label in ("match_cut", "graphic_match")
-            and float(result.get("confidence") or 0) >= MATCH_CUT_CONF
+    if label not in CONF_BY_LABEL:
+        return False
+    return (float(result.get("confidence") or 0) >= CONF_BY_LABEL[label]
             and bool(str(result.get("matched_element") or "").strip()))
 
 

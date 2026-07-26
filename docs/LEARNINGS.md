@@ -256,6 +256,34 @@ Container filesystems are ephemeral, so a gitignored SQLite catalog means an emp
 - Canvas brightness sampling of VideoDB thumbnails is blocked (cross-origin `getImageData` SecurityError) — inspect frames by downloading them instead.
 - Whip-pan thumbnails are generated at the cut, so the grid *shows the smear*: the technique is legible at a glance, which is the whole demo.
 
+## 2026-07-27 — full-library ingest + detection pass
+
+**Library: 44 videos (34 project account + 10 legacy), all scanned. 6,715 shots classified → 558 accepted techniques.**
+
+| technique | accepted |
+|---|---|
+| whip_pan | 281 |
+| zoom_punch | 164 |
+| luma_fade | 95 |
+| graphic_match | 10 |
+| match_cut | 8 |
+
+Rejections are kept, not dropped: 89 pixel-vetoed, 5,601 judge-rejected (mostly plain hard cuts).
+
+### graphic_match over-fires at scale — gated, not fixed
+The first sample of 12 looked fine; across the library the judge granted `composition_match` to **ordinary continuity cuts** — "both frames depict the same suburban house", "the same man in the same doorway", "the same living room sofa" — 9 of 32 cuts on a single IKEA ad, ~30 total at 0.86–0.92 confidence. That is not what an editor means by a graphic match. Root cause: because `graphic_match` permits the shots to stay in one scene, "matched composition" collapses into "the set is still on screen".
+- **Stopgap applied**: separate thresholds — `match_cut` 0.85, `graphic_match` 0.95. Re-gated locally for free from stored judge output (252 candidates rejected, 10 kept).
+- **Real fix (todo)**: a v4 judge field asserting the match is *deliberate and striking* — a distinctive shape carried across a change of angle/subject — rather than the scene merely persisting. Needs one re-run; frame descriptions are already cached so only the text judge repeats.
+- Not uniform: ad-style footage floods, while music videos with genuinely distinct scenes returned none. Whatever gate we ship must be validated on ads specifically.
+
+### match_cut doubled with the right footage
+8 strict match cuts now (up from 4) after judging the videos whose library label suggests one. Consistent with the earlier finding: the detector is fine, it needs footage that actually contains the technique.
+
+### Operational notes
+- `--all` enumerates the collection once at start, so videos uploaded *during* a run are missed. Seven were skipped for exactly this reason; a second pass caught them. Not an error — worth knowing when interleaving ingest and detection.
+- Detection throughput at 8 workers: roughly 1 shot/second (a 180-shot music video ≈ 140s). Boundary judging is ~2x slower per cut (2 vision + 1 text).
+- Speed ramps: still 0 across the library. The within-shot detector runs and rejects; either the prompt is too strict or frame sampling (3 frames/shot) is too sparse to see velocity change. Next: sample more frames per shot on ramp-labeled videos.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
