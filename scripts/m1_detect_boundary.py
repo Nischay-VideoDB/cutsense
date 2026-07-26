@@ -9,6 +9,7 @@ Usage:
 
 import sys
 import time
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -54,19 +55,21 @@ def run_match_cuts(coll, video, scenes, db):
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         results = list(pool.map(work, pairs))
 
-    hits = 0
+    hits = Counter()
     for i, scene, result in results:
-        accepted = bd.accepted_match_cut(result)
-        label = "match_cut" if accepted else f"rejected:{bd.match_cut_label(result)}"
+        derived = bd.match_cut_label(result)
+        accepted = bd.accepted_boundary(result)
+        label = derived if accepted else f"rejected:{derived}"
         add_detection(db, video.id, i, {**result, "label": label},
                       pl.detection_window(scene, getattr(video, "length", scene.end)),
                       scene.start, pl.PROMPT_VERSION)
         if accepted:
-            hits += 1
-            print(f"  match_cut @{scene.start:7.2f}s conf={result.get('confidence')}"
-                  f"  [{result.get('matched_element', '')[:40]}]"
-                  f"  {result.get('evidence', '')[:60]}")
-    print(f"match cuts: {hits} of {len(results)} cuts in {time.time() - started:.0f}s")
+            hits[derived] += 1
+            print(f"  {derived:13s} @{scene.start:7.2f}s conf={result.get('confidence')}"
+                  f"  [{str(result.get('matched_element'))[:40]}]"
+                  f"  {str(result.get('evidence'))[:55]}")
+    summary = ", ".join(f"{k}={v}" for k, v in sorted(hits.items())) or "none"
+    print(f"boundary techniques ({summary}) of {len(results)} cuts in {time.time() - started:.0f}s")
 
 
 def run_speed_ramps(video, scenes, db):

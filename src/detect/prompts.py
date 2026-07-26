@@ -6,7 +6,21 @@ FIRST frames of the shot that follows the cut, so we classify shot-start windows
 
 PROMPT_VERSION = "v2"
 
-TECHNIQUES = ["whip_pan", "zoom_punch", "luma_fade", "match_cut", "speed_ramp", "hard_cut", "unclear"]
+TECHNIQUES = ["whip_pan", "zoom_punch", "luma_fade", "match_cut", "graphic_match",
+              "speed_ramp", "hard_cut", "unclear"]
+
+# Vocabulary shown in the UI, in the order techniques are presented.
+SHIPPING_TECHNIQUES = ["whip_pan", "zoom_punch", "match_cut", "graphic_match",
+                       "speed_ramp", "luma_fade"]
+
+TECHNIQUE_LABELS = {
+    "whip_pan": "Whip Pan",
+    "zoom_punch": "Zoom Punch",
+    "match_cut": "Match Cut",
+    "graphic_match": "Graphic Match",
+    "speed_ramp": "Speed Ramp",
+    "luma_fade": "Luma Fade",
+}
 
 # Match cut: needs the cut PAIR — last frame(s) of shot A + first frame(s) of shot B.
 # We build a synthetic boundary Scene with frames from both sides and ask about continuity.

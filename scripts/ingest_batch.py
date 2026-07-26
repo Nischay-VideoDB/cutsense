@@ -20,7 +20,8 @@ def main(limit=5):
     db = get_db()
     coll = get_collection()
     manifest = json.loads(MANIFEST.read_text())["videos"]
-    done_urls = {r["source_url"] for r in db.execute("SELECT source_url FROM videos WHERE source_url IS NOT NULL")}
+    done_urls = {r["source_url"] for r in db.execute(
+        "SELECT source_url FROM videos WHERE source_url IS NOT NULL AND account='primary'")}
 
     # densest multi-technique videos first (manifest is pre-sorted by clip count)
     todo = [v for v in manifest

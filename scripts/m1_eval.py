@@ -18,7 +18,10 @@ from src.catalog.db import get_db
 
 TOL = 1.5
 HINT_MAP = {"whip-pan": "whip_pan", "match-cut": "match_cut", "speed-ramping": "speed_ramp"}
-CONF = {"whip_pan": 0.85, "zoom_punch": 0.85, "luma_fade": 0.9, "match_cut": 0.85, "speed_ramp": 0.85}
+CONF = {"whip_pan": 0.85, "zoom_punch": 0.85, "luma_fade": 0.9, "match_cut": 0.85,
+        "graphic_match": 0.85, "speed_ramp": 0.85}
+# eyecannndy's "match cut" category mixes both; either satisfies the weak label
+HINT_ALSO_SATISFIED_BY = {"match_cut": {"graphic_match"}}
 
 
 def main():
@@ -37,7 +40,7 @@ def main():
         ran = {t.replace("rejected:", "") for t in (d["technique"] for d in dets)}
         marks = []
         for h in hints:
-            if h in found:
+            if found & ({h} | HINT_ALSO_SATISFIED_BY.get(h, set())):
                 marks.append(f"{h}:HIT")
             elif h in ran or (h == "whip_pan" and "hard_cut" in ran):
                 marks.append(f"{h}:miss")

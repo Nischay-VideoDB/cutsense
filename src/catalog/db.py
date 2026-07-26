@@ -16,7 +16,10 @@ CREATE TABLE IF NOT EXISTS videos (
   id INTEGER PRIMARY KEY,
   videodb_id TEXT UNIQUE NOT NULL,
   title TEXT, source_url TEXT, creator TEXT, technique_hint TEXT,
-  duration_s REAL, uploaded_at TEXT DEFAULT (datetime('now'))
+  duration_s REAL, uploaded_at TEXT DEFAULT (datetime('now')),
+  -- which VideoDB account holds this asset; 'legacy' rows predate the project account
+  account TEXT DEFAULT 'primary',
+  content_index_id TEXT
 );
 CREATE TABLE IF NOT EXISTS shots (
   id INTEGER PRIMARY KEY,
@@ -53,7 +56,17 @@ def get_db():
     db = sqlite3.connect(DB_PATH, check_same_thread=False, timeout=30)
     db.row_factory = sqlite3.Row
     db.executescript(SCHEMA)
+    _migrate(db)
     return db
+
+
+def _migrate(db):
+    """Add columns introduced after the first rows were written."""
+    have = {r["name"] for r in db.execute("PRAGMA table_info(videos)")}
+    for col, ddl in (("account", "TEXT DEFAULT 'primary'"), ("content_index_id", "TEXT")):
+        if col not in have:
+            db.execute(f"ALTER TABLE videos ADD COLUMN {col} {ddl}")
+    db.commit()
 
 
 def upsert_video(db, videodb_id, **fields):

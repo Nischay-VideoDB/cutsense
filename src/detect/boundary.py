@@ -94,18 +94,30 @@ def classify_speed_ramps(scenes, min_dur=1.0):
 
 
 def match_cut_label(result):
-    """Derive the label in code from the judge's two committed facts."""
+    """Derive the label in code from the judge's two committed facts.
+
+    Two distinct techniques fall out of the same pair of booleans:
+      match_cut     - matched composition ACROSS a change of scene/subject (the classic)
+      graphic_match - matched composition while staying in the same scene, which is
+                      what a lot of curated "match cut" examples actually are
+    """
     if result.get("same_context") is None or result.get("composition_match") is None:
         return result.get("label", "unclear")
-    if result["composition_match"] and not result["same_context"]:
-        return "match_cut"
-    return "plain_cut"
+    if not result["composition_match"]:
+        return "plain_cut"
+    return "graphic_match" if result["same_context"] else "match_cut"
+
+
+def accepted_boundary(result):
+    """True when the derived label is a technique we ship, at sufficient confidence."""
+    label = match_cut_label(result)
+    return (label in ("match_cut", "graphic_match")
+            and float(result.get("confidence") or 0) >= MATCH_CUT_CONF
+            and bool(str(result.get("matched_element") or "").strip()))
 
 
 def accepted_match_cut(result):
-    return (match_cut_label(result) == "match_cut"
-            and float(result.get("confidence") or 0) >= MATCH_CUT_CONF
-            and bool(str(result.get("matched_element") or "").strip()))
+    return accepted_boundary(result) and match_cut_label(result) == "match_cut"
 
 
 def accepted_speed_ramp(result):
