@@ -216,6 +216,12 @@ Environment: Python 3.12 venv, videodb 0.5.1. Scripts in `scripts/m0_0*.py`. Tes
 - **SQLite + ThreadPoolExecutor**: connections are single-thread by default; worker threads raised "SQLite objects created in a thread can only be used in that same thread", and because errors were caught per-item the run *looked* like it completed (0 detections in 0s) instead of crashing. Fixed with `check_same_thread=False` + a module-level `LOCK` around every statement in `catalog/db.py`. Lesson: per-item exception handling can disguise a total failure — watch the wall-clock, 0s for 69 API calls is the tell.
 - Frame descriptions now cached in SQLite (`frame_descs`, keyed by frame id + prompt tag) so judge-prompt iteration costs nothing. Vision calls are the expensive part; never re-pay for them.
 
+### Content scene index + search (product path validated)
+- `index_scenes(extraction_type=shot_based, extraction_config={...}, prompt=<editor-oriented desc>, name="content")` on the Cowboy Bebop teaser: 70 records, **status `done` in ~15s** (much faster than expected), ~$0.21 of scene processing.
+- Semantic search over it is genuinely good: "neon lit gunfight" → the three correct rooftop-fight shots (scores 0.49–0.56); "title card typography" → both title cards. This validates the compound-query path (technique filter from SQLite ∩ content semantic search = "match cuts in sneaker ads").
+- Bonus: the content descriptions spontaneously mention transitions ("a quick, complex split-screen transition"), so the content index is *weakly* technique-searchable on its own — a useful fallback/second opinion for techniques our detectors miss.
+- **`video.clip(prompt, content_type="visual")` requires an existing scene INDEX** (extracted scene collections are not enough — errors with "Scene index not found"). Even with the index it is slow: >10 min on a 2.5-min video (it LLM-processes the whole document set), so it is not a viable interactive path — fine as an offline second opinion only.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
