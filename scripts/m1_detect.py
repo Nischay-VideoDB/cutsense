@@ -1,11 +1,12 @@
-"""M1: run detection pipeline on a video (or all videos in the collection).
+"""M1: run detection pipeline on a video (or every un-scanned video in the collection).
 
 Usage:
-  python scripts/m1_detect.py <videodb_id> [--threshold 20]
-  python scripts/m1_detect.py --all
+  python scripts/m1_detect.py <videodb_id> [--threshold 20] [--serial]
+  python scripts/m1_detect.py --all          # skips videos already scanned
 """
 
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -15,7 +16,14 @@ from src.detect import pipeline as pl
 from src.videodb_client import get_collection
 
 
-def run(video, db, threshold=20):
+def already_scanned(db, videodb_id):
+    return db.execute(
+        "SELECT COUNT(*) c FROM detections WHERE videodb_id=? AND prompt_version=?",
+        [videodb_id, pl.PROMPT_VERSION]).fetchone()["c"] > 0
+
+
+def run(video, db, threshold=20, parallel=True):
+    started = time.time()
     print(f"\n=== {video.id} | {getattr(video, 'name', '?')}")
     upsert_video(db, video.id, title=getattr(video, "name", None),
                  duration_s=float(getattr(video, "length", 0)))
@@ -28,17 +36,17 @@ def run(video, db, threshold=20):
         [(video.id, sc.id, i, s.start, s.end) for i, s in enumerate(scenes)])
     db.commit()
 
-    accepted = 0
-    for i, scene, result in pl.classify_shots(sc):
+    results = (pl.classify_shots_parallel(sc) if parallel else list(pl.classify_shots(sc)))
+    accepted = []
+    for i, scene, result in results:
         window = pl.detection_window(scene, getattr(video, "length", scene.end))
         add_detection(db, video.id, i, result, window, scene.start, pl.PROMPT_VERSION)
-        mark = ""
         if pl.is_accepted(result):
-            accepted += 1
-            mark = "  <-- DETECTION"
-        print(f"  shot {i} @{scene.start:7.2f}s  {result.get('label', '?'):10s}"
-              f" conf={result.get('confidence', 0)}{mark}")
-    print(f"accepted detections: {accepted}")
+            accepted.append((scene.start, result["label"], result["confidence"]))
+
+    print(f"accepted {len(accepted)} of {len(results)} shots in {time.time() - started:.0f}s")
+    for start, label, conf in accepted:
+        print(f"  @{start:7.2f}s  {label:10s} conf={conf}")
 
 
 if __name__ == "__main__":
@@ -47,8 +55,13 @@ if __name__ == "__main__":
     threshold = 20
     if "--threshold" in sys.argv:
         threshold = int(sys.argv[sys.argv.index("--threshold") + 1])
+    parallel = "--serial" not in sys.argv
+
     if "--all" in sys.argv:
         for v in coll.get_videos():
-            run(v, db, threshold)
+            if already_scanned(db, v.id):
+                print(f"skip (scanned): {v.id} {getattr(v, 'name', '')[:40]}")
+                continue
+            run(v, db, threshold, parallel)
     else:
-        run(coll.get_video(sys.argv[1]), db, threshold)
+        run(coll.get_video(sys.argv[1]), db, threshold, parallel)

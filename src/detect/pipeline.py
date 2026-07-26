@@ -8,12 +8,14 @@ Validators (M0 findings):
 
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor
 
 from videodb import SceneExtractionType
 
 from src.detect.prompts import PROMPT_VERSION, SHOT_START_PROMPT
 
 MIN_SHOT_DUR = 0.15
+WORKERS = 8  # serial describe was ~4.6s/shot; 170-shot video took ~13 min
 CONF_THRESHOLD = {"whip_pan": 0.85, "zoom_punch": 0.85, "luma_fade": 0.9}
 CONTEXT_S = 1.5  # clip window padding around the cut
 
@@ -48,6 +50,26 @@ def classify_shots(scene_collection, skip_first=True):
         yield i, scene, result
 
 
+def classify_shots_parallel(scene_collection, skip_first=True, workers=WORKERS):
+    """Same as classify_shots but concurrent. Returns a list ordered by shot index."""
+    scenes = scene_collection.scenes
+    targets = [
+        (i, s) for i, s in enumerate(scenes)
+        if not (skip_first and i == 0) and (s.end - s.start) >= MIN_SHOT_DUR
+    ]
+
+    def work(item):
+        i, scene = item
+        try:
+            raw = scene.describe(prompt=SHOT_START_PROMPT)
+        except Exception as e:
+            return i, scene, {"label": "unclear", "confidence": 0.0, "evidence": f"error: {e}"}
+        return i, scene, parse_json_reply(raw or "")
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        return list(pool.map(work, targets))
+
+
 def is_accepted(result) -> bool:
     label = result.get("label")
     conf = float(result.get("confidence") or 0)
@@ -60,6 +82,7 @@ def detection_window(scene, video_length):
 
 
 __all__ = [
-    "extract_shots", "classify_shots", "is_accepted", "detection_window",
-    "PROMPT_VERSION", "MIN_SHOT_DUR", "CONF_THRESHOLD",
+    "extract_shots", "classify_shots", "classify_shots_parallel", "is_accepted",
+    "detection_window", "parse_json_reply",
+    "PROMPT_VERSION", "MIN_SHOT_DUR", "CONF_THRESHOLD", "WORKERS",
 ]
