@@ -47,15 +47,22 @@ function showView(name) {
 /* ---------- analyse flow ---------- */
 const STAGES = ["queued", "uploading", "extracting", "detecting", "ready"];
 
-async function analyse(url) {
+async function analyse(url, fileToUpload) {
   $("#analyse-error").hidden = true;
   $("#report").hidden = true;
   $("#progress").hidden = false;
   $("#analyse-btn").disabled = true;
-  setProgress("queued", "sending it to the indexer");
+  setProgress("queued", fileToUpload ? `uploading ${fileToUpload.name}` : "sending it to the indexer");
 
   try {
-    const started = await api(`/api/analyze?url=${encodeURIComponent(url)}`, { method: "POST" });
+    let started;
+    if (fileToUpload) {
+      const body = new FormData();
+      body.append("file", fileToUpload);
+      started = await api("/api/analyze/upload", { method: "POST", body });
+    } else {
+      started = await api(`/api/analyze?url=${encodeURIComponent(url)}`, { method: "POST" });
+    }
     if (started.state === "ready") return finishAnalysis(started);
     await poll(started.id);
   } catch (e) {
@@ -321,13 +328,34 @@ async function buildReel({ q, technique, target }) {
         <div class="reel-meta">
           <b>${reel.name}</b>
           <span class="mono">${reel.clips} clips · ${reel.duration_s}s${reel.note ? ` · ${reel.note}` : ""}</span>
+          <button class="ghost" id="reel-mp4" data-reel-id="${reel.id}">Export MP4</button>
         </div>
         <video id="reel-player" controls playsinline></video>
+        <div class="mono" id="reel-mp4-out"></div>
       </div>`;
     attachStream($("#reel-player"), reel.stream_url, { loop: false });
     $("#reel-player").play().catch(() => {});
+    $("#reel-mp4").addEventListener("click", () => exportMp4(reel.id));
   } catch (e) {
     host.innerHTML = `<div class="failed">Could not build the reel: ${e.message}</div>`;
+  }
+}
+
+async function exportMp4(reelId) {
+  const out = $("#reel-mp4-out");
+  const btn = $("#reel-mp4");
+  btn.disabled = true;
+  out.textContent = "rendering an MP4…";
+  try {
+    const r = await api(`/api/reels/${reelId}/mp4`, { method: "POST" });
+    out.innerHTML = r.mp4_url
+      ? `<a class="source" href="${r.mp4_url}" download>download the MP4 ↓</a>
+         <span class="dim">link expires in 24h</span>`
+      : `export returned no link (status: ${r.status || "unknown"})`;
+  } catch (e) {
+    out.textContent = `export failed: ${e.message}`;
+  } finally {
+    btn.disabled = false;
   }
 }
 
@@ -483,10 +511,14 @@ $("#analyse-form").addEventListener("submit", (e) => {
   e.preventDefault();
   analyse($("#analyse-url").value.trim());
 });
-document.querySelectorAll(".ex").forEach(b => b.addEventListener("click", () => {
+document.querySelectorAll(".ex[data-url]").forEach(b => b.addEventListener("click", () => {
   $("#analyse-url").value = b.dataset.url;
   analyse(b.dataset.url);
 }));
+$("#analyse-file").addEventListener("change", (e) => {
+  const f = e.target.files?.[0];
+  if (f) analyse(null, f);
+});
 document.querySelectorAll(".tab").forEach(t =>
   t.addEventListener("click", () => showView(t.dataset.view)));
 $("#homelink").addEventListener("click", (e) => { e.preventDefault(); showView("analyse"); });

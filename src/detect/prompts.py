@@ -7,11 +7,22 @@ FIRST frames of the shot that follows the cut, so we classify shot-start windows
 PROMPT_VERSION = "v2"
 
 TECHNIQUES = ["whip_pan", "zoom_punch", "luma_fade", "match_cut", "graphic_match",
-              "speed_ramp", "hard_cut", "unclear"]
+              "speed_ramp", "split_screen", "shake", "glitch", "hard_cut", "unclear"]
 
 # Vocabulary shown in the UI, in the order techniques are presented.
+#
+# split_screen / shake / glitch are deliberately NOT here. Their pixel gates were
+# calibrated against 140 windows of ordinary footage and failed: the split-screen edge
+# ratio has a median of 8.9 (the guessed gate was 4.0), shake displacement a median of
+# 2.8 (gate 1.2), and the glitch row metric ranges to 2.2 million because it divides by
+# a near-zero median on flat frames. Gating at p99.5 would just surface "the most
+# extreme 0.5% of windows", not the technique. The brief is explicit that a small
+# vocabulary which always works beats a large one that misses, so these stay in the
+# codebase (src/detect/frame_look.py + scripts/m2_calibrate_look.py) unadvertised
+# until the signals actually separate.
 SHIPPING_TECHNIQUES = ["whip_pan", "zoom_punch", "match_cut", "graphic_match",
                        "speed_ramp", "luma_fade"]
+EXPERIMENTAL_TECHNIQUES = ["split_screen", "shake", "glitch"]
 
 TECHNIQUE_LABELS = {
     "whip_pan": "Whip Pan",
@@ -19,6 +30,9 @@ TECHNIQUE_LABELS = {
     "match_cut": "Match Cut",
     "graphic_match": "Graphic Match",
     "speed_ramp": "Speed Ramp",
+    "split_screen": "Split Screen",
+    "shake": "Shake",
+    "glitch": "Glitch",
     "luma_fade": "Luma Fade",
 }
 
@@ -45,6 +59,29 @@ Respond ONLY with JSON, no prose:
 {"label": "<match_cut|plain_cut|unclear>", "confidence": <0.0-1.0>, "evidence": "<one short sentence>"}"""
 
 # Speed ramp: within-shot signal — sampled frames of one shot at even spacing.
+# Within-shot look, judged over a dense frame window rather than at a cut. Each of
+# these is gated by a deterministic pixel signal first (see src/detect/frame_look.py),
+# so the model only ever sees plausible candidates.
+FRAME_LOOK_PROMPT = """These frames are consecutive samples from ONE shot of an edited video.
+
+Identify the dominant deliberate LOOK of this shot, choosing exactly one label:
+
+- split_screen: the frame is divided into two or more separate images by a hard straight
+  edge (vertical, horizontal or diagonal) that persists across frames — separate shots
+  shown side by side, not one scene that happens to contain a wall or a doorway.
+- shake: the whole frame jitters between consecutive frames — camera shake or an added
+  shake effect. The image displaces bodily; it does not smear in one direction (that is
+  a whip pan) and the subject alone moving does not count.
+- glitch: digital corruption is visible — datamosh smearing, block artifacts, RGB channel
+  separation, scan lines, tearing, or frames that look like a broken signal.
+- clean: none of the above; an ordinary shot.
+
+Be strict: a busy composition is not a split screen, handheld looseness is not shake,
+and film grain or heavy grading is not glitch.
+
+Respond ONLY with JSON:
+{"label": "<split_screen|shake|glitch|clean>", "confidence": <0.0-1.0>, "evidence": "<one short sentence>"}"""
+
 SPEED_RAMP_PROMPT = """You are analyzing frames sampled evenly across ONE continuous shot \
 (no cuts inside it) from an edited video.
 

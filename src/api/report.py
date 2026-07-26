@@ -27,6 +27,7 @@ def build_report(db, videodb_id, read_recipe):
         db,
         "SELECT id, technique, confidence, cut_time_s, window_start_s, window_end_s, evidence"
         f" FROM detections WHERE videodb_id=? AND technique IN ({tech_marks})"
+        " AND (verified IS NULL OR verified = 1)"
         " ORDER BY cut_time_s", [videodb_id, *SHIPPING_TECHNIQUES])
 
     by_technique = {}
@@ -42,7 +43,8 @@ def build_report(db, videodb_id, read_recipe):
             db,
             "SELECT d.id, d.technique, d.confidence, d.cut_time_s, v.title, v.source_url"
             " FROM detections d JOIN videos v ON v.videodb_id = d.videodb_id"
-            " WHERE d.technique=? AND d.videodb_id!=? ORDER BY d.confidence DESC LIMIT ?",
+            " WHERE d.technique=? AND d.videodb_id!=? AND (d.verified IS NULL OR d.verified=1)"
+            " ORDER BY d.verified DESC, d.confidence DESC LIMIT ?",
             [tech, videodb_id, RELATED_PER_TECHNIQUE])
         techniques.append({
             "technique": tech,

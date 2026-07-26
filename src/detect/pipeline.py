@@ -16,13 +16,19 @@ from videodb.exceptions import InvalidRequestError
 from src.detect.prompts import PROMPT_VERSION, SHOT_START_PROMPT
 
 MIN_SHOT_DUR = 0.15
-WORKERS = 8  # serial describe was ~4.6s/shot; 170-shot video took ~13 min
+# Measured on a 32-shot ad: 8 workers 32.7s, 16 workers 16.3s, 24 workers 23.6s —
+# all with zero errors. 16 is the knee; past it the calls contend and it gets slower.
+WORKERS = 16
 
 # Model tiers are budgeted separately, and a spent tier fails every call with
 # "You have reached the Hackathon budget for this model tier". That once turned
 # into 87 shots of silent "unclear", so the tier is resolved once against a live
 # call and remembered, falling forward through the chain when one is exhausted.
 MODEL_CHAIN = ("basic", "pro", "ultra")
+# a first frame sharper than this carries no transition artifact worth a model call
+PREFILTER_SHARP = 400
+PLAIN_CUT_RESULT = {"label": "hard_cut", "confidence": 0.99,
+                    "evidence": "first frame is sharp and mid-luma (pixel prefilter)"}
 BUDGET_MARKERS = ("budget", "not supported")
 _resolved_model = {}
 
@@ -106,8 +112,39 @@ def classify_shots(scene_collection, skip_first=True):
         yield i, scene, result
 
 
+def prefilter(targets, workers=WORKERS):
+    """Split shots into (needs_model, plain_cut) using pixel stats only.
+
+    OFF BY DEFAULT — measured and rejected as a speed optimisation. On a bright ad
+    it removed 57% of model calls but dropped real detections (a zoom punch can be a
+    perfectly sharp scale jump, sharpness 757, with no artifact to see); on dark
+    footage the fade check fires on nearly every shot, so it saved 1%. Trading recall
+    for speed unpredictably is the wrong deal for this product.
+
+    Kept because it is a legitimate *cost* control when someone knowingly opts in
+    (`use_prefilter=True`) to index a large library cheaply.
+    """
+    from src.detect import filters
+
+    def probe(item):
+        i, scene = item
+        try:
+            first = filters.stats_for(scene.frames[0].url)
+        except Exception:
+            return item, True, None      # cannot measure -> let the model decide
+        soft = first["sharpness"] <= PREFILTER_SHARP
+        extreme = filters.fade_plausible(first)
+        return item, bool(soft or extreme), first
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        probed = list(pool.map(probe, targets))
+    interesting = [item for item, keep, _ in probed if keep]
+    skipped = [(item, stats) for item, keep, stats in probed if not keep]
+    return interesting, skipped
+
+
 def classify_shots_parallel(scene_collection, skip_first=True, workers=WORKERS,
-                            account="primary"):
+                            account="primary", use_prefilter=False):
     """Same as classify_shots but concurrent. Returns a list ordered by shot index."""
     scenes = scene_collection.scenes
     targets = [
@@ -116,6 +153,12 @@ def classify_shots_parallel(scene_collection, skip_first=True, workers=WORKERS,
     ]
     if not targets:
         return []
+
+    skipped = []
+    if use_prefilter:
+        targets, skipped = prefilter(targets, workers)
+        if not targets:
+            return [(i, s, PLAIN_CUT_RESULT) for i, s in (item for item, _ in skipped)]
     model = resolve_model(targets[0][1], account=account)
 
     def work(item):
@@ -127,7 +170,10 @@ def classify_shots_parallel(scene_collection, skip_first=True, workers=WORKERS,
         return i, scene, parse_json_reply(raw or "")
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        return list(pool.map(work, targets))
+        results = list(pool.map(work, targets))
+    # skipped shots are still recorded, so counts stay honest and nothing vanishes
+    results.extend((i, s, PLAIN_CUT_RESULT) for i, s in (item for item, _ in skipped))
+    return sorted(results, key=lambda r: r[0])
 
 
 def is_accepted(result) -> bool:

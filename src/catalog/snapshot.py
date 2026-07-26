@@ -18,7 +18,8 @@ TABLES = {
     "videos": ["videodb_id", "title", "source_url", "creator", "technique_hint",
                "duration_s", "account", "content_index_id"],
     "detections": ["videodb_id", "shot_idx", "technique", "confidence", "window_start_s",
-                   "window_end_s", "cut_time_s", "evidence", "prompt_version", "raw_json"],
+                   "window_end_s", "cut_time_s", "evidence", "prompt_version", "raw_json",
+                   "verified", "verify_note"],
 }
 
 

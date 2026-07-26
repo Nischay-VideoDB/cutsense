@@ -5,11 +5,12 @@ Run locally:  .venv/bin/uvicorn src.api.app:app --reload --port 8000
 
 import json
 import os
+import tempfile
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query, Response
+from fastapi import FastAPI, File, HTTPException, Query, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -30,6 +31,7 @@ ROOT = Path(__file__).resolve().parents[2]
 WEB_DIR = ROOT / "web"
 RECIPE_DIR = ROOT / "docs" / "recipes"
 VERSION = (os.environ.get("RAILWAY_GIT_COMMIT_SHA") or "dev")[:9]
+MAX_UPLOAD_BYTES = 512 << 20   # 512MB: a reference edit, not a feature film
 
 app = FastAPI(title="CutSense", description="Searchable technique archive for editors")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -42,6 +44,11 @@ def technique_filter_sql(alias="d"):
     """Only the vocabulary we ship — excludes hard_cut, unclear and rejected rows."""
     return f"{alias}.technique IN ({','.join('?' * len(SHIPPING_TECHNIQUES))})"
 
+
+# A second, independent model audited every shot-start detection; 311 of 582 were
+# refuted. Anything it refuted is hidden. NULL means "not audited" (or audited with the
+# wrong evidence window, as for match cuts) and is still shown.
+NOT_REFUTED_SQL = "(d.verified IS NULL OR d.verified = 1)"
 
 # Several videos were ingested into both accounts, which would show the same moment
 # twice. Prefer the project account and hide the legacy twin.
@@ -79,13 +86,13 @@ def health():
     counts = {r["technique"]: r["n"] for r in db.execute(
         "SELECT d.technique, COUNT(*) n FROM detections d"
         " JOIN videos v ON v.videodb_id = d.videodb_id"
-        f" WHERE {technique_filter_sql()} AND {NOT_DUPLICATE_SQL}"
+        f" WHERE {technique_filter_sql()} AND {NOT_DUPLICATE_SQL} AND {NOT_REFUTED_SQL}"
         " GROUP BY d.technique", SHIPPING_TECHNIQUES)}
     return {"ok": True, "version": VERSION, "seed": SEED,
             "videos": db.execute(
                 "SELECT COUNT(DISTINCT d.videodb_id) c FROM detections d"
                 " JOIN videos v ON v.videodb_id = d.videodb_id"
-                f" WHERE {technique_filter_sql()} AND {NOT_DUPLICATE_SQL}",
+                f" WHERE {technique_filter_sql()} AND {NOT_DUPLICATE_SQL} AND {NOT_REFUTED_SQL}",
                 SHIPPING_TECHNIQUES).fetchone()["c"],
             "videos_total": db.execute(
                 f"SELECT COUNT(*) c FROM videos v WHERE {NOT_DUPLICATE_SQL}").fetchone()["c"],
@@ -97,7 +104,7 @@ def techniques():
     counts = {r["technique"]: r["n"] for r in db.execute(
         "SELECT d.technique, COUNT(*) n FROM detections d"
         " JOIN videos v ON v.videodb_id = d.videodb_id"
-        f" WHERE {NOT_DUPLICATE_SQL} GROUP BY d.technique")}
+        f" WHERE {NOT_DUPLICATE_SQL} AND {NOT_REFUTED_SQL} GROUP BY d.technique")}
     return [{"id": t, "label": TECHNIQUE_LABELS[t], "count": counts.get(t, 0)}
             for t in SHIPPING_TECHNIQUES]
 
@@ -106,7 +113,7 @@ def techniques():
 def list_clips(technique: str | None = None, q: str | None = None,
                video_id: str | None = None, limit: int = Query(24, le=200),
                offset: int = 0, assets: bool = True):
-    where, params = [technique_filter_sql(), NOT_DUPLICATE_SQL], list(SHIPPING_TECHNIQUES)
+    where, params = [technique_filter_sql(), NOT_DUPLICATE_SQL, NOT_REFUTED_SQL], list(SHIPPING_TECHNIQUES)
     if technique:
         where.append("d.technique = ?")
         params.append(technique)
@@ -215,6 +222,25 @@ def start_analysis(url: str = Query(..., description="a video URL to analyse")):
     return analyze_service.start(db, url.strip())
 
 
+@app.post("/api/analyze/upload")
+async def start_upload(file: UploadFile = File(...)):
+    """Analyse an uploaded file — for edits that are not published anywhere."""
+    suffix = Path(file.filename or "clip.mp4").suffix or ".mp4"
+    if suffix.lower() not in {".mp4", ".mov", ".m4v", ".webm", ".mkv"}:
+        raise HTTPException(400, f"unsupported file type: {suffix}")
+    tmp = Path(tempfile.gettempdir()) / f"cutsense-upload-{os.urandom(6).hex()}{suffix}"
+    size = 0
+    with tmp.open("wb") as out:
+        while chunk := await file.read(1 << 20):
+            size += len(chunk)
+            if size > MAX_UPLOAD_BYTES:
+                out.close()
+                tmp.unlink(missing_ok=True)
+                raise HTTPException(413, f"file larger than {MAX_UPLOAD_BYTES // (1 << 20)}MB")
+            out.write(chunk)
+    return analyze_service.start(db, f"upload:{file.filename}", file_path=str(tmp))
+
+
 @app.get("/api/analyze/{analysis_id}")
 def analysis_status(analysis_id: int):
     record = analyze_service.get(db, analysis_id)
@@ -269,7 +295,7 @@ def ask(q: str = Query(..., description="plain-language question about the archi
 
 
 def plan_clips(plan, limit):
-    where = [technique_filter_sql(), NOT_DUPLICATE_SQL]
+    where = [technique_filter_sql(), NOT_DUPLICATE_SQL, NOT_REFUTED_SQL]
     params = list(SHIPPING_TECHNIQUES)
     if plan["techniques"]:
         where.append(f"d.technique IN ({','.join('?' * len(plan['techniques']))})")
@@ -406,11 +432,11 @@ def gallery(limit: int = Query(60, le=200)):
     rank = " ".join(f"WHEN ? THEN {i}" for i in range(len(SHIPPING_TECHNIQUES)))
     rows = db.execute(
         f"SELECT v.videodb_id, v.title, v.source_url, v.creator, v.duration_s,"
-        f" COUNT(d.id) FILTER (WHERE {technique_filter_sql()}) AS techniques,"
+        f" COUNT(d.id) FILTER (WHERE {technique_filter_sql()} AND {NOT_REFUTED_SQL}) AS techniques,"
         # poster picked by technique first: a luma fade's frame is near-blank by
         # definition, so it makes a poor card even at high confidence
         "  (SELECT d2.id FROM detections d2 WHERE d2.videodb_id = v.videodb_id"
-        f"     AND {technique_filter_sql('d2')}"
+        f"     AND {technique_filter_sql('d2')} AND (d2.verified IS NULL OR d2.verified = 1)"
         f"     ORDER BY CASE d2.technique {rank} ELSE 99 END, d2.confidence DESC LIMIT 1)"
         "   AS poster_clip_id"
         " FROM videos v LEFT JOIN detections d ON d.videodb_id = v.videodb_id"

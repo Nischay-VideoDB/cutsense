@@ -10,6 +10,7 @@ in memory so a poll can be served by any worker and survives a reload.
 """
 
 import threading
+from pathlib import Path
 
 from src.catalog.db import LOCK, add_detection, get_db, upsert_video
 from src.detect import pipeline as pl
@@ -52,8 +53,11 @@ def find_by_url(db, source_url):
     return dict(row) if row else None
 
 
-def run(analysis_id, source_url):
-    """Worker body. Owns its own connection: SQLite objects are per-thread."""
+def run(analysis_id, source_url, file_path=None):
+    """Worker body. Owns its own connection: SQLite objects are per-thread.
+
+    `file_path` handles uploads: the same pipeline, sourced from disk instead of a URL.
+    """
     db = get_db()
     try:
         coll = get_collection()
@@ -65,10 +69,13 @@ def run(analysis_id, source_url):
                 " WHERE v.source_url=? AND v.account='primary'"
                 " AND EXISTS (SELECT 1 FROM shots s WHERE s.videodb_id = v.videodb_id)"
                 " ORDER BY v.rowid DESC LIMIT 1", [source_url]).fetchone()
-        if known:
+        if known and not file_path:
             update(db, analysis_id, state="extracting", videodb_id=known["videodb_id"],
                    title=known["title"], stage_detail="already in the archive — re-reading it")
             video = coll.get_video(known["videodb_id"])
+        elif file_path:
+            update(db, analysis_id, state="uploading", stage_detail="uploading your file")
+            video = coll.upload(file_path=file_path)
         else:
             update(db, analysis_id, state="uploading", stage_detail="fetching the video")
             video = coll.upload(url=source_url)
@@ -128,14 +135,18 @@ def run(analysis_id, source_url):
         update(db, analysis_id, state="ready", detections=kept, stage_detail=detail)
     except Exception as e:
         update(db, analysis_id, state="failed", error=f"{type(e).__name__}: {e}")
+    finally:
+        if file_path:
+            Path(file_path).unlink(missing_ok=True)   # the asset lives in VideoDB now
 
 
-def start(db, source_url):
+def start(db, source_url, file_path=None):
     """Queue an analysis and return its record immediately."""
-    existing = find_by_url(db, source_url)
-    if existing:
-        existing["reused"] = True
-        return existing
+    if not file_path:
+        existing = find_by_url(db, source_url)
+        if existing:
+            existing["reused"] = True
+            return existing
     analysis_id = create(db, source_url)
-    threading.Thread(target=run, args=(analysis_id, source_url), daemon=True).start()
+    threading.Thread(target=run, args=(analysis_id, source_url, file_path), daemon=True).start()
     return get(db, analysis_id)

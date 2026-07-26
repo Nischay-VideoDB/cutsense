@@ -86,6 +86,13 @@ def _migrate(db):
     for col, ddl in (("account", "TEXT DEFAULT 'primary'"), ("content_index_id", "TEXT")):
         if col not in have:
             db.execute(f"ALTER TABLE videos ADD COLUMN {col} {ddl}")
+    # An independent second-opinion audit refuted most detections, so a detection is
+    # not trustworthy until something other than the original classifier agrees.
+    # NULL = not yet audited, 1 = confirmed, 0 = refuted.
+    det = {r["name"] for r in db.execute("PRAGMA table_info(detections)")}
+    for col, ddl in (("verified", "INTEGER"), ("verify_note", "TEXT")):
+        if col not in det:
+            db.execute(f"ALTER TABLE detections ADD COLUMN {col} {ddl}")
     db.commit()
 
 
