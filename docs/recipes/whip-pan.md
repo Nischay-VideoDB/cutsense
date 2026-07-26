@@ -8,23 +8,6 @@
 - *Easing*: motion accelerates hard out of A (ease-in) and decelerates into B (ease-out) — the two halves read as one swing.
 - *Sweeteners*: directional blur boost at the seam, a whoosh SFX, ±5–10° rotation for energy.
 
-## Premiere Pro
-1. Shoot/select clips with real whips if possible (in-camera beats faked every time).
-2. Cut A and B at peak blur. If no in-camera whip: add 4–6 frame overlap.
-3. On the seam, apply **Transform** effect to both sides; keyframe Position X: A: 0 → −1500 over last 3 frames (ease-in, bezier), B: +1500 → 0 over first 3 frames (ease-out).
-4. Uncheck "Use Composition's Shutter Angle", set Shutter Angle ≈ 360 for motion blur.
-5. Add whoosh SFX centered on the cut.
-
-## DaVinci Resolve
-1. Edit page: cut at peak blur.
-2. Effects → **Transform** on adjacent clip ends; keyframe Position X mirrored as above (Fusion page: Transform node + Vector Motion Blur for stronger smear).
-3. Or drop the built-in **Push** transition, then add Motion Blur ≈ 1.0 in the transition inspector.
-
-## CapCut
-1. Split at the whip moment.
-2. Transitions → **Pull in** / **Whip** style, duration 0.2–0.3s.
-3. Or manual: keyframe Transform-X out of clip A and into clip B, add Blur → Directional at the seam.
-
 ## Remotion
 
 Prompt to give an AI/code assistant:
@@ -71,5 +54,26 @@ export const WhipPan: React.FC<{A: React.FC; B: React.FC}> = ({A, B}) => {
 
 *(CSS `blur()` is radial; for a true directional smear use an SVG `feGaussianBlur` with `stdDeviation="40 0"` as the filter, or layer 3–5 offset copies with low opacity.)*
 
+## Premiere Pro
+
+1. Shoot/select clips with real whips if possible (in-camera beats faked every time).
+2. Cut A and B at peak blur. If no in-camera whip: add 4–6 frame overlap.
+3. On the seam, apply **Transform** effect to both sides; keyframe Position X: A: 0 → −1500 over last 3 frames (ease-in, bezier), B: +1500 → 0 over first 3 frames (ease-out).
+4. Uncheck "Use Composition's Shutter Angle", set Shutter Angle ≈ 360 for motion blur.
+5. Add whoosh SFX centered on the cut.
+
+## DaVinci Resolve
+
+1. Edit page: cut at peak blur.
+2. Effects → **Transform** on adjacent clip ends; keyframe Position X mirrored as above (Fusion page: Transform node + Vector Motion Blur for stronger smear).
+3. Or drop the built-in **Push** transition, then add Motion Blur ≈ 1.0 in the transition inspector.
+
+## CapCut
+
+1. Split at the whip moment.
+2. Transitions → **Pull in** / **Whip** style, duration 0.2–0.3s.
+3. Or manual: keyframe Transform-X out of clip A and into clip B, add Blur → Directional at the seam.
+
 ## Reference clips
+
 Populated automatically from the library: every `technique=whip_pan` detection, e.g. the classroom example video (cuts at 1.4s and 3.56s) and 16 moments in the in-camera tutorial. Also see eyecannndy.com/technique/whip-pan (52 curated examples with credits).

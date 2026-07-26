@@ -9,27 +9,6 @@
 - *Sweeteners*: carry the audio across the seam (a sound that starts in A and finishes in B welds the two shots), match the dominant colour within ~10% so the eye reads continuity, and match the lens — a 24mm shape does not match a 85mm shape even when the outlines agree.
 - *Detector note*: our detector scores cross-cut structural similarity — edge-map and shape-descriptor overlap on the frames either side of a cut — and then checks for a scene change (colour histogram, location classifier). High shape similarity plus a scene change is a match cut; high shape similarity with the same location is a graphic match, filed separately.
 
-## Premiere Pro
-1. Put A and B on stacked tracks V1/V2 with a generous overlap, and set the V2 clip **Opacity → Blend Mode → Difference** so you can visually align the shapes.
-2. Nudge B in time (comma/period keys) and in space (**Motion → Position/Scale/Rotation**) until the difference render goes as dark as possible. Small corrections only — 1–4% scale, a few degrees.
-3. Set the blend mode back to Normal, then trim so the cut lands on the tightest-match frame pair. Use **Add Edit** (Ctrl/Cmd+K) rather than a transition.
-4. If the shapes need warping to agree, apply **Warp Stabilizer** or a **Corner Pin** on B's first 8 frames and keyframe back to identity by frame 8 so the correction disappears.
-5. Weld the audio: extend A's ambience 6–10 frames past the cut, or start B's key sound 4 frames before the cut (J-cut) so the ear crosses first.
-
-## DaVinci Resolve
-1. Edit page: stack A and B, and use the **Composite → Composite Mode → Difference** on the upper clip to align shape and position by eye.
-2. Refine with **Inspector → Transform** (Zoom, Position, Rotation) on B, then remove the composite mode and place the cut on the best frame.
-3. Colour page: pull the two shots toward each other — match the dominant hue and the mid-grey level within about 10% — with a still grab from A as your reference wipe.
-4. For a shape that needs to be bent into place, Fusion page: **Polygon** mask around the matched element in each shot plus a **Grid Warp** or **Corner Pin**, animated to identity over 8–12 frames.
-5. For the match-dissolve variant, use a **Cross Dissolve** of 12 frames and set the transition curve to **Ease In and Out** so the midpoint holds longer on the ambiguous shape.
-
-## CapCut
-1. Import both clips and scrub each to the exact frame you want to match. Split off everything else.
-2. Overlay B on top of A, set its **Blend → Mode → Difference** and lower opacity to align position and scale by dragging on the canvas.
-3. Reset blending, then drag B down to the main track so it butts against A with no transition.
-4. Fine-tune B's Scale and Rotate by 1–2 steps if the shapes are close but not aligned.
-5. Keep one continuous sound across both — a single music bed or a sound effect that starts before the cut and ends after it.
-
 ## Remotion
 
 Prompt to give an AI/code assistant:
@@ -96,5 +75,30 @@ export const MatchCut: React.FC<{
 
 *(The alignment offsets are per-pair and have to be measured, not guessed: render both scenes at the cut frame, overlay them with `mix-blend-mode: difference` in a scratch composition, and tune `align` until the overlap goes black. Uniform scale and rotation can only get you so far — if the shapes disagree in perspective you need a real warp, which means an SVG `feDisplacementMap` or a WebGL layer rather than a CSS transform.)*
 
+## Premiere Pro
+
+1. Put A and B on stacked tracks V1/V2 with a generous overlap, and set the V2 clip **Opacity → Blend Mode → Difference** so you can visually align the shapes.
+2. Nudge B in time (comma/period keys) and in space (**Motion → Position/Scale/Rotation**) until the difference render goes as dark as possible. Small corrections only — 1–4% scale, a few degrees.
+3. Set the blend mode back to Normal, then trim so the cut lands on the tightest-match frame pair. Use **Add Edit** (Ctrl/Cmd+K) rather than a transition.
+4. If the shapes need warping to agree, apply **Warp Stabilizer** or a **Corner Pin** on B's first 8 frames and keyframe back to identity by frame 8 so the correction disappears.
+5. Weld the audio: extend A's ambience 6–10 frames past the cut, or start B's key sound 4 frames before the cut (J-cut) so the ear crosses first.
+
+## DaVinci Resolve
+
+1. Edit page: stack A and B, and use the **Composite → Composite Mode → Difference** on the upper clip to align shape and position by eye.
+2. Refine with **Inspector → Transform** (Zoom, Position, Rotation) on B, then remove the composite mode and place the cut on the best frame.
+3. Colour page: pull the two shots toward each other — match the dominant hue and the mid-grey level within about 10% — with a still grab from A as your reference wipe.
+4. For a shape that needs to be bent into place, Fusion page: **Polygon** mask around the matched element in each shot plus a **Grid Warp** or **Corner Pin**, animated to identity over 8–12 frames.
+5. For the match-dissolve variant, use a **Cross Dissolve** of 12 frames and set the transition curve to **Ease In and Out** so the midpoint holds longer on the ambiguous shape.
+
+## CapCut
+
+1. Import both clips and scrub each to the exact frame you want to match. Split off everything else.
+2. Overlay B on top of A, set its **Blend → Mode → Difference** and lower opacity to align position and scale by dragging on the canvas.
+3. Reset blending, then drag B down to the main track so it butts against A with no transition.
+4. Fine-tune B's Scale and Rotate by 1–2 steps if the shapes are close but not aligned.
+5. Keep one continuous sound across both — a single music bed or a sound effect that starts before the cut and ends after it.
+
 ## Reference clips
+
 Populated automatically from the library: every `technique=match_cut` detection, tagged with the cross-cut similarity score and the frame pair the detector matched on, so you can sort strongest-match first. Also see eyecannndy.com/technique/match-cut for a curated set with credits.

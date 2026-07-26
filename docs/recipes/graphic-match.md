@@ -11,28 +11,6 @@
 - *Sweeteners*: keep the matched shape within about 5% of its screen size and 2% of its screen position across the cut; hold the horizon line or a strong vertical at the same coordinate; keep the dominant colour block on the same side of frame. Do not add whooshes or impacts — this is a quiet device.
 - *Detector note*: our detector runs the same edge-map and shape-descriptor overlap it uses for match cuts, then requires the *opposite* verdict on the scene test — colour histogram, background classifier and audio ambience all consistent across the cut. High shape similarity plus same-scene continuity files as `graphic_match`; high shape similarity plus a scene change files as `match_cut`.
 
-## Premiere Pro
-1. Lay the two angles on V1/V2 with overlap. Set the top clip's **Opacity → Blend Mode → Difference** and step through both to find the frame pair where the echoed shape overlaps.
-2. Nudge with **Motion → Scale** (1–5%) and **Position** (a few pixels) on the upper clip only. Resist bigger corrections: inside one scene, a large reframe reads as a cheat.
-3. Turn blending off, cut with **Add Edit** on the best frame.
-4. Optional micro-dissolve: **Constant Power**-free is fine here, just apply a **Cross Dissolve** and set Duration to 3 frames in the Effect Controls panel.
-5. Check the seam with **Reference Monitor** in gang mode — put A's last frame in one viewer, B's first in the other, and confirm the shape and the horizon land on the same pixels.
-6. Add a **Grid** effect at 1/3 spacing temporarily to verify the matched element sits on the same third in both shots, then disable it.
-
-## DaVinci Resolve
-1. Edit page: stack the angles, set the top clip **Composite Mode → Difference**, and align position and scale in **Inspector → Transform**.
-2. Use the **Onion Skin** overlay in the trim tool (or a still grab from A with the wipe on) to confirm the shape overlap at the cut frame.
-3. Colour page: because both shots share the scene, match them properly — one node grade copied across with **Shot Match** and then hand-corrected, so the echoed shape reads as the same object under the same light.
-4. If a stray element in B breaks the echo, Fusion page: **Polygon** mask plus **Transform** to shift just that element a few pixels, tracked with a **Planar Tracker** if it moves.
-5. Keep the ambience continuous — put the room tone on its own track spanning both clips rather than relying on the clips' own audio.
-
-## CapCut
-1. Import both angles, overlay the second on the first, set **Blend → Mode → Difference**.
-2. Drag and pinch the overlay until the shared shape lines up, noting the Scale and Position values.
-3. Reset blending, move the clip to the main track, and re-apply the Scale/Position you noted.
-4. Split both clips so the cut lands on the aligned frame, with no transition (or a 0.1s **Dissolve** if the frames are nearly identical).
-5. Leave one music/room-tone track running across the cut so the scene never breathes.
-
 ## Remotion
 
 Prompt to give an AI/code assistant:
@@ -97,5 +75,31 @@ export const GraphicMatch: React.FC<{
 
 *(Unlike a match cut, the alignment offset here should stay put rather than relaxing to identity — the echoed geometry is the composition of shot B, not a temporary cheat, so animating it away undoes the match on the very next frames. Note also that `mixBlendMode: 'difference'` composites against the layers beneath it inside the same stacking context, so keep the debug mode's parent background black or the difference render will lie to you.)*
 
+## Premiere Pro
+
+1. Lay the two angles on V1/V2 with overlap. Set the top clip's **Opacity → Blend Mode → Difference** and step through both to find the frame pair where the echoed shape overlaps.
+2. Nudge with **Motion → Scale** (1–5%) and **Position** (a few pixels) on the upper clip only. Resist bigger corrections: inside one scene, a large reframe reads as a cheat.
+3. Turn blending off, cut with **Add Edit** on the best frame.
+4. Optional micro-dissolve: **Constant Power**-free is fine here, just apply a **Cross Dissolve** and set Duration to 3 frames in the Effect Controls panel.
+5. Check the seam with **Reference Monitor** in gang mode — put A's last frame in one viewer, B's first in the other, and confirm the shape and the horizon land on the same pixels.
+6. Add a **Grid** effect at 1/3 spacing temporarily to verify the matched element sits on the same third in both shots, then disable it.
+
+## DaVinci Resolve
+
+1. Edit page: stack the angles, set the top clip **Composite Mode → Difference**, and align position and scale in **Inspector → Transform**.
+2. Use the **Onion Skin** overlay in the trim tool (or a still grab from A with the wipe on) to confirm the shape overlap at the cut frame.
+3. Colour page: because both shots share the scene, match them properly — one node grade copied across with **Shot Match** and then hand-corrected, so the echoed shape reads as the same object under the same light.
+4. If a stray element in B breaks the echo, Fusion page: **Polygon** mask plus **Transform** to shift just that element a few pixels, tracked with a **Planar Tracker** if it moves.
+5. Keep the ambience continuous — put the room tone on its own track spanning both clips rather than relying on the clips' own audio.
+
+## CapCut
+
+1. Import both angles, overlay the second on the first, set **Blend → Mode → Difference**.
+2. Drag and pinch the overlay until the shared shape lines up, noting the Scale and Position values.
+3. Reset blending, move the clip to the main track, and re-apply the Scale/Position you noted.
+4. Split both clips so the cut lands on the aligned frame, with no transition (or a 0.1s **Dissolve** if the frames are nearly identical).
+5. Leave one music/room-tone track running across the cut so the scene never breathes.
+
 ## Reference clips
+
 Populated automatically from the library: every `technique=graphic_match` detection, with the shape-similarity score, the matched frame pair, and the same-scene confidence that separated it from `match_cut`. There is no eyecannndy category for graphic match — it folds these into their match-cut page — so the library's own detections are the reference set here; cross-check against eyecannndy.com/technique/match-cut only if you want the scene-changing cousin for contrast.

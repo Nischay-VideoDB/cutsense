@@ -11,33 +11,6 @@
 - *Sweeteners*: pitch the audio with the ramp (or duck it and let music carry), push a 2–4 frame directional blur at the steepest part of the ramp, and add a light exposure lift on the slow section so it reads as the "held" moment.
 - *Detector note*: our detector measures per-frame optical-flow magnitude within a single shot and flags monotonic velocity changes that exceed roughly 2x over fewer than 15 frames with no cut boundary present — that "no cut" condition is what separates a ramp from a hard speed cut.
 
-## Premiere Pro
-1. Shoot high frame rate. Interpret the clip first: right-click in the Project panel → **Modify → Interpret Footage → Assume this frame rate: 23.976** to conform 120 fps to base slow motion with real frames.
-2. On the timeline clip, right-click the fx badge → **Time Remapping → Speed**. A rubber band appears across the clip.
-3. Ctrl/Cmd-click the rubber band to add a speed keyframe on the beat frame. Drag the band down to 35% before it and up to 250% after it.
-4. Drag the keyframe's two halves apart to create the ramp length — 8 frames is a good default — then drag the blue bezier handle to smooth it into an S-curve.
-5. Right-click the clip → **Time Interpolation → Optical Flow**. Render the section (**Sequence → Render In to Out**) to actually see it; the program monitor lies at draft quality.
-6. If optical flow tears on crossing limbs, switch that clip to **Frame Blending**, or split the clip and use flow only on the clean portion.
-7. Add **Transform** on the fast section, uncheck "Use Composition's Shutter Angle", Shutter Angle 180, to keep the sped-up frames from strobing.
-8. Audio: unlink and handle separately — either mute the ramped audio and let music carry the beat, or keep it and accept the pitch shift as an effect.
-
-## DaVinci Resolve
-1. Project Settings → **Frame Interpolation**: set Retime Process to **Optical Flow** and Motion Estimation to **Speed Warp** (Studio only) for the cleanest slow motion; **Enhanced Better** is the free-version equivalent.
-2. Edit page: right-click the clip → **Retime Controls** (Ctrl/Cmd+R). Speed handles appear under the clip.
-3. Right-click the clip → **Retime Curve**. Switch the curve from **Retime Frame** to **Retime Speed** — this is the graph you actually want to shape.
-4. Add keyframes either side of the beat, set the left segment to 35% and the right to 250%, then select both keyframes and click the **Smooth** (bezier) button. Drag handles until the acceleration is spread over 8–10 frames.
-5. Per-clip override: **Inspector → Retime and Scaling → Retime Process** if this shot needs different interpolation from the project default.
-6. Fusion page for surgical work: **TimeSpeed** or **TimeStretcher** node with a keyframed spline gives you frame-accurate control that the Edit-page curve cannot, and lets you feed a **VectorMotionBlur** driven by the same speed value.
-7. Colour page: a small Gain lift (about +0.05) on the slow section, keyframed on, sells the held moment.
-
-## CapCut
-1. Select the clip → **Speed → Curve → Custom**.
-2. Drag the graph points: pull the early points down to about 0.3x, the later points up to 2.5x, keeping the transition spread over two or three points rather than one vertical step.
-3. Place the steep part of the curve on the beat — the waveform under the timeline is your guide; use **Audio → Beats** to drop markers first.
-4. Toggle **Smooth slow motion** (optical-flow interpolation) on if the motion is clean; turn it off if you see warping around hands or hair.
-5. Turn on **Voice change → Off / normal pitch** or mute the clip audio so the ramp does not chipmunk the dialogue.
-6. Optional: add **Effects → Blur → Motion** on the fast portion, trimmed to about 0.2s.
-
 ## Remotion
 
 Prompt to give an AI/code assistant:
@@ -112,5 +85,36 @@ export const SpeedRamp: React.FC<{src: string}> = ({src}) => {
 
 *(Remotion has no optical-flow interpolation: seeking below 1x repeats source frames rather than synthesising new ones, so a 0.35x section will look stepped unless the source was shot at high frame rate — conform a 120 fps file and the ramp comes out clean. The `blur()` here is a uniform gaussian standing in for directional motion blur; for a real smear on the fast section use an SVG `feGaussianBlur` with `stdDeviation="8 0"` oriented along the dominant motion. For long compositions, replace the loop in `sourceFrameAt` with a precomputed prefix-sum array so you are not integrating from zero on every frame.)*
 
+## Premiere Pro
+
+1. Shoot high frame rate. Interpret the clip first: right-click in the Project panel → **Modify → Interpret Footage → Assume this frame rate: 23.976** to conform 120 fps to base slow motion with real frames.
+2. On the timeline clip, right-click the fx badge → **Time Remapping → Speed**. A rubber band appears across the clip.
+3. Ctrl/Cmd-click the rubber band to add a speed keyframe on the beat frame. Drag the band down to 35% before it and up to 250% after it.
+4. Drag the keyframe's two halves apart to create the ramp length — 8 frames is a good default — then drag the blue bezier handle to smooth it into an S-curve.
+5. Right-click the clip → **Time Interpolation → Optical Flow**. Render the section (**Sequence → Render In to Out**) to actually see it; the program monitor lies at draft quality.
+6. If optical flow tears on crossing limbs, switch that clip to **Frame Blending**, or split the clip and use flow only on the clean portion.
+7. Add **Transform** on the fast section, uncheck "Use Composition's Shutter Angle", Shutter Angle 180, to keep the sped-up frames from strobing.
+8. Audio: unlink and handle separately — either mute the ramped audio and let music carry the beat, or keep it and accept the pitch shift as an effect.
+
+## DaVinci Resolve
+
+1. Project Settings → **Frame Interpolation**: set Retime Process to **Optical Flow** and Motion Estimation to **Speed Warp** (Studio only) for the cleanest slow motion; **Enhanced Better** is the free-version equivalent.
+2. Edit page: right-click the clip → **Retime Controls** (Ctrl/Cmd+R). Speed handles appear under the clip.
+3. Right-click the clip → **Retime Curve**. Switch the curve from **Retime Frame** to **Retime Speed** — this is the graph you actually want to shape.
+4. Add keyframes either side of the beat, set the left segment to 35% and the right to 250%, then select both keyframes and click the **Smooth** (bezier) button. Drag handles until the acceleration is spread over 8–10 frames.
+5. Per-clip override: **Inspector → Retime and Scaling → Retime Process** if this shot needs different interpolation from the project default.
+6. Fusion page for surgical work: **TimeSpeed** or **TimeStretcher** node with a keyframed spline gives you frame-accurate control that the Edit-page curve cannot, and lets you feed a **VectorMotionBlur** driven by the same speed value.
+7. Colour page: a small Gain lift (about +0.05) on the slow section, keyframed on, sells the held moment.
+
+## CapCut
+
+1. Select the clip → **Speed → Curve → Custom**.
+2. Drag the graph points: pull the early points down to about 0.3x, the later points up to 2.5x, keeping the transition spread over two or three points rather than one vertical step.
+3. Place the steep part of the curve on the beat — the waveform under the timeline is your guide; use **Audio → Beats** to drop markers first.
+4. Toggle **Smooth slow motion** (optical-flow interpolation) on if the motion is clean; turn it off if you see warping around hands or hair.
+5. Turn on **Voice change → Off / normal pitch** or mute the clip audio so the ramp does not chipmunk the dialogue.
+6. Optional: add **Effects → Blur → Motion** on the fast portion, trimmed to about 0.2s.
+
 ## Reference clips
+
 Populated automatically from the library: every `technique=speed_ramp` detection, annotated with the measured velocity ratio, the ramp length in frames, and whether a cut was present (ramps with a cut inside get demoted). Also see eyecannndy.com/technique/speed-ramping for a curated set with credits.

@@ -10,30 +10,6 @@
 - *Sweeteners*: 2–4 frames of exposure lift on A just before the crossover so the highlights bloom into the key, a touch of gaussian bloom or glow on the transition frames, and a short reverb tail or riser under the seam. Keep the audio crossing before the picture (J-cut, 4–6 frames) so the ear leads.
 - *Detector note*: our detector tracks mean frame luminance across a cut and flags a monotonic excursion toward 0 or 255 followed by a recovery inside about 20 frames. It also checks whether the shot changed during the excursion — if the frame dips to black and comes back to the same shot, that is a flash or an exposure event, not a luma fade.
 
-## Premiere Pro
-1. Dip version: place a **Dip to Black** or **Dip to White** transition on the cut, then set Duration to 12 frames and drag the alignment so the midpoint sits on the beat.
-2. Keyed version: stack A on V1 and B on V2 with a 14-frame overlap, and apply **Track Matte Key** on B set to use V1 as the matte, Composite Using **Matte Luma**.
-3. Because Track Matte Key has no animatable threshold, put a **Levels** or **Lumetri Curves** adjustment on the matte source (a duplicate of A on V3 used as the matte track) and keyframe Input White / Input Black to sweep the key: white point 255 → 0 over 14 frames.
-4. Alternative single-effect route: apply **Luma Key** to the top clip and keyframe **Threshold** 100% → 0% with **Cutoff** around 20%, then right-click both keyframes → **Ease In / Ease Out**.
-5. Bloom the seam: **Gaussian Blur** on a duplicate of the transition frames, blend mode **Screen**, opacity keyframed 0 → 40 → 0 across the 14 frames.
-6. Audio: J-cut B's bed 5 frames ahead of the picture crossover, and put a short riser under the transition at about −12 dB.
-
-## DaVinci Resolve
-1. Dip version: Edit page, drop **Dip to Color Dissolve** on the cut, set the colour to black or white in the Inspector, Duration 12 frames, and set the transition ease to **Ease In and Out**.
-2. Keyed version: Fusion page is the right place. Bring both shots in as MediaIn nodes.
-3. Add a **Luma Keyer** (or a **ColorCorrector** feeding a **Matte Control**) fed from shot A, and connect its output to the effect mask of shot B, so B is only visible where A is bright.
-4. Keyframe the keyer's **Low** and **High** range so the visible band widens: High 1.0 → 0.0 over 14 frames, with 0.1–0.2 of softness on the range. Right-click the animated value → **Ease In and Out** in the Spline editor.
-5. Composite with a **Merge** node, then add a **Glow** node after the Merge with Gain keyframed 0 → 1.5 → 0 across the transition for the bloom.
-6. Back on the Edit page, use a **Fusion Transition** rather than a Fusion clip if you want the setup reusable across other cuts.
-7. Colour page: on A's tail, a keyframed Lift/Gain push of about +0.08 gives the key something brighter to bite into.
-
-## CapCut
-1. Simple dip: place **Transitions → Basic → Fade to black** (or **Flash white**) on the cut, duration 0.4s.
-2. Keyed look: **Transitions → Light** category — the glow and flare styles are luma-driven and land close to a proper luma fade on mobile.
-3. Manual version: overlay B on top of A, set B's **Blend → Mode → Screen**, and keyframe B's opacity 0 → 100% over about 0.5s. Screen blending makes B appear in A's bright areas first, which is the same idea with less control.
-4. Add **Effects → Video effects → Glow / Halo** trimmed to the transition length.
-5. Bring the music or a riser in about 5 frames before the picture crossover.
-
 ## Remotion
 
 Prompt to give an AI/code assistant:
@@ -158,5 +134,33 @@ export const LumaFade: React.FC<{
 
 *(This works because Remotion re-renders the whole tree every frame, so the regenerated `tableValues` animate the key edge — but it costs you a second full render of scene A into a `foreignObject`, which roughly doubles the cost of the transition frames. `mask-image: url(#id)` also needs the `-webkit-` prefix in Chrome, which is what the renderer uses. If A is a video rather than a component, or you want a genuinely soft, gradeable key, do the composite in a shader instead — `mix(colorA, colorB, smoothstep(threshold - softness, threshold, luma(colorA)))` with `threshold` as a uniform — since sampling a video twice through an SVG filter chain gets expensive fast. The dip mode has none of these caveats and is exact as written.)*
 
+## Premiere Pro
+
+1. Dip version: place a **Dip to Black** or **Dip to White** transition on the cut, then set Duration to 12 frames and drag the alignment so the midpoint sits on the beat.
+2. Keyed version: stack A on V1 and B on V2 with a 14-frame overlap, and apply **Track Matte Key** on B set to use V1 as the matte, Composite Using **Matte Luma**.
+3. Because Track Matte Key has no animatable threshold, put a **Levels** or **Lumetri Curves** adjustment on the matte source (a duplicate of A on V3 used as the matte track) and keyframe Input White / Input Black to sweep the key: white point 255 → 0 over 14 frames.
+4. Alternative single-effect route: apply **Luma Key** to the top clip and keyframe **Threshold** 100% → 0% with **Cutoff** around 20%, then right-click both keyframes → **Ease In / Ease Out**.
+5. Bloom the seam: **Gaussian Blur** on a duplicate of the transition frames, blend mode **Screen**, opacity keyframed 0 → 40 → 0 across the 14 frames.
+6. Audio: J-cut B's bed 5 frames ahead of the picture crossover, and put a short riser under the transition at about −12 dB.
+
+## DaVinci Resolve
+
+1. Dip version: Edit page, drop **Dip to Color Dissolve** on the cut, set the colour to black or white in the Inspector, Duration 12 frames, and set the transition ease to **Ease In and Out**.
+2. Keyed version: Fusion page is the right place. Bring both shots in as MediaIn nodes.
+3. Add a **Luma Keyer** (or a **ColorCorrector** feeding a **Matte Control**) fed from shot A, and connect its output to the effect mask of shot B, so B is only visible where A is bright.
+4. Keyframe the keyer's **Low** and **High** range so the visible band widens: High 1.0 → 0.0 over 14 frames, with 0.1–0.2 of softness on the range. Right-click the animated value → **Ease In and Out** in the Spline editor.
+5. Composite with a **Merge** node, then add a **Glow** node after the Merge with Gain keyframed 0 → 1.5 → 0 across the transition for the bloom.
+6. Back on the Edit page, use a **Fusion Transition** rather than a Fusion clip if you want the setup reusable across other cuts.
+7. Colour page: on A's tail, a keyframed Lift/Gain push of about +0.08 gives the key something brighter to bite into.
+
+## CapCut
+
+1. Simple dip: place **Transitions → Basic → Fade to black** (or **Flash white**) on the cut, duration 0.4s.
+2. Keyed look: **Transitions → Light** category — the glow and flare styles are luma-driven and land close to a proper luma fade on mobile.
+3. Manual version: overlay B on top of A, set B's **Blend → Mode → Screen**, and keyframe B's opacity 0 → 100% over about 0.5s. Screen blending makes B appear in A's bright areas first, which is the same idea with less control.
+4. Add **Effects → Video effects → Glow / Halo** trimmed to the transition length.
+5. Bring the music or a riser in about 5 frames before the picture crossover.
+
 ## Reference clips
+
 Populated automatically from the library: every `technique=luma_fade` detection, tagged with the luminance excursion direction (toward black or toward white), the excursion depth, and the transition length in frames. There is no eyecannndy category for luma fade — their transition pages cover whip pans, zooms and split-screen but not luminance-keyed dissolves — so the library's own detections are the reference set here.
