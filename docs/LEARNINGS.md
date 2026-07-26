@@ -234,6 +234,28 @@ Three experiments, in order:
 Many curated "match cut" examples (and 9 of 69 Cowboy Bebop cuts our judge flagged as `same_context=true, composition_match=true`) are **graphic matches within one scene** — deliberately matched composition across a cut that stays in the same location. Our strict definition rejects these, which is why eyecannndy labels a video we score as 0.
 Recommendation: ship **two labels** — `match_cut` (different context + matched composition; the classic) and `graphic_match` (same context + matched composition). Editors searching "match cut" get both, precisely labeled. Cost: near zero — the judge already commits to both booleans and every rejected row stores them in `raw_json`, so no re-running is needed. Use the text judge's stricter signal for `graphic_match`, not paired vision's.
 
+## 2026-07-26 (app build) — API + UI standing up
+
+### graphic_match shipped for free
+Because the judge commits to `same_context` / `composition_match` and every rejected row keeps them in `raw_json`, adding the label was a pure local recompute (`scripts/relabel_boundaries.py`): **12 graphic matches recovered with zero API calls**, alongside 4 strict match cuts. Vocabulary is now whip_pan · zoom_punch · match_cut · graphic_match · speed_ramp · luma_fade.
+
+### Account switch
+New project key = a *different, empty* account (Falgunitripathi8); the first 10 calibration videos live in the earlier account. Rather than re-pay for detection, `videos.account` records which account holds each asset and `get_conn(account=...)` opens either — the UI serves both. Ingest dedupes per account.
+
+### Asset economics learned the hard way
+- First `/api/clips?limit=24` took **46s**: every card generated *both* a thumbnail and a stream. Streams are now deferred to hover (`/api/clips/{id}/stream`), thumbnails are fanned out 8-wide, and warm responses are **24ms**. `scripts/warm_assets.py` pre-generates thumbnails so a deploy is instant.
+- Thumbnails are stable storage URLs (cache forever); only streams expire (refresh at 18h, inside VideoDB's ~24h window).
+
+### Deploy shape (Railway)
+Container filesystems are ephemeral, so a gitignored SQLite catalog means an empty library on every redeploy. Fix: `library/catalog-snapshot.json` is git-tracked, copied into the image, and `seed_if_empty()` loads it on boot. **Rule: a detection run that isn't exported to the snapshot does not exist in production.**
+
+### Frontend notes
+- hls.js first, native HLS only as fallback — Chromium's `canPlayType` says "maybe" for m3u8 then fails.
+- `[hidden]` loses to any explicit `display` value; needed `[hidden] { display: none !important; }`.
+- Grid thumbnails are lazy-loaded, so screenshots taken immediately after navigation show black cards — the images were fine, the timing wasn't. Verified with `naturalWidth` before believing the pixels.
+- Canvas brightness sampling of VideoDB thumbnails is blocked (cross-origin `getImageData` SecurityError) — inspect frames by downloading them instead.
+- Whip-pan thumbnails are generated at the cut, so the grid *shows the smear*: the technique is legible at a glance, which is the whole demo.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 

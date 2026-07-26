@@ -43,7 +43,9 @@ Open library of 100 videos → type "whip pan" → grid of exact-moment playable
 
 ## Working agreements
 
-- **GitHub**: separate account/repo (not Shivanshu's main) — to be provided. Local git from day one; push once remote exists. Issues/PRs tracked on that GitHub.
+- **GitHub**: `github.com/falgunitripathi` — repo to be created there. **Ask for auth before the first push; never push without asking.** Issues/PRs tracked there.
+- **Deploy**: Railway (Docker). See [HOSTING.md](../HOSTING.md).
+- **VideoDB accounts**: primary = the project account (Falgunitripathi8) via `VIDEO_DB_API_KEY`; `VIDEO_DB_API_KEY_LEGACY` still holds the first calibration videos, and rows carry an `account` column so both can be served.
 - **No AI attribution** anywhere: commits, comments, PRs.
 - Reference videos and media never committed (gitignored under `data/`).
 
