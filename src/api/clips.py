@@ -33,6 +33,27 @@ def _video(videodb_id, account="primary"):
     return _video_cache[key]
 
 
+def _make_thumbnail(video, cut_time, offsets=(0.0, 0.4, -0.4)):
+    """Generate a poster near the cut, tolerating timestamps the encoder refuses.
+
+    Some timestamps simply fail (a cut landing on the last frame, for one), so a
+    single attempt at the exact cut leaves a hole in the grid.
+    """
+    duration = float(getattr(video, "length", 0) or 0)
+    for off in offsets:
+        t = cut_time + off
+        if t < 0 or (duration and t > duration - 0.05):
+            continue
+        try:
+            thumb = video.generate_thumbnail(time=float(t))
+            url = getattr(thumb, "url", thumb)
+            if url:
+                return url
+        except Exception:
+            continue
+    return None
+
+
 def clip_assets(db, detection, account="primary", want_thumbnail=True, want_stream=True):
     """Return {stream_url, thumbnail_url} for a detection row, refreshing if stale.
 
@@ -58,11 +79,7 @@ def clip_assets(db, detection, account="primary", want_thumbnail=True, want_stre
 
     thumbnail_url = row["thumbnail_url"] if row else None
     if want_thumbnail and not thumbnail_url:
-        try:
-            thumb = video.generate_thumbnail(time=float(detection["cut_time_s"]))
-            thumbnail_url = getattr(thumb, "url", thumb)
-        except Exception:
-            thumbnail_url = None
+        thumbnail_url = _make_thumbnail(video, float(detection["cut_time_s"]))
 
     with LOCK:
         db.execute(
