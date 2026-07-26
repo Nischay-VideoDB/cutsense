@@ -422,6 +422,32 @@ A `REPLICATION.md` schema (format · palette · typography · motion grammar · 
 
 **Caveat found in two of the three repos:** the DESIGN docs had drifted from the code (eases and stroke widths in the doc did not match the renderer). Treat code as ground truth, and treat the divergence itself as a finding.
 
+## 2026-07-27 — zoom punch: the prompt was never the problem
+
+At 14% precision zoom punch was the weakest detector. The audit notes said why, unambiguously — the word "continuous" ran through nearly every refutation: *"continuous forward motion with radial blur, not an abrupt scale jump at a cut"*. The classifier was firing on dollies, push-ins and rotations, because **radial blur is produced by any fast forward camera move** and my prompt let that cue do the work.
+
+**Rewriting the prompt made it worse, and that was the useful result.** A stricter definition ("a punch is a step, not a move; already finished by frame one") took false positives to 0/25 — and true positives to 0/21, with 16 of them relabelled whip_pan. That is not a tuning failure, it is a diagnosis: **a scale jump cannot be judged from the incoming shot alone.** Like match cut, zoom punch is a cross-cut technique and the shot-start window simply does not contain the evidence.
+
+**The fix is deterministic, not prompted** (`src/detect/scale_jump.py`): take the frame either side of the cut, crop A's centre by 1/s for a few candidate scales, resize, and correlate against B. If some s > 1 correlates materially better than s = 1, the framing genuinely jumped scale. Calibrated against the 51 audited labels:
+
+| gate | keeps true | keeps false | precision |
+|---|---|---|---|
+| gain ≥ 0.03, corr ≥ 0.25 | 11/21 | 9/30 | 55% |
+| gain ≥ 0.10, corr ≥ 0.35 | 9/21 | 4/30 | 69% |
+| **gain ≥ 0.15, corr ≥ 0.35** | **9/21** | **3/30** | **75%** |
+
+Shipped the strictest: **14% → 75% precision**, recall deliberately sacrificed (a missed punch is invisible; a wrong one is on screen). Applied to the live catalog via `scripts/m2_gate_zoom.py`: **37 visible zoom punches → 10**, and the rejected ones mostly measured a scale gain of exactly 0.0 — they never involved a scale change at all.
+
+Method note worth keeping: the audit verdicts turned into a **labelled set**, which is what made this measurable rather than a guess. `scripts/m2_eval_prompt.py` re-runs the classifier over known-good and known-bad detections and reports both directions, so a prompt edit can no longer look like an improvement while quietly destroying recall.
+
+### Programmable editing in the recipes — and its honest limits
+Each recipe now carries a **Programmable editing (VideoDB)** section between Remotion and the NLEs, and it says plainly what the editor API can and cannot do:
+- **Authorable**: luma fade (`Transition(in_="fade", out="fade")` — verified rendering end to end), match cut and graphic match (they are hard cuts; adjacency *is* the technique), and a rough whip via the `shuffle` transition (slide without the smear).
+- **Not authorable**: zoom punch (`Clip.scale` is static, not animatable) and speed ramp (no playback-rate control). Those say so instead of implying otherwise.
+- What the API *is* good at — assembly: cutting, layering, static filters, named transitions, burned captions, no local ffmpeg. Every section ends with a runnable study-reel snippet plus the two constraints that bite (`out-point = asset.start + duration`, and the ~100KB timeline ceiling).
+
+On remotion.dev/prompts: it is a community **gallery**, not a prompt guide, and `/docs/ai/coding-agents` just points at Remotion Agent Skills. The substantive rules are the ones already captured in `docs/recipes/_prompt-kit.md` from the vendored copy of those same skills.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
