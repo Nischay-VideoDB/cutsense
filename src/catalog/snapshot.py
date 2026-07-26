@@ -44,12 +44,44 @@ def export_snapshot(db, path=SNAPSHOT_PATH):
     return {k: len(v) for k, v in payload.items()}
 
 
+def reconcile_verdicts(db, path=SNAPSHOT_PATH):
+    """Apply audit verdicts from the snapshot to rows that predate them.
+
+    A volume-backed catalog is not empty, so the seeder never runs again — which would
+    leave a deployed instance permanently unaudited while the snapshot carries the
+    verdicts. Matching on the natural key keeps this idempotent.
+    """
+    if not path.exists():
+        return {"reconciled": 0}
+    payload = json.loads(path.read_text())
+    verdicts = {(d["videodb_id"], round(d["cut_time_s"], 3), d["technique"]):
+                (d.get("verified"), d.get("verify_note"))
+                for d in payload.get("detections", []) if d.get("verified") is not None}
+    if not verdicts:
+        return {"reconciled": 0}
+
+    with LOCK:
+        pending = db.execute(
+            "SELECT id, videodb_id, cut_time_s, technique FROM detections"
+            " WHERE verified IS NULL").fetchall()
+        updates = []
+        for row in pending:
+            key = (row["videodb_id"], round(row["cut_time_s"], 3), row["technique"])
+            if key in verdicts:
+                verified, note = verdicts[key]
+                updates.append([verified, note, row["id"]])
+        if updates:
+            db.executemany("UPDATE detections SET verified=?, verify_note=? WHERE id=?", updates)
+            db.commit()
+    return {"reconciled": len(updates)}
+
+
 def seed_if_empty(db, path=SNAPSHOT_PATH):
     """Load the snapshot when the database has no detections yet."""
     with LOCK:
         have = db.execute("SELECT COUNT(*) c FROM detections").fetchone()["c"]
     if have or not path.exists():
-        return {"seeded": False, "detections": have}
+        return {"seeded": False, "detections": have, **reconcile_verdicts(db, path)}
 
     payload = json.loads(path.read_text())
     with LOCK:
