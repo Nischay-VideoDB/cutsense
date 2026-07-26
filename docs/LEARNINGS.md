@@ -331,6 +331,29 @@ A fresh analysis returned **0 techniques across 88 cuts**. Cause: every `scene.d
 - The plain-language parser routed "show me every whip pan" to `reel` because the phrasing sounds collective; a reel now requires an explicit reel word. A content filter matching nothing (e.g. "sneaker ads", which the library has none of) widens to the technique alone and says so, instead of returning an empty grid.
 - Thumbnails get an `onerror` fallback so a failed image reads as empty rather than a broken-file icon.
 
+## 2026-07-27 — speed ramp fixed, public gallery, persistence plan
+
+### Speed ramp: the old detector could not have worked
+It found zero across the whole library because it judged **3 stills per shot** — a change in playback speed is invisible in three frames. Replaced with a two-stage detector (`src/detect/motion.py`, `scripts/m2_speed_ramp.py`):
+1. Extract a *dense* time-based collection (1s windows, 6 frames) and keep only windows sitting wholly **inside one shot**, so motion is comparable with no cut in the way.
+2. Measure mean absolute pixel change between consecutive frames — a free, local motion series — then gate on it.
+3. Ask the model only about survivors.
+
+Gate design mattered more than the raw signal. `max/min` motion ratio alone surfaced whip pans, because a whip is a huge **one-frame spike**. A speed ramp is a *sustained* step, so the gate now needs `step_ratio >= 2.5` (slower half vs faster half) **and** `spike_share <= 0.62` (no single frame pair carrying the motion). On one ad that cut 41 windows → 5 candidates → 2 confirmed.
+
+Result: **7 speed ramps across 5 videos**, with specific evidence ("frames 1-3 show minimal movement, while frames 4-6 show a sudden…"). Selectivity looks right, not enthusiastic: other videos returned 0 of 6, 1 of 9, 0 of 2.
+
+### A regex bug worth remembering
+Recovering an existing scene-collection id from the "already exists" error broke twice: `id (\S+?)\.?$` missed because the message has **trailing whitespace** after the period, and the unanchored fallback `id\s+(\S+)` matched the "id" inside **"Inval*id* request"**, parsing the id as `request:` and producing a baffling "does not exists" error. Now `\bid\s+(\S+)` with `.rstrip(". ")`, in one shared helper.
+
+### Public gallery
+`GET /api/gallery` returns every analysed video as a card — poster frame (its highest-confidence detection), technique tally with breakdown, cuts/min — and the home screen shows it under the paste field. Clicking a card opens that video's full report, so the archive doubles as a browsable public record of what has been analysed. Verified: 34 cards, 34/34 posters loading, click-through renders the report.
+
+### Persistence
+Visitor analyses are runtime rows, so they need storage outliving the container. `CUTSENSE_DB` now overrides the catalog path: mount a Railway volume at `/data` and set `CUTSENSE_DB=/data/cutsense.sqlite`. Postgres was considered and deferred — the catalog leans on SQLite-specific SQL (`INSERT OR IGNORE`, `COUNT(...) FILTER`, `datetime('now')`), so a volume buys durability without a dialect port.
+
+**CLI blocker:** the Railway CLI is installed and logged in as `thelonelyrulershiv@gmail.com`, but that workspace does not contain the CutSense project id — only an unrelated project (whose services I deliberately left alone). Needs a login as the owning account, an invite, or `RAILWAY_TOKEN`.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 

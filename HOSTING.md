@@ -11,6 +11,33 @@ Target: **Railway** (Docker build, auto-deploy from `main` on `github.com/falgun
 | `PORT` | injected | Railway sets this; the CMD expands it |
 | `RAILWAY_GIT_COMMIT_SHA` | injected | reported by `/api/health` as `version` |
 
+## Persisting visitor-submitted analyses (needed for the public gallery)
+
+The gallery lists every analysed video, including ones visitors submit. Those rows are
+written at runtime, so they need storage that outlives the container.
+
+`CUTSENSE_DB` points the catalog anywhere, so the simplest durable setup is a Railway
+volume — no database port, no SQL dialect risk:
+
+1. Add a volume to the service, mount path `/data`.
+2. Set `CUTSENSE_DB=/data/cutsense.sqlite`.
+3. Redeploy. On first boot the snapshot seeds the volume, and every later analysis
+   accumulates there.
+
+Postgres is the alternative if several instances ever need to share state; that
+requires porting the catalog's SQL (SQLite-specific `INSERT OR IGNORE`,
+`COUNT(...) FILTER`, `datetime('now')`, `AUTOINCREMENT`), so the volume is the
+better trade until horizontal scale is actually needed.
+
+### CLI access note
+
+The Railway CLI is installed at `~/.hermes/node/bin/railway` and is logged in as
+`thelonelyrulershiv@gmail.com`, whose workspace contains an unrelated project only.
+The CutSense project (`c7dde329-6a33-4e50-ac61-e098961076ba`) is not in that
+workspace, so the CLI cannot reach it until either that account is added to the
+project, `railway login` is run as the owning account, or a project token is
+exported as `RAILWAY_TOKEN`.
+
 ## What survives a redeploy — and what doesn't
 
 The container filesystem is **ephemeral**. `data/cutsense.sqlite` is written at runtime and is gitignored, so a redeploy starts with an empty database.
