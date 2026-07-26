@@ -11,6 +11,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor
 
 from videodb import SceneExtractionType
+from videodb.exceptions import InvalidRequestError
 
 from src.detect.prompts import PROMPT_VERSION, SHOT_START_PROMPT
 
@@ -20,11 +21,29 @@ CONF_THRESHOLD = {"whip_pan": 0.85, "zoom_punch": 0.85, "luma_fade": 0.9}
 CONTEXT_S = 1.5  # clip window padding around the cut
 
 
+def scene_collection_id(threshold, frame_count=3, model_tag="m15"):
+    """VideoDB derives a deterministic id from the extraction config."""
+    return f"st{threshold}{model_tag}f{frame_count}"
+
+
 def extract_shots(video, threshold=20, frame_count=3):
-    return video.extract_scenes(
-        extraction_type=SceneExtractionType.shot_based,
-        extraction_config={"threshold": threshold, "frame_count": frame_count},
-    )
+    """Extract shots, reusing an existing collection for the same config.
+
+    VideoDB raises InvalidRequestError ("Scenes with given configuration already
+    exists") rather than returning the existing collection, so re-runs would fail
+    and re-extraction would be paid for twice.
+    """
+    try:
+        return video.extract_scenes(
+            extraction_type=SceneExtractionType.shot_based,
+            extraction_config={"threshold": threshold, "frame_count": frame_count},
+        )
+    except InvalidRequestError as e:
+        if "already exists" not in str(e):
+            raise
+        existing = re.search(r"id (\S+?)\.?$", str(e))
+        sc_id = existing.group(1) if existing else scene_collection_id(threshold, frame_count)
+        return video.get_scene_collection(sc_id)
 
 
 def parse_json_reply(text: str):

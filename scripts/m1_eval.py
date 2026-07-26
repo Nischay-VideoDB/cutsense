@@ -25,14 +25,25 @@ def main():
     db = get_db()
 
     print("=== Weak eval (video-level: hint technique detected anywhere?)")
+    print("    HIT = detected · miss = detector ran, found nothing · n/a = detector not run yet")
     rows = db.execute("SELECT videodb_id, title, technique_hint FROM videos WHERE technique_hint IS NOT NULL")
     for r in rows:
         hints = [HINT_MAP.get(h, h) for h in r["technique_hint"].split(",")]
-        found = {d["technique"] for d in db.execute(
-            "SELECT technique, confidence FROM detections WHERE videodb_id=?", [r["videodb_id"]])
-            if d["technique"] in CONF and d["confidence"] >= CONF[d["technique"]]}
-        marks = " ".join(f"{h}:{'HIT' if h in found else 'miss'}" for h in hints)
-        print(f"  {r['title'][:45]:45s} {marks}")
+        dets = list(db.execute(
+            "SELECT technique, confidence FROM detections WHERE videodb_id=?", [r["videodb_id"]]))
+        found = {d["technique"] for d in dets
+                 if d["technique"] in CONF and d["confidence"] >= CONF[d["technique"]]}
+        # a detector "ran" if it stored any row for that technique, accepted or rejected
+        ran = {t.replace("rejected:", "") for t in (d["technique"] for d in dets)}
+        marks = []
+        for h in hints:
+            if h in found:
+                marks.append(f"{h}:HIT")
+            elif h in ran or (h == "whip_pan" and "hard_cut" in ran):
+                marks.append(f"{h}:miss")
+            else:
+                marks.append(f"{h}:n/a")
+        print(f"  {r['title'][:45]:45s} {' '.join(marks)}")
 
     print("\n=== Strong eval (cut-level vs hand labels)")
     labels = list(db.execute("SELECT * FROM labels"))
