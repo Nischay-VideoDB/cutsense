@@ -178,6 +178,29 @@ Environment: Python 3.12 venv, videodb 0.5.1. Scripts in `scripts/m0_0*.py`. Tes
 - Speed ramp: within-shot `Scene.describe()` with frame-spacing prompt works normally.
 - Smoke test on whip-pan clip: correct — no false match cuts (whip pans in same location correctly = plain_cut; one 0.78 candidate rejected by 0.85 threshold), no false speed ramps.
 
+## 2026-07-26 (later) — calibration batch + pixel-veto second gate
+
+### Batch ingest & parallelism
+- 8 eyecannndy-sourced videos ingested (`scripts/ingest_batch.py`), ~1400 shots total classified.
+- **Parallelized `describe()` with ThreadPoolExecutor (8 workers): 4.6x speedup** (60s IKEA ad: 32 shots in 32s vs ~150s serial). No rate-limit errors observed at 8 concurrent.
+- **Bug fixed: `extract_scenes()` raises `InvalidRequestError: Scenes with given configuration already exists with id st20m15f3`** instead of returning the existing collection — this killed an `--all` loop. `extract_shots()` now catches it and parses the id out of the message to reuse (also avoids paying for re-extraction). Scene-collection ids are deterministic: `st{threshold}m15f{frame_count}`.
+- Data-quality catch: eyecannndy's source links for FILM clips often point to a video essay or trailer, not the film (Grand Budapest → "Wes Anderson's Production Design" essay). Weak labels from film entries are unreliable; ads/music videos are solid.
+- Dedupe gap: the manual ASD upload had no `source_url`, so `ingest_batch` re-uploaded it. Deleted the dupe and backfilled. Ingest should match on source_url OR title.
+
+### THE KEY M1 FINDING: the VLM alone is not precise enough — pixel veto added
+- On real ad/music-video footage the VLM confidently mislabels sharp frames as whip pans (IKEA @6.4s conf **0.98**, ASD @121.4s conf **0.97**, tutorial @46.9s conf 0.98 — all visually verified sharp, no blur). Tutorial footage had hidden this: it was easy mode.
+- Root cause: the classifier sees only one shot's frames and can't reliably separate a blurred SUBJECT (or dark/soft footage) from a genuine whole-frame camera whip.
+- Solution: **deterministic pixel-stat second gate** (`src/detect/filters.py`, numpy+PIL, no extra API cost beyond 3 small image fetches per candidate). Metrics: Laplacian-variance sharpness, border sharpness, gradient directionality, luma.
+- Calibration path mattered: absolute `border_sharpness`/`directionality` thresholds scored only 4/10 on labeled frames. The winning design is **content-normalized**: compare the shot's first frame to its sharpest later frame (a whip settles). Combined gate = `ratio >= 1.5 OR absolute sharpness <= 220` → **11/11 on the hand-labeled calibration set** (`scripts/m1_calibrate_filters.py`), including vetoing both known 0.97/0.98 false positives. Caveat: 11 cases is small; needs the full hand-labeled set to trust.
+- Applied to the stored batch via `scripts/m1_revalidate.py` (re-gates without re-paying for VLM): **vetoed 13 of 73 candidates (7 whip_pan, 6 luma_fade)**, kept 60. Two randomly chosen vetoes were visually confirmed correct.
+- Design rule adopted: rejections are stored as `rejected:<label>` with the reason, never silently dropped — keeps precision debuggable.
+- luma_fade thresholds (luma <=40 or >=215) may be too strict — vetoed frames at luma 51–198 could be genuine partial dips. luma_fade is lower-priority than the visual transitions; revisit with labels.
+
+### Weak eval status (`scripts/m1_eval.py`)
+- whip_pan HIT on 5 of 6 whip-pan-labeled videos; the single miss is the mislabeled Wes Anderson essay.
+- Eval now distinguishes `HIT` / `miss` (ran, found nothing) / `n/a` (detector not run) — earlier output made un-run detectors look like failures.
+- Still blocking M1 exit: hand labels for cut-level precision/recall.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
