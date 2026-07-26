@@ -284,6 +284,14 @@ The first sample of 12 looked fine; across the library the judge granted `compos
 - Detection throughput at 8 workers: roughly 1 shot/second (a 180-shot music video ≈ 140s). Boundary judging is ~2x slower per cut (2 vision + 1 text).
 - Speed ramps: still 0 across the library. The within-shot detector runs and rejects; either the prompt is too strict or frame sampling (3 frames/shot) is too sparse to see velocity change. Next: sample more frames per shot on ramp-labeled videos.
 
+### Four UI/serving fixes found by actually looking at the page
+1. **Cross-account duplicates.** Several videos exist in both VideoDB accounts, so the same moment appeared twice. The API now hides a legacy video when a primary twin exists (same title or source URL): 558 stored detections → 475 shown across 35 videos.
+2. **Display ranking.** Default ordering was confidence-first, which put luma fades (near-black frames) at the top and made the grid look empty. Ordering now follows `SHIPPING_TECHNIQUES` (whip pan first, luma fade last), confidence within a technique.
+3. **Thumbnails proxied through our own origin** (`/api/thumb/{id}`). Third-party image hosts can be blocked by the embedding context, and same-origin also means cacheable (`max-age=86400`) and no VideoDB URLs leaked to the client.
+4. **Static assets are versioned** (`/static/app.js?v=<mtime|commit-sha>`, `no-store` on the HTML). This one cost real time: the browser served a **cached app.js** for several iterations, so edits appeared to do nothing and the symptom looked exactly like a broken feature. Diagnosis was reading the live `src` attribute in the DOM and seeing the old URL. In production the same failure mode would serve stale JS after a deploy.
+
+Related debugging lesson: `loading="lazy"` images never fetch when the page isn't being rendered/visible, so "0 of 60 loaded" is not evidence of a broken image pipeline. Confirm by probing with `new Image()` / `fetch()` from the page before changing anything.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 
