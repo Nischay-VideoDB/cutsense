@@ -61,15 +61,18 @@ def reconcile_verdicts(db, path=SNAPSHOT_PATH):
         return {"reconciled": 0}
 
     with LOCK:
-        pending = db.execute(
-            "SELECT id, videodb_id, cut_time_s, technique FROM detections"
-            " WHERE verified IS NULL").fetchall()
+        # Not just the unjudged: a verdict can also *change* (zoom punches were re-gated
+        # from confirmed to refuted after the fact), and only filling NULLs would leave
+        # production showing detections we have since rejected.
+        existing = db.execute(
+            "SELECT id, videodb_id, cut_time_s, technique, verified FROM detections").fetchall()
         updates = []
-        for row in pending:
+        for row in existing:
             key = (row["videodb_id"], round(row["cut_time_s"], 3), row["technique"])
             if key in verdicts:
                 verified, note = verdicts[key]
-                updates.append([verified, note, row["id"]])
+                if row["verified"] != verified:
+                    updates.append([verified, note, row["id"]])
         if updates:
             db.executemany("UPDATE detections SET verified=?, verify_note=? WHERE id=?", updates)
             db.commit()
