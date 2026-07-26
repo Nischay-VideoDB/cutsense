@@ -61,7 +61,8 @@ def _technique_counts(db, video_ids):
     tech = ",".join("?" * len(SHIPPING_TECHNIQUES))
     rows = db.execute(
         f"SELECT technique, COUNT(*) n FROM detections WHERE videodb_id IN ({marks})"
-        f" AND technique IN ({tech}) GROUP BY technique",
+        f" AND technique IN ({tech}) AND (verified IS NULL OR verified = 1)"
+        " GROUP BY technique",
         [*video_ids, *SHIPPING_TECHNIQUES]).fetchall()
     return {r["technique"]: r["n"] for r in rows}
 
@@ -69,11 +70,16 @@ def _technique_counts(db, video_ids):
 def _evidence(db, video_ids, limit=6):
     marks = ",".join("?" * len(video_ids))
     tech = ",".join("?" * len(SHIPPING_TECHNIQUES))
+    rank = " ".join(f"WHEN ? THEN {i}" for i in range(len(SHIPPING_TECHNIQUES)))
     rows = db.execute(
         f"SELECT d.id, d.technique, d.confidence, d.cut_time_s, d.window_start_s, d.window_end_s,"
         f" v.title FROM detections d JOIN videos v ON v.videodb_id = d.videodb_id"
         f" WHERE d.videodb_id IN ({marks}) AND d.technique IN ({tech})"
-        " ORDER BY d.confidence DESC LIMIT ?", [*video_ids, *SHIPPING_TECHNIQUES, limit]).fetchall()
+        "   AND (d.verified IS NULL OR d.verified = 1)"
+        # rank by technique before confidence: luma fades score 1.00 and are near-black
+        # frames, so confidence alone made every evidence thumbnail a black rectangle
+        f" ORDER BY CASE d.technique {rank} ELSE 99 END, d.confidence DESC LIMIT ?",
+        [*video_ids, *SHIPPING_TECHNIQUES, *SHIPPING_TECHNIQUES, limit]).fetchall()
     return [{"clip_id": r["id"], "technique": r["technique"],
              "technique_label": TECHNIQUE_LABELS.get(r["technique"], r["technique"]),
              "video_title": r["title"], "cut_time_s": r["cut_time_s"],
@@ -148,26 +154,33 @@ def _signature(coll, profile):
         return (f"{profile['name']}: {profile['cuts']} cuts across {profile['videos']} video(s), "
                 f"averaging {profile['avg_cut_length_s']}s per shot "
                 f"({profile['cuts_per_minute']} cuts/min). Techniques: {techniques}.")
-    try:
-        raw = coll.generate_text(
-            prompt=SIGNATURE_PROMPT.format(
-                name=profile["name"], videos=profile["videos"],
-                cpm=profile["cuts_per_minute"], avg=profile["avg_cut_length_s"],
-                median=None, fast=profile["fast_cut_share"],
-                rhythmic=f"{profile['rhythmic_videos']} of {profile['videos']} videos",
-                techniques=techniques),
-            model_name="basic")
-        text = raw.get("output") if isinstance(raw, dict) else raw
-        return str(text).strip() if text else None
-    except Exception as e:
-        return f"(signature unavailable: {type(e).__name__})"
+    prompt = SIGNATURE_PROMPT.format(
+        name=profile["name"], videos=profile["videos"],
+        cpm=profile["cuts_per_minute"], avg=profile["avg_cut_length_s"],
+        median=None, fast=profile["fast_cut_share"],
+        rhythmic=f"{profile['rhythmic_videos']} of {profile['videos']} videos",
+        techniques=techniques)
+    # tiers have separate budgets and one dying is normal, so walk the chain rather
+    # than letting a spent tier turn every profile into an error string
+    last = None
+    for model in ("basic", "pro", "ultra"):
+        try:
+            raw = coll.generate_text(prompt=prompt, model_name=model)
+            text = raw.get("output") if isinstance(raw, dict) else raw
+            if text:
+                return str(text).strip()
+        except Exception as e:
+            last = e
+            continue
+    return f"(signature unavailable: {type(last).__name__ if last else 'no output'})"
 
 
 def creators(db, min_videos=1):
     rows = db.execute(
         "SELECT v.creator, COUNT(DISTINCT v.videodb_id) videos,"
         " COUNT(d.id) FILTER (WHERE d.technique IN ("
-        + ",".join("?" * len(SHIPPING_TECHNIQUES)) + ")) detections"
+        + ",".join("?" * len(SHIPPING_TECHNIQUES))
+        + ") AND (d.verified IS NULL OR d.verified = 1)) detections"
         " FROM videos v LEFT JOIN detections d ON d.videodb_id = v.videodb_id"
         " WHERE v.creator IS NOT NULL GROUP BY v.creator"
         " HAVING videos >= ? ORDER BY detections DESC",

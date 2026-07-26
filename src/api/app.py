@@ -493,11 +493,37 @@ def asset_version():
         return "dev"
 
 
+def page():
+    html = (WEB_DIR / "index.html").read_text().replace("__ASSET_V__", asset_version())
+    return Response(content=html, media_type="text/html", headers={"Cache-Control": "no-store"})
+
+
 if WEB_DIR.exists():
     app.mount("/static", StaticFiles(directory=WEB_DIR), name="static")
 
     @app.get("/")
     def index():
-        html = (WEB_DIR / "index.html").read_text().replace("__ASSET_V__", asset_version())
-        return Response(content=html, media_type="text/html",
-                        headers={"Cache-Control": "no-store"})
+        return page()
+
+    # Client-owned routes, served the same shell so a deep link or a refresh works.
+    # Kept as an explicit list rather than a catch-all so a typo still 404s.
+    @app.get("/library")
+    @app.get("/pacing")
+    def simple_page():
+        return page()
+
+    @app.get("/video/{video_id}")
+    def video_page(video_id: str):
+        return page()
+
+    @app.get("/technique/{technique}")
+    def technique_page(technique: str):
+        return page()
+
+    @app.get("/creator/{name:path}")
+    def creator_page(name: str):
+        return page()
+
+    @app.get("/clip/{clip_id}")
+    def clip_page(clip_id: int):
+        return page()

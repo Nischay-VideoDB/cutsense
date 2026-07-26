@@ -37,12 +37,53 @@ function detachStream(videoEl) {
   videoEl.removeAttribute("src");
 }
 
-/* ---------- views ---------- */
+/* ---------- router ----------
+   Real URLs, so a report can be linked, refreshed and opened in a new tab. The
+   server serves the same shell for each of these paths (see app.py). */
+const ROUTES = [
+  [/^\/$/, () => showView("analyse")],
+  [/^\/library\/?$/, () => { showView("library"); loadRails(); loadClips(); }],
+  [/^\/technique\/([\w-]+)\/?$/, (t) => {
+    showView("library"); state.technique = t; state.creator = null; loadRails(); loadClips();
+  }],
+  [/^\/creator\/(.+?)\/?$/, (name) => { showView("creator"); loadProfile(decodeURIComponent(name)); }],
+  [/^\/video\/([\w-]+)\/?$/, (id) => { showView("report"); openReport(id); }],
+  [/^\/clip\/(\d+)\/?$/, (id) => { showView("analyse"); openSheet(id); }],
+  [/^\/pacing\/?$/, () => { showView("library"); loadRails(); ask("which videos cut fastest"); }],
+];
+
+function navigate(path, { replace = false } = {}) {
+  if (location.pathname !== path) {
+    history[replace ? "replaceState" : "pushState"]({}, "", path);
+  }
+  route();
+}
+
+function route() {
+  const path = location.pathname;
+  for (const [pattern, handler] of ROUTES) {
+    const match = path.match(pattern);
+    if (match) return handler(...match.slice(1));
+  }
+  showView("analyse");
+}
+
+const TITLES = { analyse: "CutSense — how was this cut?", library: "Reference library · CutSense",
+                 report: "Analysis · CutSense", creator: "Style profile · CutSense" };
+
 function showView(name) {
   document.querySelectorAll(".view").forEach(v => v.classList.toggle("show", v.id === `view-${name}`));
-  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t.dataset.view === name));
-  if (name === "library" && !state.clips.length) { loadRails(); loadClips(); }
+  const active = name === "library" || name === "creator" ? "/library" : "/";
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t.dataset.nav === active));
+  document.title = TITLES[name] || "CutSense";
+  window.scrollTo(0, 0);
 }
+
+window.addEventListener("popstate", route);
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("[data-nav]");
+  if (link) { e.preventDefault(); navigate(link.dataset.nav); }
+});
 
 /* ---------- analyse flow ---------- */
 const STAGES = ["queued", "uploading", "extracting", "detecting", "ready"];
@@ -95,10 +136,9 @@ async function poll(id) {
 }
 
 async function finishAnalysis(rec) {
-  const report = await api(`/api/report/${rec.videodb_id}`);
   $("#progress").hidden = true;
-  renderReport(report);
-  loadGallery();   // the new analysis belongs in the public list
+  loadGallery();                       // the new analysis belongs in the public list
+  navigate(`/video/${rec.videodb_id}`); // and gets its own screen
 }
 
 /* ---------- public gallery ---------- */
@@ -107,7 +147,7 @@ async function loadGallery() {
   try { data = await api("/api/gallery?limit=48"); } catch { return; }
   const el = $("#gallery");
   el.innerHTML = data.videos.map(v => `
-    <button class="gcard" data-video="${v.video_id}">
+    <a class="gcard" href="/video/${v.video_id}" data-video="${v.video_id}">
       ${v.poster_clip_id
         ? `<img decoding="async" src="/api/thumb/${v.poster_clip_id}" alt=""
                 onerror="this.classList.add('broken')">`
@@ -118,23 +158,23 @@ async function loadGallery() {
         <span class="gchips">${Object.entries(v.breakdown).slice(0, 3)
           .map(([k, n]) => `<i>${k} ${n}</i>`).join("")}</span>
       </div>
-    </button>`).join("");
+    </a>`).join("");
   el.querySelectorAll("[data-video]").forEach(node =>
-    node.addEventListener("click", () => openReport(node.dataset.video)));
+    node.addEventListener("click", () => navigate(`/video/${node.dataset.video}`)));
 }
 
 async function openReport(videoId) {
-  $("#report").hidden = true;
-  $("#progress").hidden = false;
-  setProgress("detecting", "loading the report");
+  const prog = $("#report-progress");
+  prog.hidden = false;
+  $("#report-fill").style.width = "60%";
+  $("#report-progress-text").textContent = "loading the analysis…";
+  $("#report").innerHTML = "";
   try {
     renderReport(await api(`/api/report/${videoId}`));
-    $("#progress").hidden = true;
-    window.scrollTo({ top: $("#report").offsetTop - 70, behavior: "smooth" });
+    prog.hidden = true;
   } catch (e) {
-    $("#progress").hidden = true;
-    $("#analyse-error").textContent = e.message;
-    $("#analyse-error").hidden = false;
+    prog.hidden = true;
+    $("#report").innerHTML = `<div class="failed">Could not load that analysis: ${e.message}</div>`;
   }
 }
 
@@ -375,21 +415,16 @@ function renderPacing(videos) {
 }
 
 async function loadProfile(creator) {
-  $("#grid").innerHTML = "";
-  ["#reel-out", "#pacing-out"].forEach(s => { $(s).hidden = true; });
-  $("#reelbtn").hidden = true;
-  $("#crumb").textContent = `Style profile — ${creator}`;
-  $("#profile-out").hidden = false;
-  $("#profile-out").innerHTML = `<div class="mono">reading their signature…</div>`;
+  $("#creator-out").innerHTML = `<div class="mono">reading their signature…</div>`;
   try {
-    renderProfile(await api(`/api/profile/creator/${encodeURIComponent(creator)}`));
+    renderProfile(await api(`/api/profile/creator/${encodeURIComponent(creator)}`), "#creator-out");
   } catch (e) {
-    $("#profile-out").innerHTML = `<div class="failed">${e.message}</div>`;
+    $("#creator-out").innerHTML = `<div class="failed">${e.message}</div>`;
   }
 }
 
-function renderProfile(p) {
-  const el = $("#profile-out");
+function renderProfile(p, target) {
+  const el = $(target || "#profile-out");
   el.hidden = false;
   el.innerHTML = `
     <div class="profile">
@@ -464,13 +499,13 @@ async function loadRails() {
   const all = document.createElement("li");
   all.innerHTML = `<span>All techniques</span>`;
   all.classList.toggle("on", !state.technique);
-  all.onclick = () => select({ technique: null, creator: null, q: "" });
+  all.onclick = () => navigate("/library");
   list.appendChild(all);
   techs.forEach(t => {
     const li = document.createElement("li");
     li.innerHTML = `<span>${t.label}</span><span class="n">${t.count}</span>`;
     li.classList.toggle("on", state.technique === t.id);
-    li.onclick = () => select({ technique: t.id, creator: null, q: "" });
+    li.onclick = () => navigate(`/technique/${t.id}`);
     list.appendChild(li);
   });
 
@@ -479,7 +514,7 @@ async function loadRails() {
   creators.creators.filter(c => c.detections > 0).slice(0, 14).forEach(c => {
     const li = document.createElement("li");
     li.innerHTML = `<span>${c.creator.slice(0, 24)}</span><span class="n">${c.detections}</span>`;
-    li.onclick = () => loadProfile(c.creator);
+    li.onclick = () => navigate(`/creator/${encodeURIComponent(c.creator)}`);
     clist.appendChild(li);
   });
 
@@ -530,5 +565,5 @@ $("#close").onclick = closeSheet;
 $("#sheet").addEventListener("click", e => { if (e.target === $("#sheet")) closeSheet(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#sheet").hidden) closeSheet(); });
 
-loadRails();
 loadGallery();
+route();

@@ -10,8 +10,8 @@
 <header class="topbar">
   <a class="wordmark" href="#" id="homelink">CUT<span>SENSE</span></a>
   <nav class="tabs">
-    <button class="tab on" data-view="analyse">Analyse a video</button>
-    <button class="tab" data-view="library">Reference library</button>
+    <a class="tab on" href="/" data-nav="/">Analyse a video</a>
+    <a class="tab" href="/library" data-nav="/library">Reference library</a>
   </nav>
   <div class="stats" id="stats"></div>
 </header>
@@ -41,8 +41,6 @@
     <div class="failed" id="analyse-error" hidden></div>
   </div>
 
-  <div id="report" hidden></div>
-
   <div class="gallery-wrap" id="gallery-wrap">
     <div class="gallery-head">
       <h2>Already analysed</h2>
@@ -50,6 +48,24 @@
     </div>
     <div class="gallery" id="gallery"></div>
   </div>
+</section>
+
+<!-- ============ REPORT: one video gets its own screen ============ -->
+<section class="view" id="view-report">
+  <div class="pagehead">
+    <a class="back" href="/" data-nav="/">← all videos</a>
+    <div class="progress" id="report-progress" hidden>
+      <div class="bar"><div class="fill" id="report-fill"></div></div>
+      <div class="mono" id="report-progress-text"></div>
+    </div>
+  </div>
+  <div id="report"></div>
+</section>
+
+<!-- ============ CREATOR ============ -->
+<section class="view" id="view-creator">
+  <div class="pagehead"><a class="back" href="/library" data-nav="/library">← library</a></div>
+  <div id="creator-out"></div>
 </section>
 
 <!-- ============ LIBRARY: reference + inspiration ============ -->
