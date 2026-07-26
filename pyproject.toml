@@ -14,10 +14,11 @@ dependencies = [
   "uvicorn[standard]>=0.27",
   "pillow>=10.0",
   "numpy>=1.26",
+  "python-multipart>=0.0.9",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "httpx>=0.27"]
 
 [tool.setuptools]
-packages = ["src", "src.api", "src.catalog", "src.detect"]
+packages = ["src", "src.api", "src.catalog", "src.detect", "src.profiles", "src.reels"]
