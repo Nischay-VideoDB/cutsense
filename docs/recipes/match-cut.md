@@ -9,6 +9,17 @@
 - *Sweeteners*: carry the audio across the seam (a sound that starts in A and finishes in B welds the two shots), match the dominant colour within ~10% so the eye reads continuity, and match the lens — a 24mm shape does not match a 85mm shape even when the outlines agree.
 - *Detector note*: our detector scores cross-cut structural similarity — edge-map and shape-descriptor overlap on the frames either side of a cut — and then checks for a scene change (colour histogram, location classifier). High shape similarity plus a scene change is a match cut; high shape similarity with the same location is a graphic match, filed separately.
 
+**Effect spec** ([what these slots mean](_prompt-kit.md))
+
+| slot | value |
+|---|---|
+| trigger | the cut, placed so the matched form occupies the same screen position in both shots |
+| property delta | none required — the *composition* carries it. Optionally align scale/position of the shared form to identity across the cut |
+| duration | 0 frames (a hard cut) · up to 6 frames if you dissolve to sell a shape morph |
+| easing | linear if you animate the alignment at all; any curve draws attention to the mechanism |
+| offset | none — the whole effect is simultaneity |
+| exit policy | none; the match *is* the transition |
+
 ## Remotion
 
 Prompt to give an AI/code assistant:

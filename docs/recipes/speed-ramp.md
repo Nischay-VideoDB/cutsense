@@ -11,6 +11,17 @@
 - *Sweeteners*: pitch the audio with the ramp (or duck it and let music carry), push a 2–4 frame directional blur at the steepest part of the ramp, and add a light exposure lift on the slow section so it reads as the "held" moment.
 - *Detector note*: our detector measures per-frame optical-flow magnitude within a single shot and flags monotonic velocity changes that exceed roughly 2x over fewer than 15 frames with no cut boundary present — that "no cut" condition is what separates a ramp from a hard speed cut.
 
+**Effect spec** ([what these slots mean](_prompt-kit.md))
+
+| slot | value |
+|---|---|
+| trigger | the action beat inside one continuous shot — impact, landing, turn |
+| property delta | playback rate `1× → 0.25× → 1×` (or `0.25× → 2×`), integrated into a source-frame value rather than applied as a jump |
+| duration | 6–12 frames per ramp leg |
+| easing | `Easing.inOut(Easing.cubic)` on the rate curve — a stepped rate change reads as a glitch |
+| offset | the slowest point lands **on** the beat, so the ramp begins before it |
+| exit policy | return to 1× before the next cut, or the cut inherits the wrong tempo |
+
 ## Remotion
 
 Prompt to give an AI/code assistant:

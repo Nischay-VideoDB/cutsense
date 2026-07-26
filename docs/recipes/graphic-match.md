@@ -11,6 +11,17 @@
 - *Sweeteners*: keep the matched shape within about 5% of its screen size and 2% of its screen position across the cut; hold the horizon line or a strong vertical at the same coordinate; keep the dominant colour block on the same side of frame. Do not add whooshes or impacts — this is a quiet device.
 - *Detector note*: our detector runs the same edge-map and shape-descriptor overlap it uses for match cuts, then requires the *opposite* verdict on the scene test — colour histogram, background classifier and audio ambience all consistent across the cut. High shape similarity plus same-scene continuity files as `graphic_match`; high shape similarity plus a scene change files as `match_cut`.
 
+**Effect spec** ([what these slots mean](_prompt-kit.md))
+
+| slot | value |
+|---|---|
+| trigger | the cut, with the echoed form held in the same screen position on both sides |
+| property delta | hold the shared geometry fixed while everything around it changes; the difference from a match cut is that the scene does **not** change |
+| duration | 0 frames (hard cut) |
+| easing | n/a |
+| offset | none |
+| exit policy | none; the echo is the effect |
+
 ## Remotion
 
 Prompt to give an AI/code assistant:

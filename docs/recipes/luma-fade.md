@@ -10,6 +10,17 @@
 - *Sweeteners*: 2–4 frames of exposure lift on A just before the crossover so the highlights bloom into the key, a touch of gaussian bloom or glow on the transition frames, and a short reverb tail or riser under the seam. Keep the audio crossing before the picture (J-cut, 4–6 frames) so the ear leads.
 - *Detector note*: our detector tracks mean frame luminance across a cut and flags a monotonic excursion toward 0 or 255 followed by a recovery inside about 20 frames. It also checks whether the shot changed during the excursion — if the frame dips to black and comes back to the same shot, that is a flash or an exposure event, not a luma fade.
 
+**Effect spec** ([what these slots mean](_prompt-kit.md))
+
+| slot | value |
+|---|---|
+| trigger | the cut, or a beat of silence you want to punctuate |
+| property delta | luminance to black or white and back — a dip — or a luma-keyed dissolve where the incoming shot emerges through the brightest values |
+| duration | 6–10 frames each way for a dip · 12–20 for a luma dissolve |
+| easing | `Easing.inOut(Easing.sin)` — a linear fade to black looks mechanical |
+| offset | hold 1–3 frames at full black/white; without the hold it reads as a flicker |
+| exit policy | the fade out of the dip *is* the incoming shot's entrance |
+
 ## Remotion
 
 Prompt to give an AI/code assistant:

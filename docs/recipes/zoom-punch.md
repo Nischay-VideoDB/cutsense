@@ -9,6 +9,17 @@
 - *Sweeteners*: 2–5 frames of radial/zoom blur on the incoming side, ±1–2° rotation, a 1-frame frame-hold before the punch to load the beat, impact SFX or a low sub hit.
 - *Detector note*: our detector reads it as a scale discontinuity across a cut with a high inter-frame content match — the two shots are largely the same pixels, just at a different magnification. Ratios below ~1.08 get filtered out as reframes, not punches.
 
+**Effect spec** ([what these slots mean](_prompt-kit.md))
+
+| slot | value |
+|---|---|
+| trigger | the transient — the exact frame of the kick, snare or word onset |
+| property delta | `scale 1 → 1.28 → 1.20` (overshoot then settle); radial blur `14px→0`; optional `rotate ±1.5°→0` |
+| duration | 1 frame for a hard punch · 5–6 frames for a settled one |
+| easing | `Easing.out(Easing.cubic)` on the settle; a hard punch has no easing at all |
+| offset | none — one frame late reads sloppy, one frame early reads as anticipation |
+| exit policy | none; the punched scale is the new normal until the next cut |
+
 ## Remotion
 
 Prompt to give an AI/code assistant:

@@ -8,6 +8,17 @@
 - *Easing*: motion accelerates hard out of A (ease-in) and decelerates into B (ease-out) — the two halves read as one swing.
 - *Sweeteners*: directional blur boost at the seam, a whoosh SFX, ±5–10° rotation for energy.
 
+**Effect spec** ([what these slots mean](_prompt-kit.md))
+
+| slot | value |
+|---|---|
+| trigger | the cut, mid-blur — 2–4 frames past peak camera velocity |
+| property delta | outgoing `x 0→−110%`; incoming `x +110%→0`; directional blur `0→40px→0`, peaking at the seam |
+| duration | 8 frames total (4 out, 4 in) at 30fps |
+| easing | out: `Easing.in(Easing.cubic)` · in: `Easing.out(Easing.cubic)` — one continuous swing |
+| offset | blur peaks exactly on the cut frame, not before it |
+| exit policy | the whip is the exit; the incoming shot plays clean once settled |
+
 ## Remotion
 
 Prompt to give an AI/code assistant:

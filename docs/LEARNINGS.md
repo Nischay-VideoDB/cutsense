@@ -403,6 +403,25 @@ Video/Audio/Image carry **no metadata dict** — only name/description. The only
 ### Applied immediately: a reel bug this surfaced
 Study reels 500'd with `video info not available for video_id: …`. Cause: a timeline can only reference assets belonging to the connection building it, and our library spans two accounts, so a mixed-account clip list is unbuildable. `build_reel` now groups by account, builds from the one holding the most clips, and **reports what it left out** ("3 clips from another account left out") instead of quietly shipping a shorter reel. Confirmed the modern editor path works: 5 clips / 15s across 4 videos, real HLS manifest, no legacy fallback.
 
+## 2026-07-27 — prompt craft mined from the local video projects
+
+Read three sibling projects on this machine: `theAIVideo-Studio` (HTML+GSAP explainers rendered by HyperFrames, plus AI-footage packs), `theEditing-workspace` (asset/ops layer around a 9:16 shorts generator), `Storebox-Aivideos` (a Remotion ad plus a vendored copy of the official Remotion best-practices rules). What transferred:
+
+### The six-slot effect descriptor (now `docs/recipes/_prompt-kit.md`)
+Every well-specified effect across all three fills the same six slots: **trigger/anchor · property delta · duration · easing · offset from anchor · exit policy**. "Add a whip pan" is not a spec; those six lines are. Each recipe now opens with an **Effect spec** table in exactly that shape, above the Remotion code — so the prompt a user copies is complete rather than prose a model has to guess around.
+
+### House rules that are correctness, not taste
+Determinism is mandatory for headless frame capture: no `Math.random()`/`Date.now()`, seed any randomness, and **`repeat: -1` breaks the capture engine** — finite repeats only. In Remotion, CSS transitions/animations and Tailwind animation classes simply do not render; everything must read `useCurrentFrame()`. Animate only opacity/transform/colour/filter. These are now in the prompt kit because a generated composition that violates them looks fine in a browser and fails at render.
+
+### Two principles worth adopting wholesale
+- **Anchor to measured time, never estimated time.** Their hardest-won lesson: visuals timed by hand ran ahead of the voice, and the fix was word-level transcripts with each scene anchored to the real cue time. A visual landing a beat *after* its trigger feels natural; landing before it feels broken. Directly relevant to us — our detections already carry measured cut times, which is exactly the anchor a generated rebuild needs.
+- **Never let a shot go static.** "Entrance then hold" is the failure mode that makes generated video look cheap; something should still be changing every 2–3s.
+
+### Things to reuse later
+A `REPLICATION.md` schema (format · palette · typography · motion grammar · structural beat sheet · graphic system) that is close to what our per-video report could become; a style-analysis vision prompt that deliberately ignores subject matter to extract *design*; a documented rule that soft-transition footage yields `n_cuts: 0` and that this is itself a style fact — a useful counterweight to our shot-boundary assumption.
+
+**Caveat found in two of the three repos:** the DESIGN docs had drifted from the code (eases and stroke widths in the doc did not match the renderer). Treat code as ground truth, and treat the divergence itself as a finding.
+
 ### Recipe format extension: Remotion
 - Recipes gain a `remotion` block alongside premiere/resolve/capcut: a paste-ready code snippet + prompt showing how to recreate the technique programmatically. First example: docs/recipes/whip-pan.md.
 

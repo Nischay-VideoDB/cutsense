@@ -203,8 +203,19 @@ def get_clip(detection_id: int):
 
 
 def read_recipe(technique):
+    if technique.startswith("_"):        # _prompt-kit.md is shared reference, not a technique
+        return None
     path = RECIPE_DIR / f"{technique.replace('_', '-')}.md"
     return path.read_text() if path.exists() else None
+
+
+@app.get("/api/prompt-kit")
+def prompt_kit():
+    """The shared effect-spec vocabulary the recipes are written against."""
+    path = RECIPE_DIR / "_prompt-kit.md"
+    if not path.exists():
+        raise HTTPException(404, "prompt kit not found")
+    return {"markdown": path.read_text()}
 
 
 @app.get("/api/recipes/{technique}")
