@@ -28,9 +28,11 @@ TABLES = {
 
 def export_snapshot(db, path=SNAPSHOT_PATH):
     """Write accepted detections, their videos, and cached thumbnails to the snapshot."""
-    payload = {"videos": [], "detections": [], "thumbnails": []}
+    payload = {"videos": [], "shots": [], "detections": [], "thumbnails": []}
     payload["videos"] = [dict(r) for r in db.execute(
         f"SELECT {', '.join(TABLES['videos'])} FROM videos")]
+    payload["shots"] = [dict(r) for r in db.execute(
+        f"SELECT {', '.join(TABLES['shots'])} FROM shots")]
     payload["detections"] = [dict(r) for r in db.execute(
         f"SELECT {', '.join(TABLES['detections'])} FROM detections"
         " WHERE technique NOT LIKE 'rejected:%' AND technique NOT IN ('hard_cut','unclear')")]
