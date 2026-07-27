@@ -17,6 +17,9 @@ SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "library" / "catalog-snaps
 TABLES = {
     "videos": ["videodb_id", "title", "source_url", "creator", "technique_hint",
                "duration_s", "account", "content_index_id"],
+    # shot boundaries are what pacing is computed from; without them a seeded deploy
+    # shows techniques but no cuts/min
+    "shots": ["videodb_id", "scene_collection_id", "idx", "start_s", "end_s"],
     "detections": ["videodb_id", "shot_idx", "technique", "confidence", "window_start_s",
                    "window_end_s", "cut_time_s", "evidence", "prompt_version", "raw_json",
                    "verified", "verify_note"],
