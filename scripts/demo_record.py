@@ -19,7 +19,10 @@ from playwright.sync_api import sync_playwright
 
 BASE = "https://cutsense-production.up.railway.app"
 OUT = Path("data/demo")
-SIZE = {"width": 1280, "height": 800}
+# Record natively at the delivery resolution: upscaling a 1280x800 capture to 1080p
+# cannot add detail. device_scale_factor=2 renders at 3840x2160 internally and
+# downsamples into the recording, which is what makes the text crisp.
+SIZE = {"width": 1920, "height": 1080}
 
 # a report with a strong whip-pan block, and the technique page behind it
 # 21 whip pans and nothing from the thin techniques — the strongest surface to film

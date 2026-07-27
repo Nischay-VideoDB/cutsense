@@ -46,12 +46,20 @@ def card(path, lines, seconds=3.0):
          "-vf", ",".join(draws), "-pix_fmt", "yuv420p", "-y", str(path)])
 
 
-def segment(src, path, start, end, speed=1.0):
-    """One beat of the recording, normalised to the output canvas."""
+def segment(src, path, start, end, speed=1.0, want=None):
+    """One beat of the recording, normalised to the output canvas.
+
+    If the narration outlasts the footage for this beat, hold the last frame rather
+    than reading into the next scene — spilling put a recipe caption over the library.
+    """
     vf = (f"scale={W}:{H}:force_original_aspect_ratio=decrease,"
           f"pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color={BG},fps={FPS}")
     if speed != 1.0:
         vf = f"setpts={1/speed:.4f}*PTS,{vf}"
+    if want:
+        shortfall = want - (end - start) / speed
+        if shortfall > 0.05:
+            vf += f",tpad=stop_mode=clone:stop_duration={shortfall:.2f}"
     run(["ffmpeg", "-v", "error", "-ss", f"{start:.2f}", "-to", f"{end:.2f}", "-i", str(src),
          "-vf", vf, "-an", "-pix_fmt", "yuv420p", "-y", str(path)])
 
@@ -74,6 +82,12 @@ def main(out_path):
     work = DEMO / "cut"
     work.mkdir(exist_ok=True)
 
+    # Narration drives picture length: each segment runs exactly as long as its own
+    # voiceover (plus a short tail), so nothing has to be hand-timed to match.
+    vo_manifest = DEMO / "vo" / "manifest.json"
+    vo = json.loads(vo_manifest.read_text()) if vo_manifest.exists() else {}
+    TAIL = 0.45
+
     # (label, start, end, speed) — anchored to the recorder's own beat log
     plan = [
         ("hero",     beats["hero"] + 1.0,           beats["analyse_click"] + 3.0, 1.0),
@@ -85,6 +99,10 @@ def main(out_path):
         ("reel",     beats["reel"] + 4.0,           beats["end"] - 0.5,           1.0),
     ]
 
+    def vo_length(label, fallback):
+        entry = vo.get(label)
+        return entry["seconds"] + TAIL if entry else fallback
+
     parts = []
     intro = work / "00-intro.mp4"
     card(intro, [("CUTSENSE", 96, ACCENT),
@@ -92,13 +110,18 @@ def main(out_path):
     parts.append(intro)
 
     for i, (label, start, end, speed) in enumerate(plan, start=1):
-        path = work / f"{i:02d}-{label}.mp4"
-        segment(src, path, start, end, speed)
+        key = f"{i:02d}-{label}"
+        path = work / f"{key}.mp4"
+        want = vo_length(key, (end - start) / speed)
+        # never read past this beat's own window; hold the frame if narration is longer
+        stop = min(start + want * speed, end)
+        segment(src, path, start, stop, speed, want=want)
         parts.append(path)
 
     outro = work / "99-outro.mp4"
     card(outro, [("246 techniques · 39 videos · every one audited", 44, INK),
-                 ("cutsense-production.up.railway.app", 40, ACCENT)], 3.4)
+                 ("cutsense-production.up.railway.app", 40, ACCENT)],
+         vo_length("99-outro", 3.4) + 0.8)
     parts.append(outro)
 
     listing = work / "concat.txt"
@@ -132,9 +155,26 @@ def main(out_path):
                for k, text in lines.items() if k in offsets]
     filters.append(f"fade=t=in:st=0:d=0.5,fade=t=out:st={running - 0.6:.2f}:d=0.6")
 
+    silent = work / "picture.mp4"
     run(["ffmpeg", "-v", "error", "-i", str(joined), "-vf", ",".join(filters),
-         "-c:v", "libx264", "-crf", "20", "-preset", "medium", "-pix_fmt", "yuv420p",
-         "-movflags", "+faststart", "-y", str(out_path)])
+         "-c:v", "libx264", "-crf", "18", "-preset", "slow", "-pix_fmt", "yuv420p",
+         "-movflags", "+faststart", "-y", str(silent)])
+
+    # lay each clip at its segment's start, then mix into one track
+    voiced = [(offsets[k][0], v["file"]) for k, v in sorted(vo.items()) if k in offsets]
+    if voiced:
+        inputs, delays = [], []
+        for i, (at, f) in enumerate(voiced):
+            inputs += ["-i", f]
+            delays.append(f"[{i+1}:a]adelay={int(at*1000)}|{int(at*1000)}[a{i}]")
+        mix = "".join(f"[a{i}]" for i in range(len(voiced)))
+        graph = ";".join(delays) + f";{mix}amix=inputs={len(voiced)}:normalize=0[out]"
+        run(["ffmpeg", "-v", "error", "-i", str(silent), *inputs,
+             "-filter_complex", graph, "-map", "0:v", "-map", "[out]",
+             "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest",
+             "-movflags", "+faststart", "-y", str(out_path)])
+    else:
+        silent.replace(out_path)
     print(f"wrote {out_path} ({duration(out_path):.1f}s, {out_path.stat().st_size // 1024}KB)")
 
 

@@ -5,33 +5,10 @@ transcript — and tells you every technique it uses, where each one lands, and 
 rebuild it. Built on [VideoDB](https://videodb.io).
 
 **Live:** https://cutsense-production.up.railway.app
-**Demo:** 77-second walkthrough, submitted with the entry (built by
-`scripts/demo_record.py` + `scripts/demo_build.py` from the live site)
+**Demo:** 51-second narrated walkthrough, submitted with the entry (recorded from the
+live site by `scripts/demo_record.py`, voiced and cut by `demo_voice.py` + `demo_build.py`)
 
 ![CutSense — paste a video, find out how it was cut](docs/img/hero.png)
-
-## In 200 words
-
-Editors learn by reverse-engineering other people's work: a folder of reference videos,
-scrubbed by hand, held together by memory. The knowledge is in the footage and there is
-no way to query it.
-
-CutSense makes the edit itself searchable. VideoDB's shot-based scene extraction gives
-frame-accurate cut boundaries — those boundaries *are* the edits. At each cut we sample
-frames and classify what happened, gated first by deterministic pixel and motion signals
-computed locally so the vision model only judges plausible candidates. Six techniques
-ship: whip pan, zoom punch, match cut, graphic match, speed ramp, luma fade.
-
-Every result is a playable two-second clip, a poster frame, and a recipe for rebuilding
-the move in Remotion, VideoDB's editor timeline, Premiere, Resolve or CapCut. Ask for a
-study reel of every whip pan and the editor API stitches one across videos, exportable
-to MP4.
-
-A 46-video library of real ads, music videos and films supplies the same technique in
-other people's work to compare against, plus per-creator style profiles.
-
-An independent second model audited all 582 detections; refuted ones are hidden. We
-report measured precision instead of claiming accuracy.
 
 ## What it does
 
@@ -116,7 +93,29 @@ python scripts/demo_record.py              # record the demo, then demo_build.py
 - [docs/DEMO.md](docs/DEMO.md) — the demo run of show
 - [docs/recipes/](docs/recipes/) — the six technique recipes and the shared prompt kit
 - [HOSTING.md](HOSTING.md) — Railway deploy, volumes, what survives a redeploy
-- [SUBMISSION.md](SUBMISSION.md) — hackathon submission
+
+## The longer version
+
+Editors learn by reverse-engineering other people's work: a folder of reference videos,
+scrubbed by hand, held together by memory. The knowledge is in the footage and there is
+no way to query it.
+
+CutSense makes the edit itself searchable. VideoDB's shot-based scene extraction gives
+frame-accurate cut boundaries — those boundaries *are* the edits. At each cut we sample
+frames and classify what happened, gated first by deterministic pixel and motion signals
+computed locally so the vision model only judges plausible candidates. Six techniques
+ship: whip pan, zoom punch, match cut, graphic match, speed ramp, luma fade.
+
+Every result is a playable two-second clip, a poster frame, and a recipe for rebuilding
+the move in Remotion, VideoDB's editor timeline, Premiere, Resolve or CapCut. Ask for a
+study reel of every whip pan and the editor API stitches one across videos, exportable
+to MP4.
+
+A 46-video library of real ads, music videos and films supplies the same technique in
+other people's work to compare against, plus per-creator style profiles.
+
+An independent second model audited all 582 detections; refuted ones are hidden. We
+report measured precision instead of claiming accuracy.
 
 ## About
 
