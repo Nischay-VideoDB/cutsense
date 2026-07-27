@@ -26,6 +26,8 @@ technique mix — aggregated through VideoDB indexes.
 An independent second model audited all 582 detections; refuted ones are hidden. We
 report measured precision instead of claiming accuracy.
 
+**Demo plan:** [docs/DEMO.md](docs/DEMO.md)
+
 ## VideoDB surfaces used
 
 Ingest (`upload` by URL and file, `youtube_search`) · shot-based `extract_scenes` and
