@@ -5,7 +5,8 @@ transcript — and tells you every technique it uses, where each one lands, and 
 rebuild it. Built on [VideoDB](https://videodb.io).
 
 **Live:** https://cutsense-production.up.railway.app
-**Demo:** [`docs/demo/cutsense-demo.mp4`](docs/demo/cutsense-demo.mp4) (77s)
+**Demo:** 77-second walkthrough, submitted with the entry (built by
+`scripts/demo_record.py` + `scripts/demo_build.py` from the live site)
 
 ![CutSense — paste a video, find out how it was cut](docs/img/hero.png)
 

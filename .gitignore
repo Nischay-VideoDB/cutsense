@@ -36,8 +36,7 @@ data/
 .idea/
 .vscode/
 
-# the demo video and README stills are deliverables, not scratch media
-!docs/demo/
-!docs/demo/*.mp4
+# README stills are deliverables; the demo mp4 is delivered separately, not in git
 !docs/img/
 !docs/img/*.png
+docs/demo/
