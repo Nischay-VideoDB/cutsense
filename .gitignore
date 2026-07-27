@@ -35,3 +35,9 @@ data/
 .DS_Store
 .idea/
 .vscode/
+
+# the demo video and README stills are deliverables, not scratch media
+!docs/demo/
+!docs/demo/*.mp4
+!docs/img/
+!docs/img/*.png
