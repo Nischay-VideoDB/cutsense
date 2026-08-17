@@ -4,9 +4,11 @@
 transcript — and tells you every technique it uses, where each one lands, and how to
 rebuild it. Built on [VideoDB](https://videodb.io).
 
-**Live:** https://cutsense-production.up.railway.app
-**Demo:** 51-second narrated walkthrough, submitted with the entry (recorded from the
-live site by `scripts/demo_record.py`, voiced and cut by `demo_voice.py` + `demo_build.py`)
+**Public deployment:** static, prepared-data Vercel demo in `showcase/`.
+**Operator workflow:** local only; it can ingest, analyse, query, create clips, and build reels
+when run with an operator's VideoDB credentials. See [HOSTING.md](HOSTING.md).
+**Demo:** 51-second narrated walkthrough, recorded by `scripts/demo_record.py`, voiced and cut
+by `demo_voice.py` + `demo_build.py`.
 
 ![CutSense — paste a video, find out how it was cut](docs/img/hero.png)
 
