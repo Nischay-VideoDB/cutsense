@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -24,6 +25,48 @@ def _prepared_data() -> dict:
         text=True,
     )
     return json.loads(result.stdout)
+
+
+def _render_route(path: str) -> str:
+    harness = r'''
+const path = process.argv[1];
+const children = new Map();
+const app = {
+  innerHTML: "",
+  focus() {},
+  querySelector(selector) {
+    if (!children.has(selector)) children.set(selector, { innerHTML: "", value: "", addEventListener() {}, querySelectorAll() { return []; } });
+    return children.get(selector);
+  },
+  querySelectorAll() { return []; },
+};
+const nav = { setAttribute() {}, removeAttribute() {} };
+global.window = { addEventListener() {} };
+global.history = { pushState() {} };
+global.location = { pathname: path };
+global.document = {
+  querySelector(selector) { return selector === "#app" ? app : nav; },
+  querySelectorAll() { return []; },
+  addEventListener() {},
+};
+require(process.argv[2]);
+require(process.argv[3]);
+process.stdout.write(app.innerHTML);
+'''
+    result = subprocess.run(
+        [
+            "node",
+            "-e",
+            harness,
+            path,
+            str(SHOWCASE / "data.js"),
+            str(SHOWCASE / "app.js"),
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return result.stdout
 
 
 def test_vercel_serves_only_the_static_prepared_app() -> None:
@@ -67,43 +110,23 @@ def test_public_assets_have_no_mutating_or_credentialed_surface() -> None:
 
 
 def test_key_spa_routes_render_from_static_data() -> None:
-    harness = r'''
-const path = process.argv[1];
-const expected = process.argv[2];
-const children = new Map();
-const app = {
-  innerHTML: "",
-  focus() {},
-  querySelector(selector) {
-    if (!children.has(selector)) children.set(selector, { innerHTML: "", value: "", addEventListener() {}, querySelectorAll() { return []; } });
-    return children.get(selector);
-  },
-  querySelectorAll() { return []; },
-};
-const nav = { setAttribute() {}, removeAttribute() {} };
-global.window = { addEventListener() {} };
-global.history = { pushState() {} };
-global.location = { pathname: path };
-global.document = {
-  querySelector(selector) { return selector === "#app" ? app : nav; },
-  querySelectorAll() { return []; },
-  addEventListener() {},
-};
-require(process.argv[3]);
-require(process.argv[4]);
-if (!app.innerHTML.includes(expected)) throw new Error(`route ${path} did not render ${expected}`);
-'''
-    data_path = str(SHOWCASE / "data.js")
-    app_path = str(SHOWCASE / "app.js")
     for path, expected in (
         ("/", "Prepared reports"),
         ("/library", "Moment library"),
         ("/video/federer", "18 retained technique detections"),
         ("/clip/federer-zoom-4348", "Corresponding VideoDB clip unavailable"),
     ):
-        subprocess.run(
-            ["node", "-e", harness, path, expected, data_path, app_path],
-            check=True,
-            capture_output=True,
-            text=True,
-        )
+        assert expected in _render_route(path)
+
+
+def test_every_clickable_gallery_report_link_has_a_prepared_report() -> None:
+    prepared = _prepared_data()
+    gallery = _render_route("/")
+    report_links = set(re.findall(r'href="/video/([^"]+)"', gallery))
+    expected_slugs = {video["slug"] for video in prepared["videos"] if video.get("report")}
+
+    assert report_links == expected_slugs == {"federer"}
+    for slug in report_links:
+        rendered = _render_route(f"/video/{slug}")
+        assert "not available" not in rendered.lower()
+        assert prepared["videos"][0]["report"]["headline"] in rendered

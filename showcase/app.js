@@ -23,7 +23,7 @@
   };
   const provenance = () => `<p class="provenance">${escape(data.provenance.label)}</p>`;
 
-  function videoCard(video) {
+  function reportCard(video) {
     return `<a class="video-card" href="/video/${video.slug}" data-route>
       <img src="${escape(video.thumbnailUrl)}" alt="Cached VideoDB thumbnail from ${escape(video.title)}" referrerpolicy="no-referrer">
       <div><h3>${escape(video.title)}</h3><p>${video.techniqueTotal} retained detections · ${video.durationS}s source</p></div>
@@ -31,13 +31,15 @@
   }
 
   function home() {
+    const reportVideos = data.videos.filter((video) => video.report);
     app.innerHTML = `<section>
       <p class="eyebrow">Video editing technique archive</p>
       <h1>See how the cut works.</h1>
       <p class="lede">CutSense keeps the useful part of an edit: its pacing, transition evidence, and reconstruction notes. This public demo is a fixed, read-only view of cached VideoDB-backed catalog data.</p>
       ${provenance()}
-      <div class="section-head"><h2>Prepared reports</h2><p>Choose a retained analysis.</p></div>
-      <div class="gallery">${data.videos.map(videoCard).join("")}</div>
+      <div class="section-head"><h2>Prepared reports</h2><p>Choose a complete retained analysis.</p></div>
+      <div class="gallery">${reportVideos.map(reportCard).join("")}</div>
+      <p class="mono">Other selected catalog videos are available as prepared moments in the <a href="/library" data-route>library</a>, not as complete reports.</p>
       <div class="notice"><strong>Prepared data only.</strong><p>Uploading, fresh analysis, live VideoDB search, clip generation, reels, and local operator jobs are unavailable in this public Vercel build. The original operator workflow remains local to this repository.</p></div>
     </section>`;
   }
