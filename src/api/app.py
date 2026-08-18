@@ -34,7 +34,13 @@ from src.videodb_client import NotConfigured, get_collection
 ROOT = Path(__file__).resolve().parents[2]
 WEB_DIR = ROOT / "web"
 RECIPE_DIR = ROOT / "docs" / "recipes"
-VERSION = (os.environ.get("RAILWAY_GIT_COMMIT_SHA") or "dev")[:9]
+VERSION = (
+    os.environ.get("CUTSENSE_VERSION")
+    or os.environ.get("VERCEL_GIT_COMMIT_SHA")
+    or os.environ.get("RAILWAY_GIT_COMMIT_SHA")
+    or os.environ.get("VERCEL_DEPLOYMENT_ID")
+    or "dev"
+)[:12]
 MAX_UPLOAD_BYTES = 512 << 20   # 512MB: a reference edit, not a feature film
 
 app = FastAPI(title="CutSense", description="Searchable technique archive for editors")
