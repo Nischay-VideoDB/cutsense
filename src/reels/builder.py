@@ -7,12 +7,37 @@ proven legacy timeline as the fallback so a reel is always produced.
 """
 
 import json
+from datetime import UTC, datetime, timedelta
+from urllib.parse import parse_qs, urlsplit
 
 from src.catalog.db import LOCK
 from src.videodb_client import get_conn
 
 MAX_CLIPS = 24          # a study reel is a lesson, not a dump
 DEFAULT_CLIP_PAD = 0.0  # detection windows already carry ~1.5s either side of the cut
+
+
+def mp4_url_is_live(url, *, now=None):
+    """Return whether a cached provider download URL still has useful life.
+
+    VideoDB downloads currently resolve to signed Google Storage URLs. Persisting
+    that URL is useful for idempotent repeat requests, but it must not turn into
+    a permanently dead "cached" result after the signature expires.
+    """
+    if not url:
+        return False
+    query = parse_qs(urlsplit(url).query)
+    issued = (query.get("X-Goog-Date") or [None])[0]
+    expires = (query.get("X-Goog-Expires") or [None])[0]
+    if not issued or not expires:
+        return True  # a provider may return a genuinely durable public URL
+    try:
+        deadline = datetime.strptime(issued, "%Y%m%dT%H%M%SZ").replace(
+            tzinfo=UTC
+        ) + timedelta(seconds=int(expires))
+    except (TypeError, ValueError):
+        return False
+    return deadline > (now or datetime.now(UTC)) + timedelta(minutes=5)
 
 
 def _segments(clips, limit=MAX_CLIPS):
@@ -54,7 +79,8 @@ def _compile_legacy(conn, segments):
     return timeline.generate_stream()
 
 
-def build_reel(db, clips, name, query=None, account=None, limit=MAX_CLIPS):
+def build_reel(db, clips, name, query=None, account=None, limit=MAX_CLIPS,
+               idempotency_key=None):
     """Compile clips into one stream. Returns the reel record, or None if nothing to stitch.
 
     A timeline can only reference assets belonging to the connection that builds it, and
@@ -91,8 +117,9 @@ def build_reel(db, clips, name, query=None, account=None, limit=MAX_CLIPS):
     total = round(sum(s["end"] - s["start"] for s in segments), 2)
     with LOCK:
         cur = db.execute(
-            "INSERT INTO reels (name, query, clip_order_json, stream_url) VALUES (?,?,?,?)",
-            [name, query, json.dumps(segments), stream_url])
+            "INSERT INTO reels (name, query, clip_order_json, stream_url, idempotency_key) "
+            "VALUES (?,?,?,?,?)",
+            [name, query, json.dumps(segments), stream_url, idempotency_key])
         db.commit()
         reel_id = cur.lastrowid
 
@@ -106,7 +133,7 @@ def export_mp4(db, reel_id, account="primary"):
         row = db.execute("SELECT * FROM reels WHERE id=?", [reel_id]).fetchone()
     if not row:
         return None
-    if row["mp4_url"]:
+    if mp4_url_is_live(row["mp4_url"]):
         return {"id": reel_id, "mp4_url": row["mp4_url"], "cached": True}
 
     conn = get_conn(account)

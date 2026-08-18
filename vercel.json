@@ -1,10 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "true",
-  "buildCommand": "true",
-  "outputDirectory": "showcase",
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 1800,
+      "excludeFiles": "{tests/**,docs/img/**,scripts/**,.venv/**}"
+    }
+  },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/api/index.py" }
   ],
   "headers": [
     {

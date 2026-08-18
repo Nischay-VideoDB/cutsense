@@ -69,14 +69,13 @@ process.stdout.write(app.innerHTML);
     return result.stdout
 
 
-def test_vercel_serves_only_the_static_prepared_app() -> None:
+def test_vercel_serves_live_fastapi_and_keeps_prepared_assets() -> None:
     config = json.loads((ROOT / "vercel.json").read_text())
 
-    assert config["outputDirectory"] == "showcase"
-    assert config["buildCommand"] == "true"
-    assert config["installCommand"] == "true"
-    assert config["rewrites"] == [{"source": "/(.*)", "destination": "/index.html"}]
-    assert "functions" not in config
+    assert config["functions"]["api/index.py"]["maxDuration"] == 1800
+    assert config["rewrites"] == [{"source": "/(.*)", "destination": "/api/index.py"}]
+    assert (ROOT / "api" / "index.py").is_file()
+    assert SHOWCASE.is_dir()
 
 
 def test_prepared_data_is_traceable_to_the_catalog_snapshot() -> None:

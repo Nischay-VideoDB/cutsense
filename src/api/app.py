@@ -7,10 +7,13 @@ import json
 import os
 import tempfile
 import urllib.request
+import hashlib
+import ipaddress
+from urllib.parse import urlsplit
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from fastapi import FastAPI, File, HTTPException, Query, Response, UploadFile
+from fastapi import FastAPI, File, HTTPException, Query, Request, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -228,15 +231,72 @@ def recipe(technique: str):
             "markdown": body}
 
 
+def _validated_public_url(raw: str) -> str:
+    value = raw.strip()
+    if len(value) > 2048:
+        raise HTTPException(422, "video URL is too long")
+    parsed = urlsplit(value)
+    if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+        raise HTTPException(422, "use a public http(s) video URL")
+    host = parsed.hostname.casefold()
+    if host in {"localhost", "localhost.localdomain"} or host.endswith(".local"):
+        raise HTTPException(422, "local network URLs are not accepted")
+    try:
+        address = ipaddress.ip_address(host)
+        if not address.is_global:
+            raise HTTPException(422, "private network URLs are not accepted")
+    except ValueError:
+        pass
+    return value
+
+
+def _reserve_action(request: Request, action: str, per_hour: int) -> None:
+    if not os.getenv("CUTSENSE_DATABASE_URL"):
+        return
+    forwarded = request.headers.get("x-forwarded-for", "")
+    address = forwarded.split(",", 1)[0].strip() or (
+        request.client.host if request.client else "unknown"
+    )
+    secret = os.getenv("CUTSENSE_RATE_SECRET", "cutsense-public")
+    actor = hashlib.sha256(f"{secret}:{action}:{address}".encode()).hexdigest()
+    row = db.execute(
+        "INSERT INTO analysis_rate(actor_hash,bucket,requests) "
+        "VALUES (?,date_trunc('hour',now()),1) "
+        "ON CONFLICT(actor_hash,bucket) DO UPDATE SET requests=analysis_rate.requests+1 "
+        "WHERE analysis_rate.requests < ? RETURNING requests",
+        [actor, per_hour],
+    ).fetchone()
+    if row is None:
+        raise HTTPException(
+            429,
+            f"Public {action} is temporarily rate limited. Prepared examples remain available.",
+        )
+
+
 @app.post("/api/analyze")
-def start_analysis(url: str = Query(..., description="a video URL to analyse")):
+def start_analysis(
+    request: Request,
+    url: str = Query(..., description="a public video URL to analyse"),
+):
     """Primary flow: paste your edit, get told what was done and how to redo it."""
-    return analyze_service.start(db, url.strip())
+    value = _validated_public_url(url)
+    existing = analyze_service.find_by_url(db, value)
+    if existing:
+        existing["reused"] = True
+        return existing
+    _reserve_action(request, "analysis", int(os.getenv("CUTSENSE_RUNS_PER_HOUR", "2")))
+    return analyze_service.start(db, value)
 
 
 @app.post("/api/analyze/upload")
 async def start_upload(file: UploadFile = File(...)):
     """Analyse an uploaded file — for edits that are not published anywhere."""
+    if os.getenv("CUTSENSE_DATABASE_URL"):
+        raise HTTPException(
+            422,
+            "Direct file upload is disabled on the serverless public demo. "
+            "Use a public video URL so the source remains durable.",
+        )
     suffix = Path(file.filename or "clip.mp4").suffix or ".mp4"
     if suffix.lower() not in {".mp4", ".mov", ".m4v", ".webm", ".mkv"}:
         raise HTTPException(400, f"unsupported file type: {suffix}")
@@ -411,9 +471,21 @@ def profile(scope: str, key: str):
     return payload
 
 
+def _stored_reel(row, *, replay=False):
+    segments = json.loads(row["clip_order_json"] or "[]")
+    return {
+        "id": row["id"], "name": row["name"], "query": row["query"],
+        "stream_url": row["stream_url"], "mp4_url": row["mp4_url"],
+        "clips": len(segments),
+        "duration_s": round(sum(s["end"] - s["start"] for s in segments), 2),
+        "segments": segments, "idempotent_replay": replay,
+    }
+
+
 @app.post("/api/reels")
-def make_reel(q: str | None = None, technique: str | None = None,
-              limit: int = Query(12, le=24), name: str | None = None):
+def make_reel(request: Request, q: str | None = None, technique: str | None = None,
+              video_id: str | None = None, limit: int = Query(12, le=24),
+              name: str | None = None):
     """Stitch matching moments into one study reel."""
     if technique:
         plan = {"intent": "reel", "techniques": [technique], "content_terms": [],
@@ -428,19 +500,40 @@ def make_reel(q: str | None = None, technique: str | None = None,
         plan = query_service.parse(q or "", coll)
         label = query_service.describe(plan)
 
+    signature = hashlib.sha256(json.dumps({
+        "q": q or "", "technique": technique or "", "video_id": video_id or "",
+        "limit": limit, "name": name or "",
+    }, sort_keys=True).encode()).hexdigest()
+    existing = db.execute(
+        "SELECT * FROM reels WHERE idempotency_key=?", [signature]
+    ).fetchone()
+    if existing:
+        return _stored_reel(existing, replay=True)
+
+    where = [technique_filter_sql(), NOT_DUPLICATE_SQL]
+    params = list(SHIPPING_TECHNIQUES)
+    if plan["techniques"]:
+        where.append(f"d.technique IN ({','.join('?' * len(plan['techniques']))})")
+        params.extend(plan["techniques"])
+    if video_id:
+        where.append("d.videodb_id = ?")
+        params.append(video_id)
     rows = db.execute(
         "SELECT d.*, v.title, v.account FROM detections d"
         " JOIN videos v ON v.videodb_id = d.videodb_id"
-        f" WHERE {technique_filter_sql()} AND {NOT_DUPLICATE_SQL}"
-        + (f" AND d.technique IN ({','.join('?' * len(plan['techniques']))})"
-           if plan["techniques"] else "")
-        + " ORDER BY d.confidence DESC LIMIT ?",
-        [*SHIPPING_TECHNIQUES, *plan["techniques"], limit]).fetchall()
+        f" WHERE {' AND '.join(where)} ORDER BY d.confidence DESC LIMIT ?",
+        [*params, limit]).fetchall()
     if not rows:
         raise HTTPException(404, "nothing to stitch for that query")
 
     try:
-        reel = reel_builder.build_reel(db, rows, name or f"Study reel — {label}", query=q)
+        _reserve_action(
+            request, "reel build", int(os.getenv("CUTSENSE_REELS_PER_HOUR", "3"))
+        )
+        reel = reel_builder.build_reel(
+            db, rows, name or f"Study reel — {label}", query=q,
+            idempotency_key=signature,
+        )
     except NotConfigured as e:
         raise HTTPException(503, f"reel build unavailable: {e}")
     if not reel:
@@ -456,7 +549,14 @@ def list_reels():
 
 
 @app.post("/api/reels/{reel_id}/mp4")
-def reel_mp4(reel_id: int):
+def reel_mp4(reel_id: int, request: Request):
+    row = db.execute("SELECT mp4_url FROM reels WHERE id=?", [reel_id]).fetchone()
+    if not row:
+        raise HTTPException(404, "reel not found")
+    if not reel_builder.mp4_url_is_live(row["mp4_url"]):
+        _reserve_action(
+            request, "MP4 export", int(os.getenv("CUTSENSE_EXPORTS_PER_HOUR", "2"))
+        )
     try:
         result = reel_builder.export_mp4(db, reel_id)
     except NotConfigured as e:
@@ -485,9 +585,16 @@ def gallery(limit: int = Query(60, le=200)):
         "   AS poster_clip_id"
         " FROM videos v LEFT JOIN detections d ON d.videodb_id = v.videodb_id"
         f" WHERE {NOT_DUPLICATE_SQL}"
-        " GROUP BY v.videodb_id HAVING techniques > 0"
+        f" GROUP BY v.id HAVING COUNT(d.id) FILTER "
+        f"(WHERE {technique_filter_sql()} AND {NOT_REFUTED_SQL}) > 0"
         " ORDER BY techniques DESC LIMIT ?",
-        [*SHIPPING_TECHNIQUES, *SHIPPING_TECHNIQUES, *SHIPPING_TECHNIQUES, limit]).fetchall()
+        [
+            *SHIPPING_TECHNIQUES,
+            *SHIPPING_TECHNIQUES,
+            *SHIPPING_TECHNIQUES,
+            *SHIPPING_TECHNIQUES,
+            limit,
+        ]).fetchall()
 
     out = []
     for r in rows:
@@ -517,7 +624,7 @@ def videos():
         f"SELECT v.*, COUNT(d.id) FILTER (WHERE {technique_filter_sql()}) AS detections"
         " FROM videos v LEFT JOIN detections d ON d.videodb_id = v.videodb_id"
         f" WHERE {NOT_DUPLICATE_SQL}"
-        " GROUP BY v.videodb_id ORDER BY detections DESC", SHIPPING_TECHNIQUES).fetchall()
+        " GROUP BY v.id ORDER BY detections DESC", SHIPPING_TECHNIQUES).fetchall()
     return [{"video_id": r["videodb_id"], "title": r["title"], "source_url": r["source_url"],
              "duration_s": r["duration_s"], "technique_hint": r["technique_hint"],
              "detections": r["detections"], "account": r["account"]} for r in rows]

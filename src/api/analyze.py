@@ -9,7 +9,7 @@ and the request returns an id immediately. State lives in the database rather th
 in memory so a poll can be served by any worker and survives a reload.
 """
 
-import threading
+import hashlib
 from pathlib import Path
 
 from src.catalog.db import LOCK, add_detection, get_db, upsert_video
@@ -21,11 +21,20 @@ MAX_DURATION_S = 15 * 60
 
 
 def create(db, source_url):
+    key = hashlib.sha256(source_url.encode()).hexdigest()
     with LOCK:
-        cur = db.execute("INSERT INTO analyses (source_url, state) VALUES (?, 'queued')",
-                         [source_url])
+        cur = db.execute(
+            "INSERT INTO analyses (source_url, state, idempotency_key) "
+            "VALUES (?, 'queued', ?) ON CONFLICT (idempotency_key) DO NOTHING "
+            "RETURNING id",
+            [source_url, key],
+        )
+        row = db.execute(
+            "SELECT id FROM analyses WHERE idempotency_key=?", [key]
+        ).fetchone()
+        analysis_id = row["id"]
         db.commit()
-        return cur.lastrowid
+        return analysis_id
 
 
 def update(db, analysis_id, **fields):
@@ -141,12 +150,14 @@ def run(analysis_id, source_url, file_path=None):
 
 
 def start(db, source_url, file_path=None):
-    """Queue an analysis and return its record immediately."""
+    """Run one durable analysis synchronously on serverless production."""
     if not file_path:
         existing = find_by_url(db, source_url)
         if existing:
             existing["reused"] = True
             return existing
     analysis_id = create(db, source_url)
-    threading.Thread(target=run, args=(analysis_id, source_url, file_path), daemon=True).start()
+    current = get(db, analysis_id)
+    if current and current["state"] in {"queued", "failed"}:
+        run(analysis_id, source_url, file_path)
     return get(db, analysis_id)

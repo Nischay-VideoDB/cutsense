@@ -5,3 +5,5 @@ uvicorn[standard]>=0.27
 pillow>=10.0
 numpy>=1.26
 python-multipart>=0.0.9
+psycopg[binary]>=3.2,<4
+psycopg-pool>=3.2,<4

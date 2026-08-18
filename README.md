@@ -4,9 +4,12 @@
 transcript — and tells you every technique it uses, where each one lands, and how to
 rebuild it. Built on [VideoDB](https://videodb.io).
 
-**Public deployment:** static, prepared-data Vercel demo in `showcase/`.
-**Operator workflow:** local only; it can ingest, analyse, query, create clips, and build reels
-when run with an operator's VideoDB credentials. See [HOSTING.md](HOSTING.md).
+**Public deployment:** <https://cutsense-three.vercel.app> — the complete URL analysis,
+report, query, clip playback, profile, study-reel, and MP4 export workflow. The prepared library
+is an additive, instant-start gallery.
+**Operator workflow:** local runs also support direct file upload. The serverless public app asks
+for a durable public URL instead of pretending an ephemeral upload is persistent. See
+[HOSTING.md](HOSTING.md).
 **Demo:** 51-second narrated walkthrough, recorded by `scripts/demo_record.py`, voiced and cut
 by `demo_voice.py` + `demo_build.py`.
 
@@ -94,7 +97,7 @@ python scripts/demo_record.py              # record the demo, then demo_build.py
 - [docs/LEARNINGS.md](docs/LEARNINGS.md) — every platform finding, measurement and dead end, dated
 - [docs/DEMO.md](docs/DEMO.md) — the demo run of show
 - [docs/recipes/](docs/recipes/) — the six technique recipes and the shared prompt kit
-- [HOSTING.md](HOSTING.md) — Railway deploy, volumes, what survives a redeploy
+- [HOSTING.md](HOSTING.md) — Vercel runtime, durable state, and public cost boundaries
 
 ## The longer version
 

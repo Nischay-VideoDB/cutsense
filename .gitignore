@@ -40,3 +40,5 @@ data/
 !docs/img/
 !docs/img/*.png
 docs/demo/
+.vercel
+.env*

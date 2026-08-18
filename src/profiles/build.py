@@ -183,7 +183,10 @@ def creators(db, min_videos=1):
         + ") AND (d.verified IS NULL OR d.verified = 1)) detections"
         " FROM videos v LEFT JOIN detections d ON d.videodb_id = v.videodb_id"
         " WHERE v.creator IS NOT NULL GROUP BY v.creator"
-        " HAVING videos >= ? ORDER BY detections DESC",
+        # SQLite accepts a SELECT alias in HAVING; PostgreSQL intentionally does
+        # not. Keep the aggregate explicit so the public durable catalog and the
+        # local operator catalog execute the same query.
+        " HAVING COUNT(DISTINCT v.videodb_id) >= ? ORDER BY detections DESC",
         [*SHIPPING_TECHNIQUES, min_videos]).fetchall()
     return [{"creator": r["creator"], "videos": r["videos"], "detections": r["detections"]}
             for r in rows]
